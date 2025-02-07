@@ -33,10 +33,10 @@ const Footer = () => {
 
             <FooterSection>
               <SectionTitle>{t('services')}</SectionTitle>
-              <FooterLink href="/chiropractic">{t('chiropractic')}</FooterLink>
-              <FooterLink href="/decompression">{t('decompression')}</FooterLink>
-              <FooterLink href="/laser-therapy">{t('laserTherapy')}</FooterLink>
-              <FooterLink href="/matrix">{t('matrix')}</FooterLink>
+              <FooterLink href="/products#chiropractic">{t('chiropractic')}</FooterLink>
+              <FooterLink href="/products#decompression">{t('decompression')}</FooterLink>
+              <FooterLink href="/products#laser">{t('laserTherapy')}</FooterLink>
+              <FooterLink href="/products#matrix">{t('matrix')}</FooterLink>
             </FooterSection>
           </MainContent>
         </FooterContent>
