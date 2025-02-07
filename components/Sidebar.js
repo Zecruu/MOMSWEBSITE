@@ -1,69 +1,106 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { FaHome, FaClock, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+import { FaHome, FaClock, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaChevronDown, FaBars, FaTimes, FaMapMarkedAlt } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Sidebar = () => {
   const [isHoursOpen, setIsHoursOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const router = useRouter();
+
+  const handleMobileMenuClose = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
       <MobileHeader>
-        <MenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <MenuButton 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </MenuButton>
         <MobileLogo $isOpen={isMobileMenuOpen}>PR Decompression Centers</MobileLogo>
       </MobileHeader>
 
       <SidebarContainer $isOpen={isMobileMenuOpen}>
-        <Logo $isOpen={isMobileMenuOpen}>PR Decompression Centers</Logo>
-        <SidebarLink>
-          <FaHome />
-          <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-            {t('home')}
-          </Link>
-        </SidebarLink>
-        <NavItemDropdown>
-          <DropdownHeader onClick={() => setIsHoursOpen(!isHoursOpen)}>
-            <IconWrapper>
-              <FaClock />
-              {t('officeHours')}
-            </IconWrapper>
-            <ChevronIcon $isOpen={isHoursOpen}>
-              <FaChevronDown />
-            </ChevronIcon>
-          </DropdownHeader>
-          <DropdownContent $isOpen={isHoursOpen}>
-            <HoursText>{t('monday')}</HoursText>
-            <HoursDetail>{t('hours1')}</HoursDetail>
-            <HoursDetail>{t('hours2')}</HoursDetail>
-            <HoursText>{t('friday')}</HoursText>
-            <HoursDetail>{t('hours1')}</HoursDetail>
-          </DropdownContent>
-        </NavItemDropdown>
-        <SidebarLink>
-          <FaWhatsapp />
-          <a href="https://wa.me/7872618258" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-            {t('whatsappUs')}
-          </a>
-        </SidebarLink>
-        <SidebarLink>
-          <FaPhoneAlt />
-          <a href="tel:7872618258" style={{ color: 'inherit', textDecoration: 'none' }}>
-            {t('callUs')}
-          </a>
-        </SidebarLink>
-        <SidebarLink>
-          <FaEnvelope />
-          <a href="mailto:aivinmorales@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
-            {t('emailUs')}
-          </a>
-        </SidebarLink>
+        <LogoButton onClick={() => router.push('/')} aria-label="Go to homepage">
+          PR Decompression Centers
+        </LogoButton>
+
+        <NavSection>
+          <SidebarButton onClick={() => router.push('/')} aria-label="Go to homepage">
+            <FaHome />
+            <span>{t('home')}</span>
+          </SidebarButton>
+
+          <SidebarButton onClick={() => router.push('/locate')} aria-label="View location">
+            <FaMapMarkedAlt />
+            <span>{language === 'en' ? 'Locate Us' : 'Ubicación'}</span>
+          </SidebarButton>
+
+          <NavItemDropdown>
+            <DropdownHeader 
+              onClick={() => setIsHoursOpen(!isHoursOpen)}
+              aria-expanded={isHoursOpen}
+              aria-controls="hours-content"
+            >
+              <IconWrapper>
+                <FaClock />
+                <span>{t('officeHours')}</span>
+              </IconWrapper>
+              <ChevronIcon $isOpen={isHoursOpen}>
+                <FaChevronDown />
+              </ChevronIcon>
+            </DropdownHeader>
+            <DropdownContent $isOpen={isHoursOpen} id="hours-content">
+              <HoursText>{t('monday')}</HoursText>
+              <HoursDetail>{t('hours1')}</HoursDetail>
+              <HoursDetail>{t('hours2')}</HoursDetail>
+              <HoursText>{t('friday')}</HoursText>
+              <HoursDetail>{t('hours1')}</HoursDetail>
+            </DropdownContent>
+          </NavItemDropdown>
+
+          <ContactLinks>
+            <ExternalLink 
+              href="https://wa.me/7872618258" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Contact us on WhatsApp"
+            >
+              <FaWhatsapp />
+              <span>{t('whatsappUs')}</span>
+            </ExternalLink>
+
+            <ExternalLink 
+              href="tel:7872618258"
+              aria-label="Call us"
+            >
+              <FaPhoneAlt />
+              <span>{t('callUs')}</span>
+            </ExternalLink>
+
+            <ExternalLink 
+              href="mailto:aivinmorales@gmail.com"
+              aria-label="Email us"
+            >
+              <FaEnvelope />
+              <span>{t('emailUs')}</span>
+            </ExternalLink>
+          </ContactLinks>
+        </NavSection>
       </SidebarContainer>
-      {isMobileMenuOpen && <Overlay onClick={() => setIsMobileMenuOpen(false)} />}
+
+      {isMobileMenuOpen && (
+        <Overlay 
+          onClick={handleMobileMenuClose}
+          aria-label="Close mobile menu"
+        />
+      )}
     </>
   );
 };
@@ -71,7 +108,7 @@ const Sidebar = () => {
 export default Sidebar;
 
 // Styled Components
-const MobileHeader = styled.div`
+const MobileHeader = styled.header`
   display: none;
   
   @media (max-width: 768px) {
@@ -106,7 +143,7 @@ const MenuButton = styled.button`
   }
 `;
 
-const MobileLogo = styled.h1`
+const MobileLogo = styled.div`
   display: none;
   
   @media (max-width: 768px) {
@@ -119,23 +156,7 @@ const MobileLogo = styled.h1`
   }
 `;
 
-const Overlay = styled.div`
-  display: none;
-  
-  @media (max-width: 768px) {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1001;
-    backdrop-filter: blur(4px);
-  }
-`;
-
-const SidebarContainer = styled.div`
+const SidebarContainer = styled.nav`
   width: 260px;
   height: 100vh;
   background-color: #181b26;
@@ -159,30 +180,53 @@ const SidebarContainer = styled.div`
   }
 `;
 
-const Logo = styled.h1`
-  font-size: 22px;
+const LogoButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  cursor: pointer;
+  text-align: left;
   color: #00d9ff;
-  margin-bottom: 20px;
+  font-size: 22px;
 
   @media (max-width: 768px) {
-    display: ${props => props.$isOpen ? 'block' : 'none'};
     margin-top: -40px;
     margin-bottom: 30px;
     font-size: 20px;
+    display: ${props => props.$isOpen ? 'block' : 'none'};
   }
+`;
+
+const NavSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const ContactLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
 
 const NavItemDropdown = styled.div`
   margin: 5px 0;
 `;
 
-const SidebarLink = styled.div`
+const SidebarButton = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px 0;
   font-size: 16px;
   cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  width: 100%;
+  text-align: left;
+
   &:hover {
     color: #00d9ff;
   }
@@ -193,13 +237,38 @@ const SidebarLink = styled.div`
   }
 `;
 
-const DropdownHeader = styled.div`
+const ExternalLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: #00d9ff;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 15px 0;
+  }
+`;
+
+const DropdownHeader = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 0;
   cursor: pointer;
   color: white;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+
   &:hover {
     color: #00d9ff;
   }
@@ -239,4 +308,23 @@ const HoursDetail = styled.div`
   font-size: 14px;
   padding-left: 25px;
   opacity: 0.8;
+`;
+
+const Overlay = styled.button`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1001;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
 `;

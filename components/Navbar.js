@@ -1,39 +1,58 @@
 import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
-  const { t, toggleLanguage } = useLanguage();
+  const { t, toggleLanguage, language } = useLanguage();
+  const router = useRouter();
 
   return (
     <NavContainer>
       <NavLinks>
-        <Link href="/" passHref legacyBehavior>
-          <NavItem>{t('home')}</NavItem>
-        </Link>
-        <Link href="/products" passHref legacyBehavior>
-          <NavItem>{t('products')}</NavItem>
-        </Link>
-        <Link href="/reviews" passHref legacyBehavior>
-          <NavItem>{t('reviews')}</NavItem>
-        </Link>
-        <Link href="/videos" passHref legacyBehavior>
-          <NavItem>{t('videos')}</NavItem>
-        </Link>
+        <NavButton onClick={() => router.push('/')}>
+          {t('home')}
+        </NavButton>
+        <NavButton onClick={() => router.push('/products')}>
+          {t('products')}
+        </NavButton>
+        <NavButton onClick={() => router.push('/reviews')}>
+          {t('reviews')}
+        </NavButton>
+        <NavButton onClick={() => router.push('/videos')}>
+          {t('videos')}
+        </NavButton>
+        <NavButton onClick={() => router.push('/locate')}>
+          {language === 'en' ? 'Locate Us' : 'Ubicación'}
+        </NavButton>
       </NavLinks>
       <RightSection>
         <LanguageButton onClick={toggleLanguage}>{t('languageButton')}</LanguageButton>
         <IconContainer>
-          <a href="https://www.facebook.com/centro.morales" target="_blank" style={{ color: 'inherit' }}>
+          <SocialLink 
+            href="https://www.facebook.com/centro.morales" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Visit our Facebook page"
+          >
             <FaFacebook />
-          </a>
-          <a href="https://www.instagram.com/prdecompressioncenter/" target="_blank" style={{ color: 'inherit' }}>
+          </SocialLink>
+          <SocialLink 
+            href="https://www.instagram.com/prdecompressioncenter/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Visit our Instagram page"
+          >
             <FaInstagram />
-          </a>
-          <a href="https://wa.me/7872618258" target="_blank" style={{ color: 'inherit' }}>
+          </SocialLink>
+          <SocialLink 
+            href="https://wa.me/7872618258" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Contact us on WhatsApp"
+          >
             <FaWhatsapp />
-          </a>
+          </SocialLink>
         </IconContainer>
       </RightSection>
     </NavContainer>
@@ -92,11 +111,14 @@ const NavLinks = styled.div`
   }
 `;
 
-const NavItem = styled.a`
+const NavButton = styled.button`
+  background: none;
+  border: none;
   color: #00d9ff;
   font-size: 16px;
-  text-decoration: none;
   font-weight: bold;
+  padding: 0;
+  cursor: pointer;
   transition: color 0.3s ease;
   white-space: nowrap;
 
@@ -151,23 +173,22 @@ const IconContainer = styled.div`
   display: flex;
   gap: 12px;
 
-  a {
-    color: #00d9ff;
-    transition: color 0.3s ease;
-    
-    &:hover {
-      color: white;
-    }
-  }
-
-  svg {
-    font-size: 20px;
-    cursor: pointer;
-  }
-
   @media (max-width: 768px) {
     svg {
       font-size: 18px;
     }
+  }
+`;
+
+const SocialLink = styled.a`
+  color: #00d9ff;
+  font-size: 20px;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    color: white;
   }
 `;

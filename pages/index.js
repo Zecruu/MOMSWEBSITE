@@ -93,28 +93,40 @@ const Index = () => {
           <FeatureContainer>
             <FeatureBox>
               <FeatureTitle>{t('weOffer')} {t('chiropractic')}</FeatureTitle>
-              <FeatureImage src="/images/Chiropractic.jpeg" alt={t('chiropractic')} />
+              <FeatureImage 
+                src="/images/Chiropractic.jpeg" 
+                alt={t('chiropractic')} 
+              />
               <Link href="/products#chiropractic" passHref>
                 <FeatureButton>Information Here!</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
               <FeatureTitle>{t('weOffer')} {t('decompression')}</FeatureTitle>
-              <FeatureImage src="/images/Decompression.png" alt={t('decompression')} />
+              <FeatureImage 
+                src="/images/Decompression.png" 
+                alt={t('decompression')} 
+              />
               <Link href="/products#decompression" passHref>
                 <FeatureButton>Information Here!</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
               <FeatureTitle>{t('weOffer')} {t('laserTherapy')}</FeatureTitle>
-              <FeatureImage src="/images/Laser.png" alt={t('laserTherapy')} />
+              <FeatureImage 
+                src="/images/Laser.png" 
+                alt={t('laserTherapy')} 
+              />
               <Link href="/products#laser" passHref>
                 <FeatureButton>Information Here!</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
               <FeatureTitle>{t('weOffer')} {t('matrix')}</FeatureTitle>
-              <FeatureImage src="/images/Matrix.jpeg" alt={t('matrix')} />
+              <FeatureImage 
+                src="/images/Matrix.jpeg" 
+                alt={t('matrix')} 
+              />
               <Link href="/products#matrix" passHref>
                 <FeatureButton>Information Here!</FeatureButton>
               </Link>
@@ -129,7 +141,10 @@ const Index = () => {
                     ? 'Click where you feel pain!'
                     : '¡Haga clic donde siente dolor!'}
                 </InstructionBox>
-                <InteractiveImage src="/images/human-body.jpeg" alt="Human Body" />
+                <InteractiveImage 
+                  src="/images/human-body.jpeg" 
+                  alt="Human Body" 
+                />
                 <PainPoint $top="23%" $left="48.7%" title={t('neckPain')} onClick={() => setSelectedPainPoint(t('neckPain'))} />
                 <PainPoint $top="36%" $left="48.7%" title={t('midBackPain')} onClick={() => setSelectedPainPoint(t('midBackPain'))} />
                 <PainPoint $top="47.5%" $left="48.7%" title={t('lowerBackPain')} onClick={() => setSelectedPainPoint(t('lowerBackPain'))} />

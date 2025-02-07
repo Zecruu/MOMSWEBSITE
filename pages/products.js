@@ -7,7 +7,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { FaChevronDown } from "react-icons/fa";
 
 const Products = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [openProduct, setOpenProduct] = useState(null);
 
   const toggleProduct = (product) => {
@@ -27,7 +27,12 @@ const Products = () => {
           <ProductsContainer>
             {/* Chiropractic Section */}
             <ProductSection id="chiropractic">
-              <ProductImage src="/images/Chiropractic.jpeg" alt={t('chiropractic')} />
+              <ProductImage 
+                src="/images/Chiropractic.jpeg" 
+                alt={language === 'en'
+                  ? "Expert chiropractic treatment and adjustments in Toa Baja, Puerto Rico"
+                  : "Tratamiento quiropráctico y ajustes expertos en Toa Baja, Puerto Rico"}
+              />
               <ProductTitle>{t('chiropractic')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('chiropractic')}>
                 {t('moreInfo')}
@@ -53,7 +58,12 @@ const Products = () => {
 
             {/* Decompression Section */}
             <ProductSection id="decompression">
-              <ProductImage src="/images/Decompression.png" alt={t('decompression')} />
+              <ProductImage 
+                src="/images/Decompression.png" 
+                alt={language === 'en'
+                  ? "Non-surgical spinal decompression therapy for back pain relief in Puerto Rico"
+                  : "Terapia de descompresión espinal no quirúrgica para alivio del dolor de espalda en Puerto Rico"}
+              />
               <ProductTitle>{t('decompression')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('decompression')}>
                 {t('moreInfo')}
@@ -75,7 +85,12 @@ const Products = () => {
 
             {/* Laser Therapy Section */}
             <ProductSection id="laser">
-              <ProductImage src="/images/Laser.png" alt={t('laserTherapy')} />
+              <ProductImage 
+                src="/images/Laser.png" 
+                alt={language === 'en'
+                  ? "Advanced laser therapy for pain management and healing in Puerto Rico"
+                  : "Terapia láser avanzada para manejo del dolor y curación en Puerto Rico"}
+              />
               <ProductTitle>{t('laserTherapy')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('laser')}>
                 {t('moreInfo')}
@@ -101,7 +116,12 @@ const Products = () => {
 
             {/* Matrix Section */}
             <ProductSection id="matrix">
-              <ProductImage src="/images/Matrix.jpeg" alt={t('matrix')} />
+              <ProductImage 
+                src="/images/Matrix.jpeg" 
+                alt={language === 'en'
+                  ? "Matrix therapy for muscle rehabilitation and recovery in Puerto Rico"
+                  : "Terapia matrix para rehabilitación y recuperación muscular en Puerto Rico"}
+              />
               <ProductTitle>{t('matrix')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('matrix')}>
                 {t('moreInfo')}

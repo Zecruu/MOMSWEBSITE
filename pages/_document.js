@@ -4,10 +4,16 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        {/* Primary Meta Tags */}
+        {/* Primary Meta Tags - English */}
         <meta charSet="utf-8" />
-        <meta name="title" content="PR Decompression Centers - Expert Treatment for Back Pain, Herniated Discs & More | Centro Quiropráctico - Tratamiento para Dolor de Espalda, Discos Herniados, Hernias Discales y Más" />
-        <meta name="description" content="Specialized treatment for herniated discs, sciatica, back pain, neck pain, knee pain, and shoulder pain. Advanced therapies: spinal decompression, laser, chiropractic & matrix. | Tratamiento especializado para discos herniados, hernias discales, ciática, dolor de espalda, dolor de cuello, dolor de rodilla y dolor de hombro. Terapias avanzadas: descompresión espinal, láser, quiropráctico y matrix." />
+        <meta name="title" content="PR Decompression Centers | Spinal Treatment Toa Baja" />
+        <meta name="description" content="Expert spinal decompression therapy & chiropractic care in Puerto Rico. Advanced treatment for back pain, herniated discs, and sciatica. Serving Toa Baja area." />
+        
+        {/* Primary Meta Tags - Spanish */}
+        <meta name="title" lang="es" content="Centro de Descompresión PR | Terapia Espinal Toa Baja" />
+        <meta name="description" lang="es" content="Terapia de descompresión espinal y cuidado quiropráctico en Puerto Rico. Tratamiento avanzado para dolor de espalda y hernias discales. Área de Toa Baja." />
+
+        {/* Primary Meta Tags */}
         <meta name="keywords" content="herniated disc treatment, tratamiento hernia discal, discos herniados, 
         back pain relief, alivio dolor de espalda, 
         neck pain treatment, tratamiento dolor de cuello, 
@@ -45,18 +51,26 @@ export default function Document() {
         {/* Open Graph / Facebook - English */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://prdecompressioncenters.com/" />
-        <meta property="og:title" content="PR Decompression Centers - Expert Chiropractic Care | Centro Quiropráctico" />
-        <meta property="og:description" content="Professional chiropractic care, spinal decompression, laser therapy, and matrix treatment in Toa Baja, PR. Cuidado quiropráctico profesional en Toa Baja, PR." />
+        <meta property="og:title" content="PR Decompression Centers | Spinal Treatment Toa Baja" />
+        <meta property="og:description" content="Expert spinal decompression therapy & chiropractic care in Puerto Rico. Advanced treatment for back pain, herniated discs, and sciatica. Serving Toa Baja area." />
         <meta property="og:image" content="/images/LOGO.png" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="es_PR" />
 
-        {/* Twitter */}
+        {/* Open Graph / Facebook - Spanish */}
+        <meta property="og:title" lang="es" content="Centro de Descompresión PR | Terapia Espinal Toa Baja" />
+        <meta property="og:description" lang="es" content="Terapia de descompresión espinal y cuidado quiropráctico en Puerto Rico. Tratamiento avanzado para dolor de espalda y hernias discales. Área de Toa Baja." />
+
+        {/* Twitter Cards - English */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://prdecompressioncenters.com/" />
-        <meta property="twitter:title" content="PR Decompression Centers | Centro Quiropráctico" />
-        <meta property="twitter:description" content="Expert chiropractic care in Toa Baja, PR | Cuidado quiropráctico experto en Toa Baja, PR" />
+        <meta property="twitter:title" content="PR Decompression Centers | Spinal Treatment Toa Baja" />
+        <meta property="twitter:description" content="Expert spinal decompression therapy & chiropractic care in Puerto Rico. Advanced treatment for back pain, herniated discs, and sciatica." />
         <meta property="twitter:image" content="/images/LOGO.png" />
+
+        {/* Twitter Cards - Spanish */}
+        <meta property="twitter:title" lang="es" content="Centro de Descompresión PR | Terapia Espinal Toa Baja" />
+        <meta property="twitter:description" lang="es" content="Terapia de descompresión espinal y cuidado quiropráctico en Puerto Rico. Tratamiento avanzado para dolor de espalda y hernias discales." />
 
         {/* Additional SEO Tags */}
         <meta name="robots" content="index, follow" />
@@ -185,6 +199,42 @@ export default function Document() {
               gtag('js', new Date());
               gtag('config', 'G-W9ENXV8126');
             `,
+          }}
+        />
+
+        {/* Responsive Map Styling */}
+        <style>
+          {`
+            .map-responsive {
+              overflow: hidden;
+              padding-bottom: 56.25%;
+              position: relative;
+              height: 0;
+              border-radius: 10px;
+            }
+            .map-responsive iframe {
+              left: 0;
+              top: 0;
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              border: 0;
+            }
+          `}
+        </style>
+
+        {/* Schema.org for Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: `
+              {
+                "@context": "https://schema.org",
+                "@type": "MedicalBusiness",
+                "name": "PR Decompression Centers",
+                "hasMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.8876712478387!2d-66.19061492412567!3d18.448931982636723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c036b68d4b339d9%3A0x6c296dac41fc7f5f!2sPR%20Decompression%20Centers!5e0!3m2!1sen!2spr!4v1689127608595!5m2!1sen!2spr"
+              }
+            `
           }}
         />
       </Head>

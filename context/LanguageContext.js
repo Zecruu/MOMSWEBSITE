@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const translations = {
   en: {
@@ -13,6 +13,13 @@ const translations = {
     emailUs: "Email Us",
     languageButton: "Cambiar a Español",
     contactUs: "Contact Us",
+    locateUs: "Locate Us",
+
+    // Location Page
+    address: "Address",
+    phone: "Phone",
+    email: "Email",
+    directions: "Get Directions",
 
     // Main Content
     welcome: "Welcome to PR Decompression Centers",
@@ -61,6 +68,7 @@ const translations = {
     friday: "Friday:",
     hours1: "9:00AM-11:30AM",
     hours2: "1:30PM-4:30PM",
+    quickLinks: "Quick Links",
   },
   es: {
     // Navigation
@@ -73,7 +81,14 @@ const translations = {
     callUs: "Llamar",
     emailUs: "Correo",
     languageButton: "Switch to English",
-    contactUs: "Contact Us",
+    contactUs: "Contáctenos",
+    locateUs: "Ubicación",
+
+    // Location Page
+    address: "Dirección",
+    phone: "Teléfono",
+    email: "Correo",
+    directions: "Cómo Llegar",
 
     // Main Content
     welcome: "Bienvenido a PR Decompression Centers",
@@ -122,6 +137,7 @@ const translations = {
     friday: "Viernes:",
     hours1: "9:00AM-11:30AM",
     hours2: "1:30PM-4:30PM",
+    quickLinks: "Enlaces Rápidos",
   }
 };
 
@@ -129,6 +145,11 @@ const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('en');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'es' : 'en');
@@ -137,6 +158,10 @@ export const LanguageProvider = ({ children }) => {
   const t = (key) => {
     return translations[language][key] || key;
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, t }}>

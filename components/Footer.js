@@ -2,54 +2,78 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaClock } from "react-icons/fa";
 import { useLanguage } from '../context/LanguageContext';
+import { useRouter } from 'next/router';
 
 const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const router = useRouter();
 
   return (
-    <>
-      <FooterContainer>
-        <FooterContent>
-          <LogoSection>
-            <img src="/images/LOGO.png" alt="Logo" />
-          </LogoSection>
-          <MainContent>
-            <FooterSection>
-              <SectionTitle>{t('contactUs')}</SectionTitle>
-              <FooterLink href="tel:7872618258">787-261-8258</FooterLink>
-              <FooterLink href="mailto:aivinmorales@gmail.com">aivinmorales@gmail.com</FooterLink>
-              <FooterText>RH-16 Ave. Building, Los Dominicos,</FooterText>
-              <FooterText>Toa Baja, Levittown, Puerto Rico (PR)</FooterText>
-            </FooterSection>
+    <FooterContainer>
+      <FooterContent>
+        <LogoSection>
+          <LogoButton onClick={() => router.push('/')}>
+            <img src="/images/LOGO.png" alt="PR Decompression Centers Logo" />
+          </LogoButton>
+        </LogoSection>
+        <MainContent>
+          <FooterSection>
+            <SectionTitle>{t('contactUs')}</SectionTitle>
+            <FooterLink href="tel:7872618258" rel="noopener">787-261-8258</FooterLink>
+            <FooterLink href="mailto:aivinmorales@gmail.com" rel="noopener">aivinmorales@gmail.com</FooterLink>
+            <AddressButton onClick={() => router.push('/locate')}>
+              <AddressText>RH-16 Ave. Building, Los Dominicos,</AddressText>
+              <AddressText>Toa Baja, Levittown, Puerto Rico (PR)</AddressText>
+            </AddressButton>
+          </FooterSection>
 
-            <FooterSection>
-              <SectionTitle>{t('officeHours')}</SectionTitle>
-              <FooterText>{t('monday')}-{t('thursday')}:</FooterText>
-              <FooterText>{t('hours1')}</FooterText>
-              <FooterText>{t('hours2')}</FooterText>
-              <FooterText>{t('friday')} {t('hours1')}</FooterText>
-            </FooterSection>
+          <FooterSection>
+            <SectionTitle>{t('officeHours')}</SectionTitle>
+            <FooterText>{t('monday')}-{t('thursday')}:</FooterText>
+            <FooterText>{t('hours1')}</FooterText>
+            <FooterText>{t('hours2')}</FooterText>
+            <FooterText>{t('friday')} {t('hours1')}</FooterText>
+            <FooterButton onClick={() => router.push('/locate')}>
+              {t('directions')}
+            </FooterButton>
+          </FooterSection>
 
-            <FooterSection>
-              <SectionTitle>{t('services')}</SectionTitle>
-              <FooterLink href="/products#chiropractic">{t('chiropractic')}</FooterLink>
-              <FooterLink href="/products#decompression">{t('decompression')}</FooterLink>
-              <FooterLink href="/products#laser">{t('laserTherapy')}</FooterLink>
-              <FooterLink href="/products#matrix">{t('matrix')}</FooterLink>
-            </FooterSection>
-          </MainContent>
-        </FooterContent>
+          <FooterSection>
+            <SectionTitle>{t('services')}</SectionTitle>
+            <FooterButton onClick={() => router.push('/products#chiropractic')}>
+              {t('chiropractic')}
+            </FooterButton>
+            <FooterButton onClick={() => router.push('/products#decompression')}>
+              {t('decompression')}
+            </FooterButton>
+            <FooterButton onClick={() => router.push('/products#laser')}>
+              {t('laserTherapy')}
+            </FooterButton>
+            <FooterButton onClick={() => router.push('/products#matrix')}>
+              {t('matrix')}
+            </FooterButton>
+          </FooterSection>
 
-        <BottomBar>
-          <Copyright>©{currentYear} PR Decompression Centers</Copyright>
-        </BottomBar>
-      </FooterContainer>
+          <FooterSection>
+            <SectionTitle>{t('quickLinks')}</SectionTitle>
+            <FooterButton onClick={() => router.push('/reviews')}>
+              {t('reviews')}
+            </FooterButton>
+            <FooterButton onClick={() => router.push('/videos')}>
+              {t('videos')}
+            </FooterButton>
+            <FooterButton onClick={() => router.push('/locate')}>
+              {t('locateUs')}
+            </FooterButton>
+          </FooterSection>
+        </MainContent>
+      </FooterContent>
 
-      <WhatsAppButton href="https://wa.me/7872618258" target="_blank">
-        <FaWhatsapp />
-      </WhatsAppButton>
-    </>
+      <BottomBar>
+        <Copyright>©{currentYear} PR Decompression Centers</Copyright>
+      </BottomBar>
+    </FooterContainer>
   );
 };
 
@@ -75,7 +99,7 @@ const FooterContainer = styled.footer`
   @media (max-width: 768px) {
     width: 100%;
     margin: 0;
-    padding: 30px 0;
+    padding: 30px 15px;
     border-radius: 0;
   }
 `;
@@ -107,7 +131,7 @@ const MainContent = styled.div`
     gap: 0;
     width: 100%;
     align-items: stretch;
-    padding: 0 20px;
+    padding: 0;
   }
 `;
 
@@ -151,6 +175,8 @@ const FooterLink = styled.a`
   font-size: 16px;
   transition: color 0.2s ease;
   padding: 5px 0;
+  display: inline-block;
+  width: fit-content;
 
   &:hover {
     color: #00d9ff;
@@ -159,6 +185,30 @@ const FooterLink = styled.a`
   @media (max-width: 768px) {
     font-size: 16px;
     padding: 8px 0;
+    text-align: center;
+  }
+`;
+
+const FooterButton = styled.button`
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s ease;
+  padding: 5px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    color: #00d9ff;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 8px 0;
+    text-align: center;
+    width: 100%;
   }
 `;
 
@@ -167,42 +217,68 @@ const FooterText = styled.p`
   font-size: 16px;
   margin: 0;
   padding: 2px 0;
+  line-height: 1.5;
 
   @media (max-width: 768px) {
     font-size: 16px;
     padding: 4px 0;
+    text-align: center;
   }
 `;
 
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 20px;
-  justify-content: flex-start;
+const LogoSection = styled.div`
+  flex-shrink: 0;
+`;
+
+const LogoButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+
+  img {
+    height: 80px;
+    width: auto;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 
   @media (max-width: 768px) {
-    justify-content: center;
-    gap: 25px;
-    margin-top: 5px;
+    margin: 0 auto;
+    
+    img {
+      height: 60px;
+    }
   }
 `;
 
-const SocialIcon = styled.a`
+const AddressButton = styled.button`
+  background: none;
+  border: none;
+  padding: 5px 0;
+  cursor: pointer;
+  text-align: left;
   color: white;
-  font-size: 22px;
-  transition: color 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
 
   &:hover {
     color: #00d9ff;
   }
 
   @media (max-width: 768px) {
-    padding: 10px;
-    font-size: 24px;
+    text-align: center;
+    width: 100%;
   }
+`;
+
+const AddressText = styled.p`
+  margin: 0;
+  padding: 2px 0;
+  font-size: 16px;
+  line-height: 1.5;
 `;
 
 const BottomBar = styled.div`
@@ -214,57 +290,16 @@ const BottomBar = styled.div`
   padding: 20px 15px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 800px;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    padding: 15px 10px 0;
+  }
 `;
 
 const Copyright = styled.p`
   color: #8A8F98;
   font-size: 14px;
-`;
-
-const LogoSection = styled.div`
-  display: flex;
-  align-items: flex-start;
-  
-  img {
-    width: 200px;
-    height: auto;
-  }
-
-  @media (max-width: 768px) {
-    justify-content: center;
-    width: 100%;
-    
-    img {
-      width: 150px;
-    }
-  }
-`;
-
-const WhatsAppButton = styled.a`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: white;
-  padding: 15px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  z-index: 1001;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  
-  &:hover {
-    background-color: #1EBE5C;
-    transform: scale(1.05);
-    transition: all 0.2s ease;
-  }
-
-  @media (max-width: 768px) {
-    bottom: 15px;
-    right: 15px;
-    padding: 12px;
-    font-size: 20px;
-  }
+  margin: 0;
+  text-align: center;
 `;

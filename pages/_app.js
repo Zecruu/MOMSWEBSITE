@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import FloatingButtons from '../components/FloatingButtons';
+import { useEffect, useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -35,6 +37,12 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function MyApp({ Component, pageProps }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <LanguageProvider>
       <GlobalStyle />
@@ -44,10 +52,11 @@ function MyApp({ Component, pageProps }) {
         </SidebarWrapper>
         <MainContent>
           <PageWrapper>
-            <Component {...pageProps} />
+            {mounted && <Component {...pageProps} />}
           </PageWrapper>
           <Footer />
         </MainContent>
+        {mounted && <FloatingButtons />}
       </AppContainer>
     </LanguageProvider>
   );
