@@ -28,10 +28,8 @@ const Products = () => {
             {/* Chiropractic Section */}
             <ProductSection id="chiropractic">
               <ProductImage 
-                src="/images/Chiropractic.jpeg" 
-                alt={language === 'en'
-                  ? "Expert chiropractic treatment and adjustments in Toa Baja, Puerto Rico"
-                  : "Tratamiento quiropráctico y ajustes expertos en Toa Baja, Puerto Rico"}
+                src="/images/chiropractic-treatment-toa-baja.jpeg" 
+                alt="Professional chiropractic treatment and adjustments in Toa Baja, Puerto Rico" 
               />
               <ProductTitle>{t('chiropractic')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('chiropractic')}>
@@ -59,10 +57,8 @@ const Products = () => {
             {/* Decompression Section */}
             <ProductSection id="decompression">
               <ProductImage 
-                src="/images/Decompression.png" 
-                alt={language === 'en'
-                  ? "Non-surgical spinal decompression therapy for back pain relief in Puerto Rico"
-                  : "Terapia de descompresión espinal no quirúrgica para alivio del dolor de espalda en Puerto Rico"}
+                src="/images/spinal-decompression-therapy-pr.png" 
+                alt="Non-surgical spinal decompression therapy for herniated discs in Puerto Rico" 
               />
               <ProductTitle>{t('decompression')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('decompression')}>
@@ -86,10 +82,8 @@ const Products = () => {
             {/* Laser Therapy Section */}
             <ProductSection id="laser">
               <ProductImage 
-                src="/images/Laser.png" 
-                alt={language === 'en'
-                  ? "Advanced laser therapy for pain management and healing in Puerto Rico"
-                  : "Terapia láser avanzada para manejo del dolor y curación en Puerto Rico"}
+                src="/images/advanced-laser-therapy-treatment.png" 
+                alt="Advanced laser therapy for pain relief and healing in Puerto Rico" 
               />
               <ProductTitle>{t('laserTherapy')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('laser')}>
@@ -117,10 +111,8 @@ const Products = () => {
             {/* Matrix Section */}
             <ProductSection id="matrix">
               <ProductImage 
-                src="/images/Matrix.jpeg" 
-                alt={language === 'en'
-                  ? "Matrix therapy for muscle rehabilitation and recovery in Puerto Rico"
-                  : "Terapia matrix para rehabilitación y recuperación muscular en Puerto Rico"}
+                src="/images/matrix-rehabilitation-therapy.jpeg" 
+                alt="Matrix rehabilitation therapy for muscle recovery and pain management" 
               />
               <ProductTitle>{t('matrix')}</ProductTitle>
               <DropdownButton onClick={() => toggleProduct('matrix')}>
@@ -190,10 +182,8 @@ const Content = styled.div`
   padding: 50px 0 250px 0;
   margin: 0 auto;
   position: relative;
-  left: -200px;
 
   @media (max-width: 768px) {
-    left: 0;
     padding: 80px 0 60px;
     width: 100%;
     display: flex;
@@ -233,14 +223,23 @@ const ProductsContainer = styled.div`
 `;
 
 const ProductSection = styled.div`
-  background: white;
-  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
   padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -258,7 +257,7 @@ const ProductImage = styled.img`
 
 const ProductTitle = styled.h2`
   font-size: 32px;
-  color: #000033;
+  color: white;
   margin: 0;
 
   @media (max-width: 768px) {
@@ -267,7 +266,7 @@ const ProductTitle = styled.h2`
 `;
 
 const DropdownButton = styled.button`
-  background: #000033;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
   color: white;
   border: none;
   padding: 15px 25px;
@@ -278,10 +277,13 @@ const DropdownButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease;
-
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+  
   &:hover {
-    background: #000066;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
   }
 
   @media (max-width: 768px) {
@@ -309,9 +311,10 @@ const InfoSection = styled.div`
 `;
 
 const InfoTitle = styled.h3`
-  color: #000033;
+  color: #00d9ff;
   font-size: 20px;
   margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 
   @media (max-width: 768px) {
     font-size: 18px;
@@ -319,7 +322,7 @@ const InfoTitle = styled.h3`
 `;
 
 const InfoText = styled.p`
-  color: #333;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
@@ -330,16 +333,25 @@ const InfoText = styled.p`
 `;
 
 const PhoneLink = styled.a`
-  color: #000033;
-  text-decoration: none;
+  color: #00d9ff;
+  text-decoration: none !important;
   font-weight: bold;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin: 0 5px;
+  border-bottom: none;
 
-  &:hover {
-    color: #00d9ff;
+  &:hover, &:focus, &:active {
+    color: #000033;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+    transform: translateY(-1px);
+    text-decoration: none;
+    border-bottom: none;
   }
 
   @media (max-width: 768px) {
-    text-decoration: underline;
+    display: block;
+    margin: 5px 0;
+    padding: 5px 0;
   }
 `;

@@ -86,54 +86,56 @@ const Index = () => {
       <PageContainer>
         <Content>
           <TitleContainer>
-            <Title>Welcome to PR Decompression Centers</Title>
-            <Subtitle>Where Advanced Technology Meets Compassionate Care</Subtitle>
+            <Title>{t('mainTitle')}</Title>
+            <Subtitle>{t('mainSubtitle')}</Subtitle>
           </TitleContainer>
 
-          <FeatureContainer>
+          <SectionTitle>{t('specializedServices')}</SectionTitle>
+          <ServicesGrid>
             <FeatureBox>
-              <FeatureTitle>{t('weOffer')} {t('chiropractic')}</FeatureTitle>
+              <FeatureTitle>{t('advancedChiropractic')}</FeatureTitle>
               <FeatureImage 
-                src="/images/Chiropractic.jpeg" 
-                alt={t('chiropractic')} 
+                src="/images/chiropractic-treatment-toa-baja.jpeg" 
+                alt="Professional chiropractic treatment and adjustments in Toa Baja, Puerto Rico" 
               />
               <Link href="/products#chiropractic" passHref>
-                <FeatureButton>Information Here!</FeatureButton>
+                <FeatureButton>{t('learnMoreChiro')}</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
-              <FeatureTitle>{t('weOffer')} {t('decompression')}</FeatureTitle>
+              <FeatureTitle>{t('spinalDecompressionTitle')}</FeatureTitle>
               <FeatureImage 
-                src="/images/Decompression.png" 
-                alt={t('decompression')} 
+                src="/images/spinal-decompression-therapy-pr.png" 
+                alt="Non-surgical spinal decompression therapy for herniated discs in Puerto Rico" 
               />
               <Link href="/products#decompression" passHref>
-                <FeatureButton>Information Here!</FeatureButton>
+                <FeatureButton>{t('discoverDecompression')}</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
-              <FeatureTitle>{t('weOffer')} {t('laserTherapy')}</FeatureTitle>
+              <FeatureTitle>{t('advancedLaserTitle')}</FeatureTitle>
               <FeatureImage 
-                src="/images/Laser.png" 
-                alt={t('laserTherapy')} 
+                src="/images/advanced-laser-therapy-treatment.png" 
+                alt="Advanced laser therapy for pain relief and healing in Puerto Rico" 
               />
               <Link href="/products#laser" passHref>
-                <FeatureButton>Information Here!</FeatureButton>
+                <FeatureButton>{t('exploreLaser')}</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
-              <FeatureTitle>{t('weOffer')} {t('matrix')}</FeatureTitle>
+              <FeatureTitle>{t('matrix')}</FeatureTitle>
               <FeatureImage 
-                src="/images/Matrix.jpeg" 
-                alt={t('matrix')} 
+                src="/images/matrix-rehabilitation-therapy.jpeg" 
+                alt="Matrix rehabilitation therapy for pain management in Puerto Rico" 
               />
               <Link href="/products#matrix" passHref>
-                <FeatureButton>Information Here!</FeatureButton>
+                <FeatureButton>Learn More About Matrix</FeatureButton>
               </Link>
             </FeatureBox>
-          </FeatureContainer>
+          </ServicesGrid>
 
           <BodyImageContainer>
+            <SectionTitle>Herniated Disc Treatment & Pain Management</SectionTitle>
             <ContentWrapper>
               <ImageSection>
                 <InstructionBox>
@@ -142,8 +144,8 @@ const Index = () => {
                     : '¡Haga clic donde siente dolor!'}
                 </InstructionBox>
                 <InteractiveImage 
-                  src="/images/human-body.jpeg" 
-                  alt="Human Body" 
+                  src="/images/interactive-pain-diagram.jpeg" 
+                  alt="Interactive body diagram for pain point selection and treatment options" 
                 />
                 <PainPoint $top="23%" $left="48.7%" title={t('neckPain')} onClick={() => setSelectedPainPoint(t('neckPain'))} />
                 <PainPoint $top="36%" $left="48.7%" title={t('midBackPain')} onClick={() => setSelectedPainPoint(t('midBackPain'))} />
@@ -183,62 +185,36 @@ export default Index;
 
 const MainContainer = styled.div`
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  overflow-x: hidden;
+  background: transparent;
 `;
 
 const NavbarWrapper = styled.div`
-  position: fixed;
-  width: calc(100% - 260px);
-  margin-left: 260px;
+  position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 `;
 
 const PageContainer = styled.div`
+  flex: 1;
   display: flex;
-  flex-grow: 1;
-  width: calc(100% - 260px);
-  margin-left: 260px;
-  padding: 0;
-  justify-content: flex-start;
-  position: relative;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-left: 0;
-    justify-content: center;
-  }
+  flex-direction: column;
 `;
 
 const Content = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  text-align: center;
-  padding: 50px 0 250px 0;
+  flex: 1;
+  padding: 0;
+  max-width: 100%;
   margin: 0 auto;
-  position: relative;
-  left: -300px;
-
-  @media (max-width: 768px) {
-    left: 0;
-    padding: 80px 0 60px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-  }
+  width: 100%;
 `;
 
 const TitleContainer = styled.div`
   width: 100%;
-  max-width: 1000px;
-  height: 500px;
-  background-image: url("/images/Title Background Image.png");
+  max-width: 100%;
+  height: 60vh;
+  background-image: url("/images/decompression-therapy-hero-bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -246,149 +222,189 @@ const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 60px auto 0;
+  margin: 0;
   position: relative;
-  border-radius: 20px;
   overflow: hidden;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 1;
+  }
+
   @media (max-width: 768px) {
-    height: auto;
-    min-height: 300px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    border-radius: 0;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 50vh;
+    margin: 0;
   }
 `;
 
 const Title = styled.h1`
-  font-size: 52px;
-  font-weight: bold;
+  font-size: 64px;
+  font-weight: 600;
+  margin-bottom: 16px;
   color: white;
   text-align: center;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7),
-               0 0 20px rgba(0, 0, 0, 0.4);
-  max-width: 1000px;
-  width: 100%;
-  line-height: 1.3;
+  z-index: 2;
+  padding: 0 20px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: 800px;
 
   @media (max-width: 768px) {
-    font-size: 28px;
-    padding: 0 15px;
-    margin-bottom: 15px;
+    font-size: 36px;
+    padding: 0 24px;
   }
 `;
 
-const Subtitle = styled.p`
-  font-size: 32px;
-  color: white;
+const Subtitle = styled.h2`
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
   text-align: center;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7),
-               0 0 20px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  padding: 0 20px;
+  max-width: 600px;
   line-height: 1.4;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   @media (max-width: 768px) {
     font-size: 18px;
-    padding: 0 15px;
+    padding: 0 24px;
   }
 `;
 
-const FeatureContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
+const SectionTitle = styled.h2`
+  font-size: 36px;
+  color: white;
+  margin: 60px 0 40px;
+  text-align: center;
   width: 100%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    gap: 30px;
-    width: 90%;
+    font-size: 28px;
+    margin: 40px 0 30px;
+    padding: 0 20px;
+  }
+`;
+
+const ServicesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 0 20px;
+  max-width: 1400px;
+  margin: 0 auto 60px;
+  width: 100%;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+    margin-bottom: 40px;
   }
 `;
 
 const FeatureBox = styled.div`
-  background: black;
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  width: 100%;
-  aspect-ratio: 1;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  height: auto;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
   
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+
   @media (max-width: 768px) {
-    width: 100%;
-    padding: 15px;
-    aspect-ratio: auto;
-    min-height: auto;
+    min-height: 450px;
+    padding: 20px;
   }
 `;
 
 const FeatureTitle = styled.h3`
+  font-size: 24px;
   color: white;
-  font-size: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 768px) {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    min-height: 50px;
+    margin-bottom: 15px;
   }
 `;
 
 const FeatureImage = styled.img`
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: contain;
   border-radius: 10px;
-  margin-top: 10px;
+  margin: 20px 0;
+  background: rgba(0, 0, 0, 0.1);
   padding: 10px;
 
   @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    object-fit: contain;
-    margin: 10px auto;
+    height: 250px;
   }
 `;
 
 const FeatureButton = styled.a`
-  background: #000033;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
   text-align: center;
-  width: 80%;
-
-  &:hover {
-    background: #00d9ff;
+  width: fit-content;
+  margin-top: auto;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+  border: none;
+  outline: none;
+  display: inline-block;
+  
+  &:hover, &:focus, &:active, &:visited {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
+    text-decoration: none !important;
+    color: white;
   }
 
   @media (max-width: 768px) {
-    padding: 8px 15px;
-    font-size: 14px;
-    width: 90%;
+    padding: 10px 20px;
+    margin-top: 10px;
   }
 `;
 
@@ -640,5 +656,40 @@ const CloseButton = styled.button`
 
   &:hover {
     background: #000066;
+  }
+`;
+
+const FeatureLink = styled.a`
+  text-decoration: none;
+  color: #00d9ff;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: white;
+  }
+`;
+
+const GetStartedButton = styled.a`
+  background-color: rgb(0, 161, 189);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 24px;
+  z-index: 2;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgb(0, 141, 169);
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 `;

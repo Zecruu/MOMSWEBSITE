@@ -115,14 +115,16 @@ const MobileHeader = styled.header`
     display: flex;
     align-items: center;
     padding: 15px;
-    background-color: #181b26;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1002;
     height: 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 `;
 
@@ -140,6 +142,7 @@ const MenuButton = styled.button`
     cursor: pointer;
     padding: 0;
     margin-right: 15px;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
   }
 `;
 
@@ -153,13 +156,17 @@ const MobileLogo = styled.div`
     margin: 0;
     opacity: ${props => props.$isOpen ? '0' : '1'};
     transition: opacity 0.3s ease;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
   }
 `;
 
 const SidebarContainer = styled.nav`
   width: 260px;
   height: 100vh;
-  background-color: #181b26;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(0, 217, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
   color: white;
   display: flex;
   flex-direction: column;
@@ -169,6 +176,17 @@ const SidebarContainer = styled.nav`
   top: 0;
   z-index: 1002;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 255, 0.1));
+    pointer-events: none;
+  }
+
   @media (max-width: 768px) {
     transform: translateX(${props => props.$isOpen ? '0' : '-100%'});
     transition: transform 0.3s ease;
@@ -176,7 +194,6 @@ const SidebarContainer = styled.nav`
     height: 100vh;
     width: 280px;
     padding: 80px 20px 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
   }
 `;
 
@@ -189,12 +206,19 @@ const LogoButton = styled.button`
   text-align: left;
   color: #00d9ff;
   font-size: 22px;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateX(5px);
+  }
 
   @media (max-width: 768px) {
     margin-top: -40px;
     margin-bottom: 30px;
     font-size: 20px;
-    display: ${props => props.$isOpen ? 'block' : 'none'};
   }
 `;
 
@@ -226,9 +250,14 @@ const SidebarButton = styled.button`
   color: white;
   width: 100%;
   text-align: left;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
 
   &:hover {
     color: #00d9ff;
+    transform: translateX(5px);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
   }
 
   @media (max-width: 768px) {
@@ -246,9 +275,14 @@ const ExternalLink = styled.a`
   cursor: pointer;
   color: white;
   text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
 
   &:hover {
     color: #00d9ff;
+    transform: translateX(5px);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
   }
 
   @media (max-width: 768px) {
@@ -268,9 +302,13 @@ const DropdownHeader = styled.button`
   border: none;
   width: 100%;
   text-align: left;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
 
   &:hover {
     color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
   }
 `;
 
@@ -289,10 +327,13 @@ const DropdownContent = styled.div`
   max-height: ${props => props.$isOpen ? '500px' : '0'};
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
-  background-color: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 5px;
   margin-top: ${props => props.$isOpen ? '5px' : '0'};
   padding: ${props => props.$isOpen ? '10px' : '0'};
+  border: 1px solid rgba(0, 217, 255, 0.1);
+  position: relative;
+  z-index: 1;
 `;
 
 const HoursText = styled.div`
@@ -301,6 +342,7 @@ const HoursText = styled.div`
   margin-top: 8px;
   margin-bottom: 4px;
   padding-left: 25px;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 `;
 
 const HoursDetail = styled.div`

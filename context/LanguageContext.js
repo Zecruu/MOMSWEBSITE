@@ -25,6 +25,15 @@ const translations = {
     welcome: "Welcome to PR Decompression Centers",
     clickWhere: "Click where it hurts for treatment options",
     weOffer: "We offer",
+    mainTitle: "Decompression Therapy in Puerto Rico",
+    mainSubtitle: "Expert Treatment for Back Pain & Herniated Discs",
+    specializedServices: "Our Specialized Treatment Services",
+    advancedChiropractic: "Advanced Chiropractic Care",
+    spinalDecompressionTitle: "Spinal Decompression Benefits",
+    advancedLaserTitle: "Advanced Laser Treatment",
+    learnMoreChiro: "Learn More About Chiropractic Care",
+    discoverDecompression: "Discover Decompression Benefits",
+    exploreLaser: "Explore Laser Therapy",
     chiropractic: "Chiropractic",
     decompression: "Decompression",
     laserTherapy: "Laser Therapy",
@@ -94,6 +103,15 @@ const translations = {
     welcome: "Bienvenido a PR Decompression Centers",
     clickWhere: "Haz clic donde te duele para ver las opciones de tratamiento",
     weOffer: "Ofrecemos",
+    mainTitle: "Terapia de Descompresión en Puerto Rico",
+    mainSubtitle: "Tratamiento Experto para Dolor de Espalda y Discos Herniados",
+    specializedServices: "Nuestros Servicios Especializados de Tratamiento",
+    advancedChiropractic: "Cuidado Quiropráctico Avanzado",
+    spinalDecompressionTitle: "Beneficios de la Descompresión Espinal",
+    advancedLaserTitle: "Tratamiento Láser Avanzado",
+    learnMoreChiro: "Aprenda Más Sobre Quiropráctica",
+    discoverDecompression: "Descubra los Beneficios de la Descompresión",
+    exploreLaser: "Explore la Terapia Láser",
     chiropractic: "Quiropráctica",
     decompression: "Descompresión",
     laserTherapy: "Terapia Láser",
@@ -144,7 +162,7 @@ const translations = {
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('es');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

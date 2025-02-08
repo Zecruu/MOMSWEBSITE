@@ -114,16 +114,18 @@ const NavLinks = styled.div`
 const NavButton = styled.button`
   background: none;
   border: none;
-  color: #00d9ff;
+  color: white;
   font-size: 16px;
   font-weight: bold;
   padding: 0;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 
   &:hover {
-    color: white;
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 768px) {
@@ -146,9 +148,9 @@ const RightSection = styled.div`
 `;
 
 const LanguageButton = styled.button`
-  background: transparent;
-  border: 2px solid #00d9ff;
-  color: #00d9ff;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  border: none;
+  color: white;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 14px;
@@ -156,16 +158,17 @@ const LanguageButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
 
   &:hover {
-    background: #00d9ff;
-    color: black;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
   }
 
   @media (max-width: 768px) {
     padding: 6px 12px;
     font-size: 12px;
-    border-width: 1px;
   }
 `;
 
@@ -181,14 +184,16 @@ const IconContainer = styled.div`
 `;
 
 const SocialLink = styled.a`
-  color: #00d9ff;
+  color: white;
   font-size: 20px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
   
   &:hover {
-    color: white;
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+    transform: scale(1.1);
   }
 `;

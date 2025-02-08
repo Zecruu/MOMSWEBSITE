@@ -6,7 +6,7 @@ const Map = () => {
     <MapContainer>
       <MapWrapper>
         <iframe 
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDdevL6JAcTEJ18gEEgkFKPIsCNXCoOMoc&q=PR+Decompression+Centers&center=18.443275,-66.175574&zoom=17"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDdevL6JAcTEJ18gEEgkFKPIsCNXCoOMoc&q=Dra.+Aivin+Morales,+Quiropráctica,+RH+16,+Av.+Los+Dominicos,+Toa+Baja,+00949&zoom=18"
           width="100%"
           height="100%"
           style={{ border: 0 }}
@@ -14,7 +14,7 @@ const Map = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="PR Decompression Centers Location"
-          aria-label="PR Decompression Centers Google Maps Location"
+          aria-label="PR Decompression Centers Location"
         />
       </MapWrapper>
     </MapContainer>

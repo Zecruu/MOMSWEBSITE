@@ -14,7 +14,10 @@ const Footer = () => {
       <FooterContent>
         <LogoSection>
           <LogoButton onClick={() => router.push('/')}>
-            <img src="/images/LOGO.png" alt="PR Decompression Centers Logo" />
+            <img 
+              src="/images/pr-decompression-centers-logo.png" 
+              alt="PR Decompression Centers - Specialized Spinal Treatment in Toa Baja" 
+            />
           </LogoButton>
         </LogoSection>
         <MainContent>
@@ -84,17 +87,31 @@ const FooterContainer = styled.footer`
   max-width: 1400px;
   margin: 0;
   margin-left: 150px;
-  background: rgba(24, 27, 38, 0.8);
-  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.2),
+              inset 0 0 20px rgba(0, 217, 255, 0.1);
   border-radius: 30px;
   padding: 40px 60px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   margin-bottom: 30px;
   flex-shrink: 0;
   position: relative;
+  backdrop-filter: blur(10px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 255, 0.1));
+    pointer-events: none;
+  }
 
   @media (max-width: 768px) {
     width: 100%;
@@ -156,12 +173,13 @@ const FooterSection = styled.div`
 `;
 
 const SectionTitle = styled.h3`
-  color: #8A8F98;
+  color: #00d9ff;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -173,13 +191,15 @@ const FooterLink = styled.a`
   color: white;
   text-decoration: none;
   font-size: 16px;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   padding: 5px 0;
   display: inline-block;
   width: fit-content;
 
   &:hover {
     color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+    transform: translateX(5px);
   }
 
   @media (max-width: 768px) {
@@ -193,7 +213,7 @@ const FooterButton = styled.button`
   color: white;
   text-decoration: none;
   font-size: 16px;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   padding: 5px 0;
   background: none;
   border: none;
@@ -202,6 +222,8 @@ const FooterButton = styled.button`
 
   &:hover {
     color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+    transform: translateX(5px);
   }
 
   @media (max-width: 768px) {
@@ -236,14 +258,17 @@ const LogoButton = styled.button`
   padding: 0;
   cursor: pointer;
   display: block;
+  transition: all 0.3s ease;
 
   img {
     height: 80px;
     width: auto;
-    transition: opacity 0.2s ease;
+    filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3));
+    transition: all 0.3s ease;
 
     &:hover {
-      opacity: 0.8;
+      filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.5));
+      transform: scale(1.05);
     }
   }
 
@@ -288,7 +313,7 @@ const BottomBar = styled.div`
   width: 100%;
   margin: 30px auto 0;
   padding: 20px 15px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 217, 255, 0.2);
   max-width: 800px;
 
   @media (max-width: 768px) {
@@ -298,8 +323,9 @@ const BottomBar = styled.div`
 `;
 
 const Copyright = styled.p`
-  color: #8A8F98;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
   margin: 0;
   text-align: center;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 `;

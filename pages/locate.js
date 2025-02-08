@@ -1,5 +1,7 @@
 import React from "react";
 import Map from "../components/Map";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
 import { FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt, FaExternalLinkAlt } from "react-icons/fa";
@@ -95,81 +97,124 @@ const Locate = () => {
   };
 
   const handleDirections = () => {
-    window.open('https://www.google.com/maps/dir//18.4432748,-66.1755745/@18.4432164,-66.2168675,13z', '_blank', 'noopener,noreferrer');
+    const address = encodeURIComponent('Dra. Aivin Morales, Quiropráctica, RH 16, Av. Los Dominicos, Toa Baja, 00949');
+    window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
-      <Content>
-        <Title>{language === 'en' ? 'Locate Us' : 'Ubicación'}</Title>
-        
-        <InfoSection>
-          <InfoCard>
-            <IconWrapper>
-              <FaMapMarkerAlt />
-            </IconWrapper>
-            <InfoTitle>{language === 'en' ? 'Address' : 'Dirección'}</InfoTitle>
-            <InfoText>RH-16 Ave. Building, Los Dominicos,</InfoText>
-            <InfoText>Toa Baja, Levittown, Puerto Rico (PR)</InfoText>
-            <DirectionsButton onClick={handleDirections}>
-              {language === 'en' ? 'Take Me There' : 'Cómo Llegar'} <FaExternalLinkAlt />
-            </DirectionsButton>
-          </InfoCard>
+    <MainContainer>
+      <Sidebar />
+      <NavbarWrapper>
+        <Navbar />
+      </NavbarWrapper>
+      <PageContainer>
+        <Content>
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+            />
+          </Head>
+          <Title>{language === 'en' ? 'Locate Us' : 'Ubicación'}</Title>
+          
+          <InfoSection>
+            <InfoCard>
+              <IconWrapper>
+                <FaMapMarkerAlt />
+              </IconWrapper>
+              <InfoTitle>{language === 'en' ? 'Address' : 'Dirección'}</InfoTitle>
+              <InfoText>RH-16 Ave. Building, Los Dominicos,</InfoText>
+              <InfoText>Toa Baja, Levittown, Puerto Rico (PR)</InfoText>
+              <DirectionsButton onClick={handleDirections}>
+                {language === 'en' ? 'Take Me There' : 'Cómo Llegar'} <FaExternalLinkAlt />
+              </DirectionsButton>
+            </InfoCard>
 
-          <InfoCard>
-            <IconWrapper>
-              <PhoneIcon />
-            </IconWrapper>
-            <InfoTitle>{language === 'en' ? 'Phone' : 'Teléfono'}</InfoTitle>
-            <InfoLink href="tel:7872618258">787-261-8258</InfoLink>
-          </InfoCard>
+            <InfoCard>
+              <IconWrapper>
+                <PhoneIcon />
+              </IconWrapper>
+              <InfoTitle>{language === 'en' ? 'Phone' : 'Teléfono'}</InfoTitle>
+              <InfoLink href="tel:7872618258">787-261-8258</InfoLink>
+            </InfoCard>
 
-          <InfoCard>
-            <IconWrapper>
-              <FaEnvelope />
-            </IconWrapper>
-            <InfoTitle>Email</InfoTitle>
-            <InfoLink href="mailto:aivinmorales@gmail.com">
-              aivinmorales@gmail.com
-            </InfoLink>
-          </InfoCard>
+            <InfoCard>
+              <IconWrapper>
+                <FaEnvelope />
+              </IconWrapper>
+              <InfoTitle>Email</InfoTitle>
+              <InfoLink href="mailto:aivinmorales@gmail.com">
+                aivinmorales@gmail.com
+              </InfoLink>
+            </InfoCard>
 
-          <InfoCard>
-            <IconWrapper>
-              <FaClock />
-            </IconWrapper>
-            <InfoTitle>{t('officeHours')}</InfoTitle>
-            <InfoText>{t('monday')}-{t('thursday')}:</InfoText>
-            <InfoText>{t('hours1')}</InfoText>
-            <InfoText>{t('hours2')}</InfoText>
-            <InfoText>{t('friday')}: {t('hours1')}</InfoText>
-          </InfoCard>
-        </InfoSection>
+            <InfoCard>
+              <IconWrapper>
+                <FaClock />
+              </IconWrapper>
+              <InfoTitle>{t('officeHours')}</InfoTitle>
+              <InfoText>{t('monday')}-{t('thursday')}:</InfoText>
+              <InfoText>{t('hours1')}</InfoText>
+              <InfoText>{t('hours2')}</InfoText>
+              <InfoText>{t('friday')}: {t('hours1')}</InfoText>
+            </InfoCard>
+          </InfoSection>
 
-        <Map />
-      </Content>
-    </>
+          <Map />
+        </Content>
+      </PageContainer>
+    </MainContainer>
   );
 };
 
 export default Locate;
 
 // Styled Components
+const MainContainer = styled.div`
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+`;
+
+const NavbarWrapper = styled.div`
+  position: fixed;
+  width: calc(100% - 260px);
+  margin-left: 260px;
+  top: 0;
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-left: 0;
+  }
+`;
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  padding: 0;
+  justify-content: center;
+  position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+  }
+`;
+
 const Content = styled.div`
   width: 100%;
   max-width: 1200px;
   text-align: center;
+  padding: 120px 20px 60px;
   margin: 0 auto;
-  padding: 20px;
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 100px 10px 40px;
   }
 `;
 
@@ -182,48 +227,64 @@ const Title = styled.h1`
   @media (max-width: 768px) {
     font-size: 32px;
     margin-bottom: 30px;
-    padding: 0 20px;
   }
 `;
 
 const InfoSection = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-bottom: 50px;
-  padding: 0 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  padding: 0;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 20px;
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 20px;
     margin-bottom: 30px;
+    padding: 0 10px;
   }
 `;
 
 const InfoCard = styled.div`
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  padding: 30px;
+  padding: 25px 20px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   transition: transform 0.3s ease;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  min-height: 200px;
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
     padding: 20px;
+    min-height: 180px;
   }
 `;
 
 const IconWrapper = styled.div`
   font-size: 32px;
-  color: #00d9ff;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3));
 `;
 
 const PhoneIcon = styled(FaPhone)`
@@ -237,7 +298,7 @@ const InfoTitle = styled.h3`
 `;
 
 const InfoText = styled.p`
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
   font-size: 16px;
   line-height: 1.5;
@@ -247,10 +308,12 @@ const InfoLink = styled.a`
   color: #00d9ff;
   text-decoration: none;
   font-size: 16px;
-  transition: color 0.2s ease;
-
+  transition: all 0.3s ease;
+  
   &:hover {
     color: white;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+    transform: translateY(-1px);
   }
 `;
 
@@ -258,20 +321,22 @@ const DirectionsButton = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #00d9ff;
-  color: #000033;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   margin-top: 10px;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
 
   &:hover {
-    background: white;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
   }
 
   svg {
