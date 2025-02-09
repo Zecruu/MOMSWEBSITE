@@ -148,7 +148,7 @@ const RightSection = styled.div`
 `;
 
 const LanguageButton = styled.button`
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  background: #3E517A;
   border: none;
   color: white;
   padding: 6px 14px;
@@ -158,12 +158,12 @@ const LanguageButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 4px 15px rgba(62, 81, 122, 0.3);
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
-    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
+    box-shadow: 0 6px 20px rgba(62, 81, 122, 0.4);
+    background: #4a6191;
   }
 
   @media (max-width: 768px) {

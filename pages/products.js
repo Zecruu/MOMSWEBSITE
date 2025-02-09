@@ -162,10 +162,9 @@ const NavbarWrapper = styled.div`
 const PageContainer = styled.div`
   display: flex;
   flex-grow: 1;
-  width: calc(100% - 260px);
-  margin-left: 260px;
+  width: 100%;
   padding: 0;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
 
   @media (max-width: 768px) {
@@ -182,6 +181,9 @@ const Content = styled.div`
   padding: 50px 0 250px 0;
   margin: 0 auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (max-width: 768px) {
     padding: 80px 0 60px;
@@ -266,7 +268,7 @@ const ProductTitle = styled.h2`
 `;
 
 const DropdownButton = styled.button`
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  background: #3E517A;
   color: white;
   border: none;
   padding: 15px 25px;
@@ -278,12 +280,12 @@ const DropdownButton = styled.button`
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 4px 15px rgba(62, 81, 122, 0.3);
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
-    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
+    box-shadow: 0 6px 20px rgba(62, 81, 122, 0.4);
+    background: #4a6191;
   }
 
   @media (max-width: 768px) {

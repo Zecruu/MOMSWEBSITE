@@ -379,7 +379,7 @@ const FeatureImage = styled.img`
 `;
 
 const FeatureButton = styled.a`
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  background: #3E517A;
   color: white;
   padding: 12px 24px;
   border-radius: 10px;
@@ -389,15 +389,15 @@ const FeatureButton = styled.a`
   text-align: center;
   width: fit-content;
   margin-top: auto;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
-  border: none;
-  outline: none;
-  display: inline-block;
+  box-shadow: 0 4px 15px rgba(62, 81, 122, 0.3);
   
-  &:hover, &:focus, &:active, &:visited {
+  &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
-    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
+    box-shadow: 0 6px 20px rgba(62, 81, 122, 0.4);
+    background: #4a6191;
+  }
+
+  &:visited, &:active, &:focus {
     text-decoration: none !important;
     color: white;
   }
