@@ -10,7 +10,7 @@ const NavContainer = styled.nav`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   max-width: 100%;
@@ -29,6 +29,12 @@ const NavContainer = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 `;
 
@@ -176,6 +182,7 @@ const MobileMenu = styled.div`
   
   @media (max-width: 768px) {
     display: block;
+    background: #000000;
   }
 `;
 
