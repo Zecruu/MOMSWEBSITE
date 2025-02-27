@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
@@ -16,7 +15,6 @@ const Products = () => {
 
   return (
     <MainContainer>
-      <Sidebar />
       <NavbarWrapper>
         <Navbar />
       </NavbarWrapper>
@@ -144,6 +142,7 @@ export default Products;
 // Styled Components
 const MainContainer = styled.div`
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -153,8 +152,7 @@ const MainContainer = styled.div`
 
 const NavbarWrapper = styled.div`
   position: fixed;
-  width: calc(100% - 260px);
-  margin-left: 260px;
+  width: 100%;
   top: 0;
   z-index: 1000;
 `;
@@ -162,15 +160,13 @@ const NavbarWrapper = styled.div`
 const PageContainer = styled.div`
   display: flex;
   flex-grow: 1;
-  width: calc(100% - 260px);
-  margin-left: 260px;
+  width: 100%;
   padding: 0;
   justify-content: flex-start;
   position: relative;
 
   @media (max-width: 768px) {
     width: 100%;
-    margin-left: 0;
     justify-content: center;
   }
 `;
@@ -179,12 +175,12 @@ const Content = styled.div`
   width: 100%;
   max-width: 1200px;
   text-align: center;
-  padding: 50px 0 250px 0;
+  padding: 120px 0 250px 0;
   margin: 0 auto;
   position: relative;
 
   @media (max-width: 768px) {
-    padding: 80px 0 60px;
+    padding: 100px 0 60px;
     width: 100%;
     display: flex;
     flex-direction: column;

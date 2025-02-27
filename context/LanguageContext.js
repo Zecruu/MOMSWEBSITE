@@ -39,6 +39,7 @@ const translations = {
     laserTherapy: "Laser Therapy",
     matrix: "Matrix",
     services: "Services",
+    herniatedDiscTitle: "Herniated Disc Treatment & Pain Management",
 
     // Products Page
     productsTitle: "Our Products & Services",
@@ -78,6 +79,11 @@ const translations = {
     hours1: "9:00AM-11:30AM",
     hours2: "1:30PM-4:30PM",
     quickLinks: "Quick Links",
+    // Video Section
+    videoSectionTitle: "Educational Videos",
+    spinalDecompressionVideo: "Spinal Decompression Therapy",
+    chiropracticVideo: "Chiropractic Treatment",
+    clinicVideo: "Centro Quiropráctico Dra. Morales",
   },
   es: {
     // Navigation
@@ -117,6 +123,7 @@ const translations = {
     laserTherapy: "Terapia Láser",
     matrix: "Matrix",
     services: "Servicios",
+    herniatedDiscTitle: "Tratamiento de Disco Herniado y Manejo del Dolor",
 
     // Products Page
     productsTitle: "Nuestros Productos y Servicios",
@@ -156,6 +163,11 @@ const translations = {
     hours1: "9:00AM-11:30AM",
     hours2: "1:30PM-4:30PM",
     quickLinks: "Enlaces Rápidos",
+    // Video Section
+    videoSectionTitle: "Videos Educativos",
+    spinalDecompressionVideo: "Terapia de Descompresión Espinal",
+    chiropracticVideo: "Tratamiento Quiropráctico",
+    clinicVideo: "Centro Quiropráctico Dra. Morales",
   }
 };
 

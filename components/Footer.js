@@ -63,9 +63,6 @@ const Footer = () => {
             <FooterButton onClick={() => router.push('/reviews')}>
               {t('reviews')}
             </FooterButton>
-            <FooterButton onClick={() => router.push('/videos')}>
-              {t('videos')}
-            </FooterButton>
             <FooterButton onClick={() => router.push('/locate')}>
               {t('locateUs')}
             </FooterButton>
@@ -83,10 +80,9 @@ const Footer = () => {
 export default Footer;
 
 const FooterContainer = styled.footer`
-  width: calc(100% - 300px);
+  width: 100%;
   max-width: 1400px;
-  margin: 0;
-  margin-left: 150px;
+  margin: 0 auto 30px;
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(0, 217, 255, 0.2);
   box-shadow: 0 0 20px rgba(0, 217, 255, 0.2),
@@ -96,7 +92,6 @@ const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   z-index: 1000;
-  margin-bottom: 30px;
   flex-shrink: 0;
   position: relative;
   backdrop-filter: blur(10px);

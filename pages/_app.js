@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 import { LanguageProvider } from '../context/LanguageContext';
 import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import FloatingButtons from '../components/FloatingButtons';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,6 +29,14 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
   }
 
+  a {
+    text-decoration: none !important;
+  }
+
+  a:hover, a:focus, a:active, a:visited {
+    text-decoration: none !important;
+  }
+
   @media (max-width: 768px) {
     body {
       font-size: 14px;
@@ -45,11 +53,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <LanguageProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      </Head>
       <GlobalStyle />
       <AppContainer>
-        <SidebarWrapper>
-          <Sidebar />
-        </SidebarWrapper>
+        <Navbar />
         <MainContent>
           <PageWrapper>
             {mounted && <Component {...pageProps} />}
@@ -66,44 +75,21 @@ export default MyApp;
 
 const AppContainer = styled.div`
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const SidebarWrapper = styled.div`
-  width: 260px;
-  flex-shrink: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  z-index: 1001;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    position: fixed;
-  }
 `;
 
 const MainContent = styled.div`
   flex-grow: 1;
-  margin-left: 260px;
-  width: calc(100% - 260px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-  padding-top: 100px;
+  padding-top: 0;
 
   @media (max-width: 768px) {
-    margin-left: 0;
-    width: 100%;
-    margin-top: 60px;
-    padding-top: 80px;
+    padding-top: 0;
   }
 `;
 
@@ -117,20 +103,5 @@ const PageWrapper = styled.div`
 
   @media (max-width: 768px) {
     padding: 10px;
-  }
-`;
-
-const NavbarWrapper = styled.div`
-  position: fixed;
-  width: calc(100% - 260px);
-  margin-left: 260px;
-  top: 0;
-  z-index: 1000;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-left: 0;
-    top: 60px;
-    padding: 0 15px;
   }
 `; 

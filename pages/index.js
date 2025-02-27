@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
 import Link from "next/link";
 
 const Index = () => {
   const [selectedPainPoint, setSelectedPainPoint] = useState(null);
+  const [isQuickMenuOpen, setIsQuickMenuOpen] = useState(false);
   const { t, language } = useLanguage();
 
   const getPainPointContent = (painPoint) => {
@@ -13,58 +13,58 @@ const Index = () => {
       [t('neckPain')]: {
         causes: language === 'en' 
           ? "Neck pain often results from poor posture, prolonged screen use, whiplash injuries, or degenerative conditions. This can lead to muscle tension, pinched nerves, and cervical spine misalignment."
-          : "El dolor de cuello suele ser resultado de una mala postura, uso prolongado de pantallas, lesiones por latigazo cervical o condiciones degenerativas. Esto puede causar tensión muscular, nervios pinzados y desalineación de la columna cervical.",
+          : "El dolor cervical frecuentemente es consecuencia de una postura inadecuada, uso prolongado de pantallas, lesiones por latigazo cervical o condiciones degenerativas. Estas situaciones pueden provocar tensión muscular, compresión de nervios y desalineación de la columna cervical, afectando significativamente su calidad de vida.",
         treatment: language === 'en'
           ? "Our chiropractic adjustments and decompression therapy can help realign your cervical spine, reduce nerve pressure, and relax tense muscles. Laser therapy can also help reduce inflammation and accelerate healing in the affected area."
-          : "Nuestros ajustes quiroprácticos y terapia de descompresión pueden ayudar a realinear su columna cervical, reducir la presión nerviosa y relajar los músculos tensos. La terapia con láser también puede ayudar a reducir la inflamación y acelerar la curación en el área afectada."
+          : "Nuestros ajustes quiroprácticos especializados y la terapia de descompresión ayudan a realinear su columna cervical, reducir la presión sobre los nervios y relajar los músculos tensos. Complementamos el tratamiento con terapia láser avanzada para reducir la inflamación y acelerar la recuperación del área afectada."
       },
       [t('midBackPain')]: {
-        causes: language === 'en'
+        causes: language === 'en' 
           ? "Mid back pain typically stems from poor posture, repetitive movements, muscle strain, or spinal disc issues. This area is particularly affected by prolonged sitting and workplace ergonomics."
-          : "El dolor de espalda media generalmente proviene de mala postura, movimientos repetitivos, tensión muscular o problemas de disco espinal. Esta área se ve particularmente afectada por estar sentado prolongadamente y la ergonomía del lugar de trabajo.",
+          : "El dolor en la espalda media generalmente se origina por diversos factores como postura incorrecta, movimientos repetitivos, tensión muscular o problemas en los discos vertebrales. Esta zona es particularmente vulnerable durante periodos prolongados de sedestación y por una ergonomía inadecuada en el lugar de trabajo, lo que puede resultar en molestias crónicas si no se trata adecuadamente.",
         treatment: language === 'en'
           ? "We offer targeted chiropractic care to improve thoracic spine mobility, combined with matrix therapy to address muscle tension. Our decompression techniques can help relieve pressure on spinal discs and nerves in this region."
-          : "Ofrecemos atención quiropráctica específica para mejorar la movilidad de la columna torácica, combinada con terapia matrix para tratar la tensión muscular. Nuestras técnicas de descompresión pueden ayudar a aliviar la presión en los discos espinales y nervios en esta región."
+          : "Ofrecemos atención quiropráctica específica para mejorar la movilidad de la columna torácica, combinada con terapia matrix para tratar la tensión muscular. Nuestras técnicas avanzadas de descompresión ayudan a aliviar la presión en los discos vertebrales y nervios de esta región, promoviendo una recuperación integral y duradera."
       },
       [t('lowerBackPain')]: {
         causes: language === 'en'
           ? "Lower back pain can be caused by herniated discs, sciatica, muscle strains, or degenerative conditions. Lifestyle factors like heavy lifting, prolonged sitting, or lack of exercise can worsen the condition."
-          : "El dolor de espalda baja puede ser causado por discos herniados, ciática, tensiones musculares o condiciones degenerativas. Los factores de estilo de vida como levantar pesos pesados, sentarse durante mucho tiempo o falta de ejercicio pueden empeorar la condición.",
+          : "El dolor lumbar puede ser causado por hernias discales, ciática, distensiones musculares o condiciones degenerativas. Factores del estilo de vida como levantar objetos pesados, permanecer sentado por largos períodos o la falta de ejercicio pueden agravar significativamente estas condiciones. La región lumbar es fundamental para la movilidad y estabilidad del cuerpo.",
         treatment: language === 'en'
           ? "Our comprehensive approach includes spinal decompression to relieve disc pressure, chiropractic adjustments for proper alignment, and laser therapy to reduce inflammation. Matrix therapy helps address muscle imbalances and promotes faster healing."
-          : "Nuestro enfoque integral incluye descompresión espinal para aliviar la presión en el disco, ajustes quiroprácticos para alineación adecuada y terapia con láser para reducir la inflamación. La terapia matrix ayuda a abordar los desequilibrios musculares y promueve una curación más rápida."
+          : "Nuestro enfoque integral incluye descompresión espinal para aliviar la presión discal, ajustes quiroprácticos para una alineación óptima y terapia láser para reducir la inflamación. La terapia matrix complementa el tratamiento, ayudando a corregir desequilibrios musculares y promoviendo una recuperación más rápida y efectiva."
       },
       [t('leftShoulderPain')]: {
         causes: language === 'en'
           ? "Shoulder pain may result from rotator cuff injuries, frozen shoulder, arthritis, or referred pain from neck issues. Poor posture and repetitive movements often contribute to the problem."
-          : "El dolor del hombro puede deberse a lesiones del codo rotador, hombro congelado, artritis o dolor de referencia de la columna cervical. La mala postura y los movimientos repetitivos a menudo contribuyen al problema.",
+          : "El dolor de hombro puede surgir por lesiones del manguito rotador, hombro congelado, artritis o dolor referido de problemas cervicales. La postura inadecuada y los movimientos repetitivos frecuentemente contribuyen al problema. Esta articulación compleja requiere un diagnóstico preciso para un tratamiento efectivo.",
         treatment: language === 'en'
           ? "We utilize a combination of chiropractic care and laser therapy to address both the joint and surrounding soft tissues. Matrix therapy helps improve range of motion and reduce muscle tension."
-          : "Utilizamos una combinación de atención quiropráctica y terapia con láser para abordar tanto la articulación como los tejidos blandos circundantes. La terapia matrix ayuda a mejorar la amplitud de movimiento y reducir la tensión muscular."
+          : "Utilizamos una combinación especializada de atención quiropráctica y terapia láser para tratar tanto la articulación como los tejidos blandos circundantes. La terapia matrix ayuda a mejorar el rango de movimiento, reducir la tensión muscular y restaurar la funcionalidad normal del hombro."
       },
       [t('rightShoulderPain')]: {
         causes: language === 'en'
           ? "Shoulder pain may result from rotator cuff injuries, frozen shoulder, arthritis, or referred pain from neck issues. Poor posture and repetitive movements often contribute to the problem."
-          : "El dolor del hombro puede deberse a lesiones del codo rotador, hombro congelado, artritis o dolor de referencia de la columna cervical. La mala postura y los movimientos repetitivos a menudo contribuyen al problema.",
+          : "El dolor de hombro puede surgir por lesiones del manguito rotador, hombro congelado, artritis o dolor referido de problemas cervicales. La postura inadecuada y los movimientos repetitivos frecuentemente contribuyen al problema. Esta articulación compleja requiere un diagnóstico preciso para un tratamiento efectivo.",
         treatment: language === 'en'
           ? "We utilize a combination of chiropractic care and laser therapy to address both the joint and surrounding soft tissues. Matrix therapy helps improve range of motion and reduce muscle tension."
-          : "Utilizamos una combinación de atención quiropráctica y terapia con láser para abordar tanto la articulación como los tejidos blandos circundantes. La terapia matrix ayuda a mejorar la amplitud de movimiento y reducir la tensión muscular."
+          : "Utilizamos una combinación especializada de atención quiropráctica y terapia láser para tratar tanto la articulación como los tejidos blandos circundantes. La terapia matrix ayuda a mejorar el rango de movimiento, reducir la tensión muscular y restaurar la funcionalidad normal del hombro."
       },
       [t('leftKneePain')]: {
         causes: language === 'en'
           ? "Knee pain can stem from osteoarthritis, ligament injuries, meniscus tears, or alignment issues. Being a weight-bearing joint, it's particularly susceptible to wear and tear."
-          : "El dolor de rodilla puede deberse a artritis de osteoartrógrafo, lesiones de ligamentos, roturas de menisco o problemas de alineación. Como articulación de carga, es particularmente susceptible al desgaste y desgaste.",
+          : "El dolor de rodilla puede originarse por osteoartritis, lesiones ligamentarias, desgarros de menisco o problemas de alineación. Al ser una articulación que soporta peso, es particularmente susceptible al desgaste. Los problemas biomecánicos pueden afectar toda la cadena cinética de la pierna.",
         treatment: language === 'en'
           ? "Our treatment combines laser therapy to reduce inflammation and promote healing, along with chiropractic care to address any alignment issues that may be affecting your knee. Matrix therapy helps strengthen surrounding muscles."
-          : "Nuestro tratamiento combina terapia con láser para reducir la inflamación y promover la curación, junto con atención quiropráctica para abordar cualquier problema de alineación que pueda estar afectando su rodilla. La terapia matrix ayuda a fortalecer los músculos circundantes."
+          : "Nuestro tratamiento combina terapia láser avanzada para reducir la inflamación y promover la curación, junto con atención quiropráctica para abordar problemas de alineación que puedan estar afectando su rodilla. La terapia matrix ayuda a fortalecer los músculos circundantes y mejorar la estabilidad articular."
       },
       [t('rightKneePain')]: {
         causes: language === 'en'
           ? "Knee pain can stem from osteoarthritis, ligament injuries, meniscus tears, or alignment issues. Being a weight-bearing joint, it's particularly susceptible to wear and tear."
-          : "El dolor de rodilla puede deberse a artritis de osteoartrógrafo, lesiones de ligamentos, roturas de menisco o problemas de alineación. Como articulación de carga, es particularmente susceptible al desgaste y desgaste.",
+          : "El dolor de rodilla puede originarse por osteoartritis, lesiones ligamentarias, desgarros de menisco o problemas de alineación. Al ser una articulación que soporta peso, es particularmente susceptible al desgaste. Los problemas biomecánicos pueden afectar toda la cadena cinética de la pierna.",
         treatment: language === 'en'
           ? "Our treatment combines laser therapy to reduce inflammation and promote healing, along with chiropractic care to address any alignment issues that may be affecting your knee. Matrix therapy helps strengthen surrounding muscles."
-          : "Nuestro tratamiento combina terapia con láser para reducir la inflamación y promover la curación, junto con atención quiropráctica para abordar cualquier problema de alineación que pueda estar afectando su rodilla. La terapia matrix ayuda a fortalecer los músculos circundantes."
+          : "Nuestro tratamiento combina terapia láser avanzada para reducir la inflamación y promover la curación, junto con atención quiropráctica para abordar problemas de alineación que puedan estar afectando su rodilla. La terapia matrix ayuda a fortalecer los músculos circundantes y mejorar la estabilidad articular."
       }
     };
 
@@ -80,54 +80,55 @@ const Index = () => {
 
   return (
     <MainContainer>
-      <NavbarWrapper>
-        <Navbar />
-      </NavbarWrapper>
       <PageContainer>
         <Content>
           <TitleContainer>
             <Title>{t('mainTitle')}</Title>
             <Subtitle>{t('mainSubtitle')}</Subtitle>
+            <HeroButton href="#services">
+              {language === 'en' ? 'Discover Our Services' : 'Descubra Nuestros Servicios'}
+            </HeroButton>
+            <ScrollIndicator />
           </TitleContainer>
 
           <SectionTitle>{t('specializedServices')}</SectionTitle>
           <ServicesGrid>
             <FeatureBox>
-              <FeatureTitle>{t('advancedChiropractic')}</FeatureTitle>
               <FeatureImage 
                 src="/images/chiropractic-treatment-toa-baja.jpeg" 
                 alt="Professional chiropractic treatment and adjustments in Toa Baja, Puerto Rico" 
               />
+              <FeatureTitle>{t('advancedChiropractic')}</FeatureTitle>
               <Link href="/products#chiropractic" passHref>
                 <FeatureButton>{t('learnMoreChiro')}</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
-              <FeatureTitle>{t('spinalDecompressionTitle')}</FeatureTitle>
               <FeatureImage 
                 src="/images/spinal-decompression-therapy-pr.png" 
                 alt="Non-surgical spinal decompression therapy for herniated discs in Puerto Rico" 
               />
+              <FeatureTitle>{t('spinalDecompressionTitle')}</FeatureTitle>
               <Link href="/products#decompression" passHref>
                 <FeatureButton>{t('discoverDecompression')}</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
-              <FeatureTitle>{t('advancedLaserTitle')}</FeatureTitle>
               <FeatureImage 
                 src="/images/advanced-laser-therapy-treatment.png" 
                 alt="Advanced laser therapy for pain relief and healing in Puerto Rico" 
               />
+              <FeatureTitle>{t('advancedLaserTitle')}</FeatureTitle>
               <Link href="/products#laser" passHref>
                 <FeatureButton>{t('exploreLaser')}</FeatureButton>
               </Link>
             </FeatureBox>
             <FeatureBox>
-              <FeatureTitle>{t('matrix')}</FeatureTitle>
               <FeatureImage 
                 src="/images/matrix-rehabilitation-therapy.jpeg" 
                 alt="Matrix rehabilitation therapy for pain management in Puerto Rico" 
               />
+              <FeatureTitle>{t('matrix')}</FeatureTitle>
               <Link href="/products#matrix" passHref>
                 <FeatureButton>Learn More About Matrix</FeatureButton>
               </Link>
@@ -135,7 +136,7 @@ const Index = () => {
           </ServicesGrid>
 
           <BodyImageContainer>
-            <SectionTitle>Herniated Disc Treatment & Pain Management</SectionTitle>
+            <SectionTitle>{t('herniatedDiscTitle')}</SectionTitle>
             <ContentWrapper>
               <ImageSection>
                 <InstructionBox>
@@ -147,13 +148,13 @@ const Index = () => {
                   src="/images/interactive-pain-diagram.jpeg" 
                   alt="Interactive body diagram for pain point selection and treatment options" 
                 />
-                <PainPoint $top="23%" $left="48.7%" title={t('neckPain')} onClick={() => setSelectedPainPoint(t('neckPain'))} />
-                <PainPoint $top="36%" $left="48.7%" title={t('midBackPain')} onClick={() => setSelectedPainPoint(t('midBackPain'))} />
-                <PainPoint $top="47.5%" $left="48.7%" title={t('lowerBackPain')} onClick={() => setSelectedPainPoint(t('lowerBackPain'))} />
-                <PainPoint $top="29%" $left="38%" title={t('leftShoulderPain')} onClick={() => setSelectedPainPoint(t('leftShoulderPain'))} />
-                <PainPoint $top="29%" $left="59%" title={t('rightShoulderPain')} onClick={() => setSelectedPainPoint(t('rightShoulderPain'))} />
-                <PainPoint $top="72%" $left="38.5%" title={t('leftKneePain')} onClick={() => setSelectedPainPoint(t('leftKneePain'))} />
-                <PainPoint $top="72%" $left="60.5%" title={t('rightKneePain')} onClick={() => setSelectedPainPoint(t('rightKneePain'))} />
+                <PainPoint $top="23%" $left="48.7%" title={t('neckPain')} onClick={() => setSelectedPainPoint('neckPain')} />
+                <PainPoint $top="36%" $left="48.7%" title={t('midBackPain')} onClick={() => setSelectedPainPoint('midBackPain')} />
+                <PainPoint $top="47.5%" $left="48.7%" title={t('lowerBackPain')} onClick={() => setSelectedPainPoint('lowerBackPain')} />
+                <PainPoint $top="29%" $left="38%" title={t('leftShoulderPain')} onClick={() => setSelectedPainPoint('leftShoulderPain')} />
+                <PainPoint $top="29%" $left="59%" title={t('rightShoulderPain')} onClick={() => setSelectedPainPoint('rightShoulderPain')} />
+                <PainPoint $top="72%" $left="38.5%" title={t('leftKneePain')} onClick={() => setSelectedPainPoint('leftKneePain')} />
+                <PainPoint $top="72%" $left="60.5%" title={t('rightKneePain')} onClick={() => setSelectedPainPoint('rightKneePain')} />
               </ImageSection>
 
               <PopupSection $visible={selectedPainPoint !== null}>
@@ -161,11 +162,11 @@ const Index = () => {
                   <>
                     <BackButton onClick={() => setSelectedPainPoint(null)}>{t('back')}</BackButton>
                     <Popup $visible={true}>
-                      <PopupTitle>{selectedPainPoint}</PopupTitle>
+                      <PopupTitle>{t(selectedPainPoint)}</PopupTitle>
                       <PopupSubtitle>{t('commonCauses')}</PopupSubtitle>
-                      <PopupContent>{getPainPointContent(selectedPainPoint).causes}</PopupContent>
+                      <PopupContent>{getPainPointContent(t(selectedPainPoint)).causes}</PopupContent>
                       <PopupSubtitle>{t('howWeCanHelp')}</PopupSubtitle>
-                      <PopupContent>{getPainPointContent(selectedPainPoint).treatment}</PopupContent>
+                      <PopupContent>{getPainPointContent(t(selectedPainPoint)).treatment}</PopupContent>
                       <CloseButton onClick={() => setSelectedPainPoint(null)}>{t('close')}</CloseButton>
                     </Popup>
                   </>
@@ -173,6 +174,58 @@ const Index = () => {
               </PopupSection>
             </ContentWrapper>
           </BodyImageContainer>
+
+          {/* Video Section */}
+          <SectionTitle>{t('videoSectionTitle')}</SectionTitle>
+          <VideosContainer>
+            {/* Video Section 1 */}
+            <VideoSection>
+              <VideoTitle>{t('spinalDecompressionVideo')}</VideoTitle>
+              <VideoWrapper>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/tJahlOwwuGM"
+                  title="Spinal Decompression Therapy"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </VideoWrapper>
+            </VideoSection>
+
+            {/* Video Section 2 */}
+            <VideoSection>
+              <VideoTitle>{t('chiropracticVideo')}</VideoTitle>
+              <VideoWrapper>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/iWwJeSb7Dh4"
+                  title="Chiropractic Treatment"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </VideoWrapper>
+            </VideoSection>
+
+            {/* Video Section 3 */}
+            <VideoSection>
+              <VideoTitle>{t('clinicVideo')}</VideoTitle>
+              <VideoWrapper>
+                <video
+                  width="100%"
+                  height="100%"
+                  controls
+                  style={{ backgroundColor: 'black' }}
+                >
+                  <source src="/videos/Centro-Quiropractico-Dra.-Morales.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </VideoWrapper>
+            </VideoSection>
+          </VideosContainer>
         </Content>
       </PageContainer>
     </MainContainer>
@@ -188,43 +241,57 @@ const MainContainer = styled.div`
   flex-direction: column;
   min-height: 100vh;
   background: transparent;
-`;
-
-const NavbarWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: hidden;
+  padding: 0;
+  margin-top: 0;
 `;
 
 const PageContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 0;
 `;
 
 const Content = styled.div`
   flex: 1;
   padding: 0;
-  max-width: 100%;
-  margin: 0 auto;
   width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
+  top: 0;
 `;
 
 const TitleContainer = styled.div`
-  width: 100%;
-  max-width: 100%;
-  height: 60vh;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   background-image: url("/images/decompression-therapy-hero-bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0;
   position: relative;
   overflow: hidden;
+  margin-top: -70px;
+  padding-top: 70px;
+  top: 0;
 
   &::before {
     content: '';
@@ -234,67 +301,191 @@ const TitleContainer = styled.div`
     right: 0;
     bottom: 0;
     background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.5) 100%
+      135deg,
+      rgba(0, 242, 254, 0.7) 0%,
+      rgba(79, 172, 254, 0.7) 50%,
+      rgba(180, 101, 218, 0.7) 100%
     );
     z-index: 1;
   }
 
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 2;
+  }
+
   @media (max-width: 768px) {
-    height: 50vh;
-    margin: 0;
+    background-attachment: scroll;
   }
 `;
 
 const Title = styled.h1`
-  font-size: 64px;
-  font-weight: 600;
-  margin-bottom: 16px;
+  font-size: 72px;
+  font-weight: 800;
+  margin-bottom: 24px;
   color: white;
   text-align: center;
-  z-index: 2;
+  z-index: 3;
   padding: 0 20px;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
+  letter-spacing: -1px;
+  line-height: 1.1;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  max-width: 800px;
+  max-width: 1000px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   @media (max-width: 768px) {
-    font-size: 36px;
+    font-size: 42px;
     padding: 0 24px;
   }
 `;
 
 const Subtitle = styled.h2`
-  font-size: 24px;
+  font-size: 28px;
   color: rgba(255, 255, 255, 0.95);
-  font-weight: 400;
+  font-weight: 500;
   text-align: center;
-  z-index: 2;
+  z-index: 3;
   padding: 0 20px;
-  max-width: 600px;
+  max-width: 800px;
   line-height: 1.4;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards 0.3s;
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 22px;
     padding: 0 24px;
   }
 `;
 
-const SectionTitle = styled.h2`
-  font-size: 36px;
+const HeroButton = styled.a`
+  background: transparent;
   color: white;
-  margin: 60px 0 40px;
-  text-align: center;
-  width: 100%;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 40px;
+  z-index: 3;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards 0.6s;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: white;
+    color: #000033;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
 
   @media (max-width: 768px) {
-    font-size: 28px;
-    margin: 40px 0 30px;
+    padding: 14px 28px;
+    font-size: 16px;
+    margin-top: 30px;
+  }
+`;
+
+const ScrollIndicator = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1s;
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-left: 0;
+    border-top: 0;
+    transform: rotate(45deg);
+    animation: scrollBounce 2s infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) rotate(45deg);
+    }
+    40% {
+      transform: translateY(-10px) rotate(45deg);
+    }
+    60% {
+      transform: translateY(-5px) rotate(45deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    bottom: 20px;
+    
+    &::before {
+      width: 20px;
+      height: 20px;
+    }
+  }
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 48px;
+  color: white;
+  margin: 80px 0 50px;
+  text-align: center;
+  width: 100%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  font-weight: 800;
+  letter-spacing: -1px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #00f2fe, #4facfe, #b465da);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+    margin: 60px 0 40px;
     padding: 0 20px;
   }
 `;
@@ -302,109 +493,158 @@ const SectionTitle = styled.h2`
 const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  padding: 0 20px;
+  gap: 40px;
+  padding: 0 40px;
   max-width: 1400px;
-  margin: 0 auto 60px;
+  margin: 0 auto 80px;
   width: 100%;
+  perspective: 1000px;
   
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 30px;
+    padding: 0 20px;
   }
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 0 10px;
+    padding: 0 15px;
     margin-bottom: 40px;
-  }
-`;
-
-const FeatureBox = styled.div`
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 217, 255, 0.2);
-  height: auto;
-  min-height: 500px;
-  position: relative;
-  overflow: hidden;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    min-height: 450px;
-    padding: 20px;
-  }
-`;
-
-const FeatureTitle = styled.h3`
-  font-size: 24px;
-  color: white;
-  margin-bottom: 20px;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-    min-height: 50px;
-    margin-bottom: 15px;
   }
 `;
 
 const FeatureImage = styled.img`
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: contain;
-  border-radius: 10px;
-  margin: 20px 0;
-  background: rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  border-radius: 15px;
+  margin: 0;
+  padding: 20px;
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.3);
 
   @media (max-width: 768px) {
-    height: 250px;
+    height: 200px;
+    padding: 15px;
   }
 `;
 
 const FeatureButton = styled.a`
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
   color: white;
-  padding: 12px 24px;
-  border-radius: 10px;
+  padding: 16px 32px;
+  border-radius: 50px;
   text-decoration: none !important;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   width: fit-content;
   margin-top: auto;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 5px 20px rgba(0, 242, 254, 0.3);
   border: none;
   outline: none;
   display: inline-block;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
   
   &:hover, &:focus, &:active, &:visited {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
-    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
     text-decoration: none !important;
     color: white;
   }
 
   @media (max-width: 768px) {
-    padding: 10px 20px;
-    margin-top: 10px;
+    padding: 14px 28px;
+    margin-top: 20px;
+  }
+`;
+
+const FeatureBox = styled.div`
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  height: auto;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  gap: 20px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 242, 254, 0.1) 0%,
+      rgba(79, 172, 254, 0.1) 50%,
+      rgba(180, 101, 218, 0.1) 100%
+    );
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+    &::before {
+      opacity: 1;
+    }
+    
+    & > img {
+      transform: scale(1.05);
+    }
+    
+    & > a {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-height: 450px;
+    padding: 20px;
+    gap: 15px;
+  }
+`;
+
+const FeatureTitle = styled.h3`
+  font-size: 28px;
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    min-height: 60px;
+    margin-bottom: 25px;
   }
 `;
 
@@ -691,5 +931,71 @@ const GetStartedButton = styled.a`
   @media (max-width: 768px) {
     padding: 10px 20px;
     font-size: 14px;
+  }
+`;
+
+const VideosContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    width: 95%;
+    gap: 20px;
+    padding: 10px;
+  }
+`;
+
+const VideoSection = styled.div`
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    border-radius: 15px;
+  }
+`;
+
+const VideoTitle = styled.h3`
+  font-size: 24px;
+  color: white;
+  margin: 0;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+`;
+
+const VideoWrapper = styled.div`
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: black;
+  
+  iframe, video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;

@@ -1,7 +1,6 @@
 import React from "react";
 import Map from "../components/Map";
 import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
 import { FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt, FaExternalLinkAlt } from "react-icons/fa";
@@ -103,7 +102,6 @@ const Locate = () => {
 
   return (
     <MainContainer>
-      <Sidebar />
       <NavbarWrapper>
         <Navbar />
       </NavbarWrapper>
@@ -172,6 +170,7 @@ export default Locate;
 // Styled Components
 const MainContainer = styled.div`
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -181,15 +180,9 @@ const MainContainer = styled.div`
 
 const NavbarWrapper = styled.div`
   position: fixed;
-  width: calc(100% - 260px);
-  margin-left: 260px;
+  width: 100%;
   top: 0;
   z-index: 1000;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-left: 0;
-  }
 `;
 
 const PageContainer = styled.div`
@@ -197,7 +190,7 @@ const PageContainer = styled.div`
   flex-grow: 1;
   width: 100%;
   padding: 0;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
 
   @media (max-width: 768px) {
@@ -210,11 +203,17 @@ const Content = styled.div`
   width: 100%;
   max-width: 1200px;
   text-align: center;
-  padding: 120px 20px 60px;
+  padding: 120px 0 250px 0;
   margin: 0 auto;
+  position: relative;
 
   @media (max-width: 768px) {
-    padding: 100px 10px 40px;
+    padding: 100px 0 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
   }
 `;
 
