@@ -174,20 +174,13 @@ const MobileMenu = styled.div`
   top: 70px;
   left: 0;
   right: 0;
-<<<<<<< HEAD
   bottom: 0;
-=======
->>>>>>> f3aef65c7e01f10febe96df3a35ad9c539b02fe0
   background: rgba(0, 0, 0, 0.95);
   padding: 20px;
   transform: ${props => props.$isOpen ? 'translateY(0)' : 'translateY(-100%)'};
   transition: transform 0.3s ease;
-<<<<<<< HEAD
   z-index: 999;
   overflow-y: auto;
-=======
-  z-index: 99;
->>>>>>> f3aef65c7e01f10febe96df3a35ad9c539b02fe0
   
   @media (max-width: 768px) {
     display: block;
@@ -492,7 +485,6 @@ const Navbar = () => {
       </NavContainer>
       
       <MobileMenu $isOpen={isMobileMenuOpen}>
-<<<<<<< HEAD
         <Link href="/" passHref>
           <MobileNavLink onClick={() => setIsMobileMenuOpen(false)}>
             {language === 'en' ? 'Home' : 'Inicio'}
@@ -513,32 +505,7 @@ const Navbar = () => {
             {language === 'en' ? 'Location' : 'Ubicación'}
           </MobileNavLink>
         </Link>
-        <LanguageButton onClick={() => {
-          toggleLanguage();
-          setIsMobileMenuOpen(false);
-        }}>
-=======
-        <MobileNavLink href="/">
-          {language === 'en' ? 'Home' : 'Inicio'}
-        </MobileNavLink>
-        <MobileNavLink href="/products">
-          {language === 'en' ? 'Services' : 'Servicios'}
-        </MobileNavLink>
-        <MobileNavLink href="/reviews">
-          {language === 'en' ? 'Reviews' : 'Reseñas'}
-        </MobileNavLink>
-        <MobileNavLink href="/locate">
-          {language === 'en' ? 'Location' : 'Ubicación'}
-        </MobileNavLink>
-        <MobileNavLink href="#" onClick={(e) => {
-          e.preventDefault();
-          setIsMobileMenuOpen(false);
-          setIsMenuPopupOpen(true);
-        }}>
-          {language === 'en' ? 'Contact Info' : 'Información de Contacto'}
-        </MobileNavLink>
-        <LanguageButton onClick={toggleLanguage} style={{ width: '100%', marginTop: '10px' }}>
->>>>>>> f3aef65c7e01f10febe96df3a35ad9c539b02fe0
+        <LanguageButton onClick={toggleLanguage} style={{ marginTop: '20px' }}>
           {language === 'en' ? 'Español' : 'English'}
         </LanguageButton>
       </MobileMenu>
