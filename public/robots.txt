@@ -1,0 +1,14 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://prdecompressioncenters.com/sitemap.xml
+
+# Optimize crawling
+Crawl-delay: 1
+
+# Disallow crawling of unnecessary paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*? 
