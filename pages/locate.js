@@ -320,7 +320,7 @@ const DirectionsButton = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b465da 100%);
+  background: #3E517A;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -330,12 +330,12 @@ const DirectionsButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 10px;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 4px 15px rgba(62, 81, 122, 0.3);
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
-    background: linear-gradient(135deg, #4facfe 0%, #b465da 50%, #00f2fe 100%);
+    box-shadow: 0 6px 20px rgba(62, 81, 122, 0.4);
+    background: #4a6191;
   }
 
   svg {

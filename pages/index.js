@@ -557,7 +557,6 @@ const FeatureButton = styled.a`
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
     text-decoration: none !important;
-    color: white;
   }
 
   @media (max-width: 768px) {
