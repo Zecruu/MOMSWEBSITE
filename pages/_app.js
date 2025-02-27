@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { createGlobalStyle, StyleSheetManager } from 'styled-components';
+=======
+import { createGlobalStyle } from 'styled-components';
+>>>>>>> f3aef65c7e01f10febe96df3a35ad9c539b02fe0
 import { LanguageProvider } from '../context/LanguageContext';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -46,6 +50,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
+<<<<<<< HEAD
     <StyleSheetManager shouldComponentUpdate>
       <LanguageProvider>
         <Head>
@@ -64,6 +69,24 @@ function MyApp({ Component, pageProps }) {
         </AppContainer>
       </LanguageProvider>
     </StyleSheetManager>
+=======
+    <LanguageProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      </Head>
+      <GlobalStyle />
+      <AppContainer>
+        <Navbar />
+        <MainContent>
+          <PageWrapper>
+            {mounted && <Component {...pageProps} />}
+          </PageWrapper>
+          <Footer />
+        </MainContent>
+        {mounted && <FloatingButtons />}
+      </AppContainer>
+    </LanguageProvider>
+>>>>>>> f3aef65c7e01f10febe96df3a35ad9c539b02fe0
   );
 }
 

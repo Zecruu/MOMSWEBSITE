@@ -320,6 +320,7 @@ const TitleContainer = styled.div`
     z-index: 2;
   }
 
+<<<<<<< HEAD
   @media (max-width: 1024px) {
     background-attachment: scroll;
     background-position: center center;
@@ -336,6 +337,10 @@ const TitleContainer = styled.div`
     background-position: center center;
     background-size: cover;
     height: 100vh;
+=======
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+>>>>>>> f3aef65c7e01f10febe96df3a35ad9c539b02fe0
   }
 `;
 
