@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
+import { FaPhone, FaMapMarkerAlt, FaClock, FaTimes } from 'react-icons/fa';
 
 const NavContainer = styled.nav`
   position: fixed;
@@ -214,9 +215,214 @@ const MobileNavLink = styled.a`
   }
 `;
 
+const MenuButton = styled.button`
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  background: #040f16;
+  color: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin-left: 20px;
+
+  &:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+
+  .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+
+  .text {
+    transform: translateX(55px);
+  }
+
+  &:hover .icon {
+    width: 175px;
+  }
+
+  &:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active .icon {
+    transform: scale(0.85);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MenuPopup = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: ${props => props.$isOpen ? 'flex' : 'none'};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const PopupContent = styled.div`
+  background: black;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, #009fff 0%, #ec2f4b 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+  
+  &:hover {
+    color: #ec2f4b;
+  }
+`;
+
+const BackButton = styled.button`
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  
+  &:hover {
+    color: #009fff;
+  }
+`;
+
+const PopupTitle = styled.h2`
+  font-size: 28px;
+  background: linear-gradient(135deg, #009fff 0%, #ec2f4b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+`;
+
+const PopupSection = styled.div`
+  margin-bottom: 25px;
+`;
+
+const SectionTitle = styled.h3`
+  font-size: 20px;
+  color: white;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const OfficeHours = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+`;
+
+const Day = styled.div`
+  color: #f5f5f5;
+  font-weight: 600;
+`;
+
+const Hours = styled.div`
+  color: #f5f5f5;
+  text-align: right;
+`;
+
+const ActionButton = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #009fff 0%, #ec2f4b 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ec2f4b 0%, #009fff 100%);
+  }
+`;
+
 const Navbar = () => {
   const { language, toggleLanguage } = useLanguage();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
+
+  const toggleMenuPopup = () => {
+    setIsMenuPopupOpen(!isMenuPopupOpen);
+  };
 
   return (
     <>
@@ -247,6 +453,15 @@ const Navbar = () => {
             <LanguageButton onClick={toggleLanguage}>
               {language === 'en' ? 'Español' : 'English'}
             </LanguageButton>
+            <MenuButton onClick={toggleMenuPopup}>
+              <div className="icon">
+                <svg height="24" width="24" fill="#f5f5f5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+                </svg>
+              </div>
+              <span className="text">{language === 'en' ? 'Menu' : 'Menú'}</span>
+            </MenuButton>
           </NavLinks>
           
           <HamburgerButton 
@@ -273,10 +488,84 @@ const Navbar = () => {
         <MobileNavLink href="/locate">
           {language === 'en' ? 'Location' : 'Ubicación'}
         </MobileNavLink>
+        <MobileNavLink href="#" onClick={(e) => {
+          e.preventDefault();
+          setIsMobileMenuOpen(false);
+          setIsMenuPopupOpen(true);
+        }}>
+          {language === 'en' ? 'Contact Info' : 'Información de Contacto'}
+        </MobileNavLink>
         <LanguageButton onClick={toggleLanguage} style={{ width: '100%', marginTop: '10px' }}>
           {language === 'en' ? 'Español' : 'English'}
         </LanguageButton>
       </MobileMenu>
+
+      <MenuPopup $isOpen={isMenuPopupOpen}>
+        <PopupContent>
+          <BackButton onClick={toggleMenuPopup}>
+            <FaTimes /> {language === 'en' ? 'Back' : 'Atrás'}
+          </BackButton>
+          <PopupTitle>{language === 'en' ? 'Contact Information' : 'Información de Contacto'}</PopupTitle>
+          
+          <PopupSection>
+            <SectionTitle>
+              <FaClock /> {language === 'en' ? 'Office Hours' : 'Horario de Oficina'}
+            </SectionTitle>
+            <OfficeHours>
+              <Day>{language === 'en' ? 'Monday' : 'Lunes'}</Day>
+              <Hours>9:00 AM - 11:30 AM</Hours>
+              
+              <Day></Day>
+              <Hours>1:30 PM - 4:00 PM</Hours>
+              
+              <Day>{language === 'en' ? 'Tuesday' : 'Martes'}</Day>
+              <Hours>9:00 AM - 11:30 AM</Hours>
+              
+              <Day></Day>
+              <Hours>1:30 PM - 4:00 PM</Hours>
+              
+              <Day>{language === 'en' ? 'Wednesday' : 'Miércoles'}</Day>
+              <Hours>9:00 AM - 11:30 AM</Hours>
+              
+              <Day></Day>
+              <Hours>1:30 PM - 4:00 PM</Hours>
+              
+              <Day>{language === 'en' ? 'Thursday' : 'Jueves'}</Day>
+              <Hours>9:00 AM - 11:30 AM</Hours>
+              
+              <Day></Day>
+              <Hours>1:30 PM - 4:00 PM</Hours>
+              
+              <Day>{language === 'en' ? 'Friday' : 'Viernes'}</Day>
+              <Hours>9:00 AM - 11:30 AM</Hours>
+              
+              <Day>{language === 'en' ? 'Saturday' : 'Sábado'}</Day>
+              <Hours>{language === 'en' ? 'Closed' : 'Cerrado'}</Hours>
+              
+              <Day>{language === 'en' ? 'Sunday' : 'Domingo'}</Day>
+              <Hours>{language === 'en' ? 'Closed' : 'Cerrado'}</Hours>
+            </OfficeHours>
+          </PopupSection>
+          
+          <PopupSection>
+            <SectionTitle>
+              <FaPhone style={{ transform: 'scaleX(-1)' }} /> {language === 'en' ? 'Contact Us' : 'Contáctanos'}
+            </SectionTitle>
+            <ActionButton href="tel:7872618258">
+              <FaPhone style={{ transform: 'scaleX(-1)' }} /> {language === 'en' ? 'Call Our Office' : 'Llamar a Nuestra Oficina'}
+            </ActionButton>
+          </PopupSection>
+          
+          <PopupSection>
+            <SectionTitle>
+              <FaMapMarkerAlt /> {language === 'en' ? 'Directions' : 'Direcciones'}
+            </SectionTitle>
+            <ActionButton href="https://www.google.com/maps/dir/?api=1&destination=PR+Decompression+Centers+Toa+Baja" target="_blank" rel="noopener noreferrer">
+              <FaMapMarkerAlt /> {language === 'en' ? 'Get Directions' : 'Obtener Direcciones'}
+            </ActionButton>
+          </PopupSection>
+        </PopupContent>
+      </MenuPopup>
     </>
   );
 };

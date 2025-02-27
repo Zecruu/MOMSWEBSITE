@@ -532,7 +532,7 @@ const FeatureImage = styled.img`
 `;
 
 const FeatureButton = styled.a`
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  background: linear-gradient(135deg, #009fff 0%, #ec2f4b 100%);
   color: white;
   padding: 16px 32px;
   border-radius: 50px;
@@ -542,7 +542,7 @@ const FeatureButton = styled.a`
   text-align: center;
   width: fit-content;
   margin-top: auto;
-  box-shadow: 0 5px 20px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   border: none;
   outline: none;
   display: inline-block;
@@ -553,9 +553,9 @@ const FeatureButton = styled.a`
   font-size: 14px;
   
   &:hover, &:focus, &:active, &:visited {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #ec2f4b 0%, #009fff 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
+    box-shadow: 0 8px 25px rgba(236, 47, 75, 0.4);
     text-decoration: none !important;
   }
 
@@ -566,7 +566,7 @@ const FeatureButton = styled.a`
 `;
 
 const FeatureBox = styled.div`
-  background: rgba(0, 0, 0, 0.8);
+  background: black;
   border-radius: 20px;
   padding: 30px;
   display: flex;
@@ -574,10 +574,11 @@ const FeatureBox = styled.div`
   align-items: center;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 217, 255, 0.2);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
   height: auto;
   min-height: 500px;
-  position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
   gap: 20px;
@@ -589,55 +590,48 @@ const FeatureBox = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 242, 254, 0.1) 0%,
-      rgba(79, 172, 254, 0.1) 50%,
-      rgba(180, 101, 218, 0.1) 100%
-    );
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, #009fff 0%, #ec2f4b 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
     z-index: 1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
   }
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-
-    &::before {
-      opacity: 1;
-    }
+    box-shadow: 0 20px 40px rgba(0, 159, 255, 0.2), 0 0 20px rgba(236, 47, 75, 0.2);
     
-    & > img {
-      transform: scale(1.05);
-    }
-    
-    & > a {
+    ${FeatureButton} {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
+      box-shadow: 0 10px 25px rgba(236, 47, 75, 0.4);
     }
   }
-
+  
   @media (max-width: 768px) {
-    min-height: 450px;
     padding: 20px;
-    gap: 15px;
+    min-height: 400px;
   }
 `;
 
 const FeatureTitle = styled.h3`
   font-size: 28px;
-  color: white;
+  background: linear-gradient(135deg, #009fff 0%, #ec2f4b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 30px;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   min-height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.5px;
 
   @media (max-width: 768px) {

@@ -33,10 +33,12 @@ const Footer = () => {
 
           <FooterSection>
             <SectionTitle>{t('officeHours')}</SectionTitle>
-            <FooterText>{t('monday')}-{t('thursday')}:</FooterText>
-            <FooterText>{t('hours1')}</FooterText>
-            <FooterText>{t('hours2')}</FooterText>
-            <FooterText>{t('friday')} {t('hours1')}</FooterText>
+            <FooterText>{t('monday')}: {t('hours1')}, {t('hours2')}</FooterText>
+            <FooterText>{t('tuesday')}: {t('hours1')}, {t('hours2')}</FooterText>
+            <FooterText>{t('wednesday')}: {t('hours1')}, {t('hours2')}</FooterText>
+            <FooterText>{t('thursday')}: {t('hours1')}, {t('hours2')}</FooterText>
+            <FooterText>{t('friday')}: {t('hours1')}</FooterText>
+            <FooterText>{t('saturday')}/{t('sunday')}: {t('closed')}</FooterText>
             <FooterButton onClick={() => router.push('/locate')}>
               {t('directions')}
             </FooterButton>

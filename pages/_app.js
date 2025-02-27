@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: #1B1F3B;
+    background: linear-gradient(to right, #009fff, #ec2f4b);
     color: white;
     min-height: 100vh;
     overflow-x: hidden;
