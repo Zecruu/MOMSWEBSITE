@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
-import { FaPhone, FaMapMarkerAlt, FaClock, FaTimes } from 'react-icons/fa';
+import { FaPhone, FaMapMarkerAlt, FaClock, FaTimes, FaWhatsapp, FaChevronDown } from 'react-icons/fa';
 
 const NavContainer = styled.nav`
   position: fixed;
@@ -424,14 +424,108 @@ const ActionButton = styled.a`
   }
 `;
 
+const MobileHeaderButtons = styled.div`
+  display: none;
+  align-items: center;
+  gap: 10px;
+  
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+const PageDropdownButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  svg {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+    transform: ${props => props.$isOpen ? 'rotate(180deg)' : 'rotate(0)'};
+  }
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  max-height: ${props => props.$isOpen ? '300px' : '0'};
+  transition: max-height 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+`;
+
+const DropdownLink = styled.a`
+  display: block;
+  color: white;
+  text-decoration: none !important;
+  padding: 12px 16px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.2s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none !important;
+    color: white;
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+const DropdownContainer = styled.div`
+  position: relative;
+`;
+
 const Navbar = () => {
   const { language, toggleLanguage } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
+  const [isPageDropdownOpen, setIsPageDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleMenuPopup = () => {
     setIsMenuPopupOpen(!isMenuPopupOpen);
   };
+  
+  const togglePageDropdown = () => {
+    setIsPageDropdownOpen(!isPageDropdownOpen);
+  };
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsPageDropdownOpen(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -472,6 +566,45 @@ const Navbar = () => {
               <span className="text">{language === 'en' ? 'Menu' : 'Menú'}</span>
             </MenuButton>
           </NavLinks>
+          
+          <MobileHeaderButtons>
+            <DropdownContainer ref={dropdownRef}>
+              <PageDropdownButton 
+                onClick={togglePageDropdown}
+                $isOpen={isPageDropdownOpen}
+              >
+                {language === 'en' ? 'Pages' : 'Páginas'}
+                <FaChevronDown />
+              </PageDropdownButton>
+              
+              <DropdownMenu $isOpen={isPageDropdownOpen}>
+                <Link href="/" passHref>
+                  <DropdownLink onClick={() => setIsPageDropdownOpen(false)}>
+                    {language === 'en' ? 'Home' : 'Inicio'}
+                  </DropdownLink>
+                </Link>
+                <Link href="/products" passHref>
+                  <DropdownLink onClick={() => setIsPageDropdownOpen(false)}>
+                    {language === 'en' ? 'Services' : 'Servicios'}
+                  </DropdownLink>
+                </Link>
+                <Link href="/reviews" passHref>
+                  <DropdownLink onClick={() => setIsPageDropdownOpen(false)}>
+                    {language === 'en' ? 'Reviews' : 'Reseñas'}
+                  </DropdownLink>
+                </Link>
+                <Link href="/locate" passHref>
+                  <DropdownLink onClick={() => setIsPageDropdownOpen(false)}>
+                    {language === 'en' ? 'Location' : 'Ubicación'}
+                  </DropdownLink>
+                </Link>
+              </DropdownMenu>
+            </DropdownContainer>
+            
+            <LanguageButton onClick={toggleLanguage} style={{ height: '36px', padding: '8px 12px' }}>
+              {language === 'en' ? 'Español' : 'English'}
+            </LanguageButton>
+          </MobileHeaderButtons>
           
           <HamburgerButton 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
