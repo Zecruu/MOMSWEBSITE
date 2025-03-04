@@ -547,7 +547,7 @@ const Navbar = () => {
             <Link href="/products" passHref>
               <NavLink>{language === 'en' ? 'Services' : 'Servicios'}</NavLink>
             </Link>
-            <Link href="/reviews" passHref>
+            <Link href="/testimonials" passHref>
               <NavLink>{language === 'en' ? 'Reviews' : 'Reseñas'}</NavLink>
             </Link>
             <Link href="/locate" passHref>
@@ -588,7 +588,7 @@ const Navbar = () => {
                     {language === 'en' ? 'Services' : 'Servicios'}
                   </DropdownLink>
                 </Link>
-                <Link href="/reviews" passHref>
+                <Link href="/testimonials" passHref>
                   <DropdownLink onClick={() => setIsPageDropdownOpen(false)}>
                     {language === 'en' ? 'Reviews' : 'Reseñas'}
                   </DropdownLink>
@@ -628,7 +628,7 @@ const Navbar = () => {
             {language === 'en' ? 'Services' : 'Servicios'}
           </MobileNavLink>
         </Link>
-        <Link href="/reviews" passHref>
+        <Link href="/testimonials" passHref>
           <MobileNavLink onClick={() => setIsMobileMenuOpen(false)}>
             {language === 'en' ? 'Reviews' : 'Reseñas'}
           </MobileNavLink>
