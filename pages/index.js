@@ -91,7 +91,25 @@ const Index = () => {
             <ScrollIndicator />
           </TitleContainer>
 
-          <SectionTitle>{t('specializedServices')}</SectionTitle>
+          <SectionTitle id="testimonials">{t('testimonialsSectionTitle')}</SectionTitle>
+          <TestimonialSection>
+            <TestimonialVideo controls>
+              <source src="/videos/Testimonio Decompression.mp4" type="video/mp4" />
+              {language === 'en' 
+                ? 'Your browser does not support the video tag.' 
+                : 'Su navegador no soporta la etiqueta de video.'}
+            </TestimonialVideo>
+            <TestimonialDescription>
+              {language === 'en' 
+                ? 'Hear directly from our patients about their experience with our decompression therapy and how it has helped improve their quality of life.'
+                : 'Escuche directamente de nuestros pacientes sobre su experiencia con nuestra terapia de descompresión y cómo ha ayudado a mejorar su calidad de vida.'}
+            </TestimonialDescription>
+            <MoreTestimonialsLink href="/reviews" passHref>
+              {language === 'en' ? 'See More Testimonials' : 'Ver Más Testimonios'}
+            </MoreTestimonialsLink>
+          </TestimonialSection>
+
+          <SectionTitle id="services">{t('specializedServices')}</SectionTitle>
           <ServicesGrid>
             <FeatureBox>
               <FeatureImage 
@@ -278,7 +296,7 @@ const TitleContainer = styled.div`
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-image: url("/images/decompression-therapy-hero-bg.png");
+  background-image: url("/images/non-surgical-pain-relief.JPG");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -300,12 +318,7 @@ const TitleContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 242, 254, 0.7) 0%,
-      rgba(79, 172, 254, 0.7) 50%,
-      rgba(180, 101, 218, 0.7) 100%
-    );
+    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
   }
 
@@ -320,7 +333,6 @@ const TitleContainer = styled.div`
     z-index: 2;
   }
 
-<<<<<<< HEAD
   @media (max-width: 1024px) {
     background-attachment: scroll;
     background-position: center center;
@@ -337,10 +349,6 @@ const TitleContainer = styled.div`
     background-position: center center;
     background-size: cover;
     height: 100vh;
-=======
-  @media (max-width: 768px) {
-    background-attachment: scroll;
->>>>>>> f3aef65c7e01f10febe96df3a35ad9c539b02fe0
   }
 `;
 
@@ -1009,5 +1017,53 @@ const VideoWrapper = styled.div`
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+`;
+
+const TestimonialSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
+`;
+
+const TestimonialVideo = styled.video`
+  width: 100%;
+  max-width: 800px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+`;
+
+const TestimonialDescription = styled.p`
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 700px;
+`;
+
+const MoreTestimonialsLink = styled.a`
+  display: inline-block;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
 `;

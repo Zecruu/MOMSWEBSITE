@@ -38,7 +38,27 @@ const Reviews = () => {
       </NavbarWrapper>
       <PageContainer>
         <Content>
-          <Title>{t('reviews')}</Title>
+          <Title>{language === 'en' ? 'Testimonials' : 'Testimonios'}</Title>
+
+          <TestimonialVideoSection>
+            <VideoContainer>
+              <TestimonialVideo controls>
+                <source src="/videos/Testimonio Decompression.mp4" type="video/mp4" />
+                {language === 'en' 
+                  ? 'Your browser does not support the video tag.' 
+                  : 'Su navegador no soporta la etiqueta de video.'}
+              </TestimonialVideo>
+            </VideoContainer>
+            <TestimonialDescription>
+              {language === 'en' 
+                ? 'Hear directly from our patients about their experience with our decompression therapy and how it has helped improve their quality of life.'
+                : 'Escuche directamente de nuestros pacientes sobre su experiencia con nuestra terapia de descompresión y cómo ha ayudado a mejorar su calidad de vida.'}
+            </TestimonialDescription>
+          </TestimonialVideoSection>
+
+          <SectionTitle>
+            {language === 'en' ? 'What Our Patients Say' : 'Lo Que Dicen Nuestros Pacientes'}
+          </SectionTitle>
 
           <ReviewsContainer>
             {reviews.map((review, index) => (
@@ -230,5 +250,70 @@ const ReviewText = styled.p`
 
   @media (max-width: 768px) {
     font-size: 14px;
+  }
+`;
+
+const TestimonialVideoSection = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
+`;
+
+const VideoContainer = styled.div`
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+`;
+
+const TestimonialVideo = styled.video`
+  width: 100%;
+  display: block;
+`;
+
+const TestimonialDescription = styled.p`
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 700px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 36px;
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #00f2fe, #4facfe, #b465da);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+    margin-bottom: 40px;
   }
 `;

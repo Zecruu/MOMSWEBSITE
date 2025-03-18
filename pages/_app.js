@@ -6,6 +6,7 @@ import styled from "styled-components";
 import FloatingButtons from '../components/FloatingButtons';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -51,6 +52,25 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         </Head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16853281502"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16853281502');
+          `}
+        </Script>
+        {/* Event snippet for Page view conversion */}
+        <Script id="google-conversion" strategy="afterInteractive">
+          {`
+            gtag('event', 'conversion', {'send_to': 'AW-16853281502/o2m1CPfAqKwaEN7VouQ-'});
+          `}
+        </Script>
         <GlobalStyle />
         <AppContainer>
           <Navbar />

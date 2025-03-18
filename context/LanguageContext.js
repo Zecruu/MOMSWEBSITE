@@ -89,6 +89,7 @@ const translations = {
     spinalDecompressionVideo: "Spinal Decompression Therapy",
     chiropracticVideo: "Chiropractic Treatment",
     clinicVideo: "Centro Quiropráctico Dra. Morales",
+    testimonialsSectionTitle: "Testimonials",
   },
   es: {
     // Navigation
@@ -129,6 +130,7 @@ const translations = {
     matrix: "Matrix",
     services: "Servicios",
     herniatedDiscTitle: "Tratamiento de Disco Herniado y Manejo del Dolor",
+    testimonialsSectionTitle: "Testimonios",
 
     // Products Page
     productsTitle: "Nuestros Productos y Servicios",
