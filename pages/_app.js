@@ -52,12 +52,25 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         </Head>
-        {/* Google tag (gtag.js) */}
+        {/* Google Analytics tag (gtag.js) */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-16853281502"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-EEJ5R3N837`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EEJ5R3N837');
+          `}
+        </Script>
+        {/* Google Ads tag */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=AW-16853281502`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
