@@ -653,8 +653,8 @@ const DiscosHerniados = () => {
 
       {/* Section 4: Tratamientos para Discos Herniados en Puerto Rico */}
       <Section>
-        <SectionTitle style={{ color: '#333' }}>{t('treatmentsTitle')}</SectionTitle>
-        <SectionText style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 30px', color: '#444' }}>
+        <SectionTitle style={{ color: '#fff' }}>{t('treatmentsTitle')}</SectionTitle>
+        <SectionText style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 30px', color: '#fff' }}>
           {t('treatmentsIntro')}
         </SectionText>
         
@@ -684,8 +684,6 @@ const DiscosHerniados = () => {
             <TreatmentSubtitle>{t('benefits')}</TreatmentSubtitle>
             <TreatmentList>
               <TreatmentItem>{t('benefitNoninvasive')}</TreatmentItem>
-              <TreatmentItem>{t('benefitFastRelief')}</TreatmentItem>
-              <TreatmentItem>{t('benefitNoRecovery')}</TreatmentItem>
               <TreatmentItem>{t('benefitRootCause')}</TreatmentItem>
               <TreatmentItem>{t('benefitSuccessRate')}</TreatmentItem>
             </TreatmentList>
