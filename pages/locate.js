@@ -9,20 +9,25 @@ import Head from 'next/head';
 const Locate = () => {
   const { t, language } = useLanguage();
 
+  const pageTitle = language === 'en' 
+    ? 'Location & Contact - PR Decompression Centers' 
+    : 'Ubicación y Contacto - PR Decompression Centers';
+  const pageDescription = language === 'en'
+    ? 'Visit our chiropractic and spinal decompression center in Toa Baja, Puerto Rico. Contact us today for appointments and directions.'
+    : 'Visite nuestro centro quiropráctico y de descompresión espinal en Toa Baja, Puerto Rico. Contáctenos hoy para citas e indicaciones.';
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "name": "PR Decompression Centers",
     "alternateName": "Centro Quiropráctico Dra. Morales",
-    "image": "/images/LOGO.png",
+    "image": "/images/pr-decompression-centers-logo.png",
     "url": "https://prdecompressioncenters.com",
     "telephone": "+1-787-261-8258",
     "email": "aivinmorales@gmail.com",
-    "description": {
-      "@type": "Text",
-      "en": "Expert spinal decompression therapy & chiropractic care in Puerto Rico. Advanced treatment for back pain, herniated discs, and sciatica.",
-      "es": "Terapia de descompresión espinal y cuidado quiropráctico en Puerto Rico. Tratamiento avanzado para dolor de espalda y hernias discales."
-    },
+    "description": language === 'en'
+      ? "Expert spinal decompression therapy & chiropractic care in Puerto Rico. Advanced treatment for back pain, herniated discs, and sciatica."
+      : "Terapia de descompresión espinal y cuidado quiropráctico en Puerto Rico. Tratamiento avanzado para dolor de espalda y hernias discales.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "RH-16 Ave. Building, Los Dominicos",
@@ -102,17 +107,25 @@ const Locate = () => {
 
   return (
     <MainContainer>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content="https://prdecompressioncenters.com/locate" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png" />
+        <link rel="canonical" href="https://prdecompressioncenters.com/locate" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
       <NavbarWrapper>
         <Navbar />
       </NavbarWrapper>
       <PageContainer>
         <Content>
-          <Head>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-            />
-          </Head>
           <Title>{language === 'en' ? 'Locate Us' : 'Ubicación'}</Title>
           
           <InfoSection>

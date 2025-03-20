@@ -52,6 +52,9 @@ const Footer = () => {
             <FooterButton onClick={() => router.push('/products#decompression')}>
               {t('decompression')}
             </FooterButton>
+            <FooterButton onClick={() => router.push('/discos-herniados')}>
+              {t('language') === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
+            </FooterButton>
             <FooterButton onClick={() => router.push('/products#laser')}>
               {t('laserTherapy')}
             </FooterButton>
@@ -62,6 +65,9 @@ const Footer = () => {
 
           <FooterSection>
             <SectionTitle>{t('quickLinks')}</SectionTitle>
+            <FooterButton onClick={() => router.push('/discos-herniados')}>
+              {t('language') === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
+            </FooterButton>
             <FooterButton onClick={() => router.push('/reviews')}>
               {t('reviews')}
             </FooterButton>
@@ -73,7 +79,7 @@ const Footer = () => {
       </FooterContent>
 
       <BottomBar>
-        <Copyright>©{currentYear} PR Decompression Centers</Copyright>
+        <Copyright>&copy;{currentYear} PR Decompression Centers</Copyright>
       </BottomBar>
     </FooterContainer>
   );

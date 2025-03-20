@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
 import Link from "next/link";
+import Head from "next/head";
+import Navbar from "../components/Navbar";
 
 const Index = () => {
   const [selectedPainPoint, setSelectedPainPoint] = useState(null);
@@ -78,8 +80,94 @@ const Index = () => {
     };
   };
 
+  const pageTitle = language === 'en' 
+    ? 'PR Decompression Centers - Expert Chiropractic & Spinal Treatment in Puerto Rico' 
+    : 'PR Decompression Centers - Tratamiento Quiropráctico y Espinal en Puerto Rico';
+  
+  const pageDescription = language === 'en'
+    ? 'Specialized chiropractic care and spinal decompression therapy in Puerto Rico. We treat back pain, herniated discs, sciatica and more with advanced non-surgical techniques.'
+    : 'Cuidado quiropráctico especializado y terapia de descompresión espinal en Puerto Rico. Tratamos dolor de espalda, hernias discales, ciática y más con técnicas avanzadas no quirúrgicas.';
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "PR Decompression Centers",
+    "image": "https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png",
+    "url": "https://prdecompressioncenters.com",
+    "telephone": "+1-787-261-8258",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "RH-16 Ave. Building, Los Dominicos",
+      "addressLocality": "Toa Baja",
+      "addressRegion": "PR",
+      "postalCode": "00949",
+      "addressCountry": "PR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 18.4447,
+      "longitude": -66.1916
+    },
+    "medicalSpecialty": ["Chiropractic", "Physical Therapy", "Pain Management"],
+    "availableService": [
+      {
+        "@type": "MedicalTherapy",
+        "name": "Spinal Decompression Therapy",
+        "description": language === 'en' 
+          ? "Non-surgical treatment for herniated discs and back pain" 
+          : "Tratamiento no quirúrgico para hernias discales y dolor de espalda"
+      },
+      {
+        "@type": "MedicalTherapy",
+        "name": "Chiropractic Treatment",
+        "description": language === 'en'
+          ? "Advanced chiropractic care for spine and joint issues"
+          : "Cuidado quiropráctico avanzado para problemas de columna y articulaciones"
+      },
+      {
+        "@type": "MedicalTherapy",
+        "name": "Laser Therapy",
+        "description": language === 'en'
+          ? "Advanced laser treatment for pain and inflammation"
+          : "Tratamiento láser avanzado para dolor e inflamación"
+      }
+    ]
+  };
+
   return (
     <MainContainer>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="chiropractic, spinal decompression, back pain, herniated disc, Puerto Rico, terapia descompresión, quiropractico, dolor espalda, hernia discal" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prdecompressioncenters.com/" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content="https://prdecompressioncenters.com/images/non-surgical-pain-relief.JPG" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://prdecompressioncenters.com/" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://prdecompressioncenters.com/images/non-surgical-pain-relief.JPG" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://prdecompressioncenters.com/" />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
+      <NavbarWrapper>
+        <Navbar />
+      </NavbarWrapper>
       <PageContainer>
         <Content>
           <TitleContainer>
@@ -268,6 +356,12 @@ const MainContainer = styled.div`
   overflow-x: hidden;
   padding: 0;
   margin-top: 0;
+`;
+
+const NavbarWrapper = styled.div`
+  width: 100%;
+  z-index: 1000;
+  position: relative;
 `;
 
 const PageContainer = styled.div`

@@ -1,0 +1,79 @@
+# Lessons
+
+## User Specified Lessons
+
+- You have a python venv in ./venv. Use it.
+- Include info useful for debugging in the program output.
+- Read the file before you try to edit it.
+- Due to Cursor's limit, when you use `git` and `gh` and need to submit a multiline commit message, first write the message in a file, and then use `git commit -F <filename>` or similar command to commit. And then remove the file. Include "[Cursor] " in the commit message and PR title.
+
+## Cursor learned
+
+- For search results, ensure proper handling of different character encodings (UTF-8) for international queries
+- Add debug information to stderr while keeping the main output clean in stdout for better pipeline integration
+- When using seaborn styles in matplotlib, use 'seaborn-v0_8' instead of 'seaborn' as the style name due to recent seaborn version changes
+- Use 'gpt-4o' as the model name for OpenAI's GPT-4 with vision capabilities
+- When setting up a Next.js server for mobile access, ensure the server is bound to 0.0.0.0 (all network interfaces) and that the firewall allows incoming connections on the server port
+- Some ports may be blocked by default or reserved for other services; if one port doesn't work for mobile access, try using a different port (8080 worked when 3090 and 3051 didn't)
+- When using Next.js 14, the Link component syntax has changed - children should no longer be wrapped in an <a> tag
+- In PowerShell, do not use '&&' for command chaining as it's not supported. Use semicolons (;) or the pipeline operator (|) instead, or separate commands into multiple lines
+- When adding Google Analytics to Next.js, use the Script component with strategy="afterInteractive" for better performance
+
+# Scratchpad
+
+## Current Task: Fixing mobile access to the Next.js development server
+
+[X] Clone the repository from GitHub
+[X] Examine the repository structure
+[X] Install dependencies
+[X] Start the development server
+[X] Identify the issue with mobile access
+[X] Create a firewall rule to allow incoming connections to port 3051
+[X] Create a test page to verify the connection
+[X] Test mobile access (port 3051 not working, port 8080 working)
+[X] Change Next.js server port from 3051 to 3090
+[X] Create firewall rule for port 3090
+[X] Restart the server with the new port
+[X] Create a test page for port 3090
+[X] Verify mobile access is working with port 3090 (page is blank)
+[X] Create simplified test pages to isolate the issue
+[X] Create a simple HTTP server on port 8090 as an alternative test
+[X] Create batch files for easier server management
+[X] Add Google Analytics tracking to the website
+[X] Create a simple HTTP server on port 8080
+[X] Test the simple HTTP server on mobile (SUCCESS with port 8080)
+[X] Change Next.js port to 8080 based on successful test
+[X] Test the Next.js application on port 8080 from mobile
+[X] Fix Reseñas button in navbar (was pointing to /testimonials instead of /reviews)
+
+### Project Structure
+- Next.js project with pages directory structure
+- Main pages: index.js, reviews.js, locate.js, products.js
+- Components: Navbar.js, Footer.js, FloatingButtons.js, Map.js
+- Using TailwindCSS for styling
+- Google Analytics tracking ID: AW-16853281502
+
+### Dependencies
+- Next.js 14.1.0
+- React 18.2.0
+- Framer Motion for animations
+- React Icons
+- Styled Components
+- TailwindCSS
+
+### Development
+- Development server running on port 8080 (changed from 3090 after testing)
+- Server IP address: 192.168.68.63
+- Mobile access URL: http://192.168.68.63:8080
+- Created test pages: /test, /simple, and /basic to isolate the issue
+- Created a simple HTTP server on ports 8090, 8080, and 8000 as alternative tests
+
+### Troubleshooting Steps
+1. Created multiple test pages with different levels of complexity
+2. Created a simple HTTP server to test if the issue is specific to Next.js
+3. Created batch files for easier server management
+4. Opened firewall ports for different test servers
+5. Tested different ports (3051, 3090, 8090, 8080, 8000)
+6. Found that port 8080 works successfully for mobile access
+7. Updated Next.js configuration to use port 8080
+8. Fixed navigation links in Navbar component 

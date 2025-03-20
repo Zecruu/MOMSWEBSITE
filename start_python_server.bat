@@ -1,0 +1,3 @@
+@echo off
+echo Starting Python HTTP server on port 8000...
+python python_server.py 

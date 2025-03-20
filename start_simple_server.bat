@@ -1,0 +1,3 @@
+@echo off
+echo Starting simple HTTP server on port 8090...
+node simple_server.js 

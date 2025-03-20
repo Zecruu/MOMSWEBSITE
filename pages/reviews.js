@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
 import { FaStar, FaQuoteLeft } from "react-icons/fa";
+import Head from "next/head";
 
 const Reviews = () => {
   const { t, language } = useLanguage();
@@ -31,8 +32,57 @@ const Reviews = () => {
     }
   ];
 
+  const pageTitle = language === 'en' ? 'Testimonials - PR Decompression Centers' : 'Testimonios - PR Decompression Centers';
+  const pageDescription = language === 'en' 
+    ? 'Read testimonials from our satisfied patients about their experience with our spinal decompression therapy and chiropractic treatments.'
+    : 'Lea testimonios de nuestros pacientes satisfechos sobre su experiencia con nuestra terapia de descompresión espinal y tratamientos quiroprácticos.';
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": pageTitle,
+    "description": pageDescription,
+    "url": "https://prdecompressioncenters.com/reviews",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": reviews.map((review, index) => ({
+        "@type": "Review",
+        "position": index + 1,
+        "itemReviewed": {
+          "@type": "MedicalBusiness",
+          "name": "PR Decompression Centers",
+          "sameAs": "https://prdecompressioncenters.com"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": review.rating,
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": review.name
+        },
+        "reviewBody": review.text
+      }))
+    }
+  };
+
   return (
     <MainContainer>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content="https://prdecompressioncenters.com/reviews" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png" />
+        <link rel="canonical" href="https://prdecompressioncenters.com/reviews" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
       <NavbarWrapper>
         <Navbar />
       </NavbarWrapper>

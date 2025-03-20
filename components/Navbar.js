@@ -547,6 +547,9 @@ const Navbar = () => {
             <Link href="/products" passHref>
               <NavLink>{language === 'en' ? 'Services' : 'Servicios'}</NavLink>
             </Link>
+            <Link href="/discos-herniados" passHref>
+              <NavLink>{language === 'en' ? 'Herniated Discs' : 'Discos Herniados'}</NavLink>
+            </Link>
             <Link href="/reviews" passHref>
               <NavLink>{language === 'en' ? 'Reviews' : 'Testimonios'}</NavLink>
             </Link>
@@ -588,6 +591,11 @@ const Navbar = () => {
                     {language === 'en' ? 'Services' : 'Servicios'}
                   </DropdownLink>
                 </Link>
+                <Link href="/discos-herniados" passHref>
+                  <DropdownLink onClick={() => setIsPageDropdownOpen(false)}>
+                    {language === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
+                  </DropdownLink>
+                </Link>
                 <Link href="/reviews" passHref>
                   <DropdownLink onClick={() => setIsPageDropdownOpen(false)}>
                     {language === 'en' ? 'Reviews' : 'Testimonios'}
@@ -626,6 +634,11 @@ const Navbar = () => {
         <Link href="/products" passHref>
           <MobileNavLink onClick={() => setIsMobileMenuOpen(false)}>
             {language === 'en' ? 'Services' : 'Servicios'}
+          </MobileNavLink>
+        </Link>
+        <Link href="/discos-herniados" passHref>
+          <MobileNavLink onClick={() => setIsMobileMenuOpen(false)}>
+            {language === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
           </MobileNavLink>
         </Link>
         <Link href="/reviews" passHref>
