@@ -181,16 +181,38 @@ const Index = () => {
 
           <SectionTitle id="testimonials">{t('testimonialsSectionTitle')}</SectionTitle>
           <TestimonialSection>
-            <TestimonialVideo controls>
-              <source src="/videos/Testimonio Decompression.mp4" type="video/mp4" />
-              {language === 'en' 
-                ? 'Your browser does not support the video tag.' 
-                : 'Su navegador no soporta la etiqueta de video.'}
-            </TestimonialVideo>
+            <TestimonialsGrid>
+              <TestimonialItem>
+                <TestimonialVideo controls>
+                  <source src="/videos/Testimonio Decompression.mp4" type="video/mp4" />
+                  {language === 'en' 
+                    ? 'Your browser does not support the video tag.' 
+                    : 'Su navegador no soporta la etiqueta de video.'}
+                </TestimonialVideo>
+                <TestimonialCaption>
+                  {language === 'en' 
+                    ? 'Results of Decompression Therapy' 
+                    : 'Resultados de Terapia de Descompresión'}
+                </TestimonialCaption>
+              </TestimonialItem>
+              <TestimonialItem>
+                <TestimonialVideo controls>
+                  <source src="/videos/Testimonio Soluciones Sin Cirugia Dolor De Espalda.mp4" type="video/mp4" />
+                  {language === 'en' 
+                    ? 'Your browser does not support the video tag.' 
+                    : 'Su navegador no soporta la etiqueta de video.'}
+                </TestimonialVideo>
+                <TestimonialCaption>
+                  {language === 'en' 
+                    ? 'Non-Surgical Solutions for Back and Neck Pain' 
+                    : 'Soluciones Sin Cirugía para el Dolor de Espalda y Cuello'}
+                </TestimonialCaption>
+              </TestimonialItem>
+            </TestimonialsGrid>
             <TestimonialDescription>
               {language === 'en' 
-                ? 'Hear directly from our patients about their experience with our decompression therapy and how it has helped improve their quality of life.'
-                : 'Escuche directamente de nuestros pacientes sobre su experiencia con nuestra terapia de descompresión y cómo ha ayudado a mejorar su calidad de vida.'}
+                ? 'Hear directly from our patients about their experience with our decompression therapy and non-surgical solutions for back and neck pain. In these testimonials you can also hear how the decompression machine has helped to improve their quality of life.'
+                : 'Escuche directamente de nuestros pacientes sobre su experiencia con nuestra terapia de descompresión y soluciones sin cirugía para el dolor de espalda y para el dolor de cuello. En estos testimonios también puedes escuchar cómo la máquina de descompresión ha ayudado a mejorar su calidad de vida.'}
             </TestimonialDescription>
             <MoreTestimonialsLink href="/reviews" passHref>
               {language === 'en' ? 'See More Testimonials' : 'Ver Más Testimonios'}
@@ -1119,7 +1141,7 @@ const TestimonialSection = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto 80px;
   padding: 0 20px;
 
@@ -1128,12 +1150,40 @@ const TestimonialSection = styled.div`
   }
 `;
 
+const TestimonialsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  width: 100%;
+  margin-bottom: 30px;
+  
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+`;
+
+const TestimonialItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TestimonialCaption = styled.p`
+  color: white;
+  margin: 15px 0 0;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 500;
+`;
+
 const TestimonialVideo = styled.video`
   width: 100%;
-  max-width: 800px;
   border-radius: 15px;
-  margin-bottom: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 16/9;
+  object-fit: contain;
+  background-color: black;
 `;
 
 const TestimonialDescription = styled.p`
@@ -1142,7 +1192,7 @@ const TestimonialDescription = styled.p`
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 20px;
-  max-width: 700px;
+  max-width: 800px;
 `;
 
 const MoreTestimonialsLink = styled.a`
