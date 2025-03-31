@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }) {
         </Head>
         {/* Google Analytics tag (gtag.js) */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-EEJ5R3N837`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-F4DPRG35X0`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-EEJ5R3N837');
+            gtag('config', 'G-F4DPRG35X0');
           `}
         </Script>
         {/* Google Ads tag */}
