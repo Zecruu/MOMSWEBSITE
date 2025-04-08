@@ -4,21 +4,25 @@
   "description": "Centro líder en terapia de descompresión espinal y tratamiento quiropráctico en Puerto Rico",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/images/pr-decompression-centers-logo.png",
+      "sizes": "16x16 32x32 180x180 192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "theme_color": "#00f2fe",
-  "background_color": "#000033",
+  "theme_color": "#4facfe",
+  "background_color": "#ffffff",
   "display": "standalone",
   "start_url": "/",
   "orientation": "portrait",
   "lang": "es-PR",
-  "dir": "ltr"
+  "dir": "ltr",
+  "categories": ["medical", "health", "chiropractic"],
+  "screenshots": [
+    {
+      "src": "/images/non-surgical-pain-relief.JPG",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    }
+  ]
 } 

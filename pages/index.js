@@ -4,6 +4,7 @@ import { useLanguage } from "../context/LanguageContext";
 import Link from "next/link";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const [selectedPainPoint, setSelectedPainPoint] = useState(null);
@@ -214,9 +215,18 @@ const Index = () => {
                 ? 'Hear directly from our patients about their experience with our decompression therapy and non-surgical solutions for back and neck pain. In these testimonials you can also hear how the decompression machine has helped to improve their quality of life.'
                 : 'Escuche directamente de nuestros pacientes sobre su experiencia con nuestra terapia de descompresión y soluciones sin cirugía para el dolor de espalda y para el dolor de cuello. En estos testimonios también puedes escuchar cómo la máquina de descompresión ha ayudado a mejorar su calidad de vida.'}
             </TestimonialDescription>
-            <MoreTestimonialsLink href="/reviews" passHref>
-              {language === 'en' ? 'See More Testimonials' : 'Ver Más Testimonios'}
-            </MoreTestimonialsLink>
+            <HerniatedDiscButton
+              href="/discos-herniados"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {language === 'en' 
+                ? '🔍 Have a Herniated Disc? Click Here!' 
+                : '🔍 ¿Tienes Discos Herniados? ¡Haz Click Aquí!'}
+            </HerniatedDiscButton>
           </TestimonialSection>
 
           <SectionTitle id="services">{t('specializedServices')}</SectionTitle>
@@ -1195,19 +1205,20 @@ const TestimonialDescription = styled.p`
   max-width: 800px;
 `;
 
-const MoreTestimonialsLink = styled.a`
+const HerniatedDiscButton = styled(motion.a)`
   display: inline-block;
   background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
   color: white;
-  padding: 12px 24px;
+  padding: 15px 30px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
   margin-top: 20px;
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
   
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 `;

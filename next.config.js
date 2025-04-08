@@ -43,6 +43,10 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
           }
         ]
       }
@@ -122,6 +126,36 @@ const nextConfig = {
       },
       {
         source: '/disco-herniado',
+        destination: '/discos-herniados',
+        permanent: true,
+      },
+      {
+        source: '/back-pain',
+        destination: '/discos-herniados',
+        permanent: true,
+      },
+      {
+        source: '/dolor-de-espalda',
+        destination: '/discos-herniados',
+        permanent: true,
+      },
+      {
+        source: '/sciatica',
+        destination: '/discos-herniados',
+        permanent: true,
+      },
+      {
+        source: '/ciatica',
+        destination: '/discos-herniados',
+        permanent: true,
+      },
+      {
+        source: '/spinal-decompression',
+        destination: '/discos-herniados',
+        permanent: true,
+      },
+      {
+        source: '/descompresion-espinal',
         destination: '/discos-herniados',
         permanent: true,
       },

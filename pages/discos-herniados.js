@@ -1,71 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
+import SEOHead from '../components/SEOHead';
 import { useLanguage } from '../context/LanguageContext';
 import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-
-const HeroSection = styled.section`
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/non-surgical-pain-relief.JPG');
-  background-size: cover;
-  background-position: center;
-  padding: 120px 20px;
-  text-align: center;
-  color: white;
-  margin-top: 70px;
-
-  @media (max-width: 768px) {
-    padding: 80px 20px;
-  }
-`;
-
-const HeroContent = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-const HeroTitle = styled.h1`
-  font-size: 36px;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
-  @media (max-width: 768px) {
-    font-size: 28px;
-  }
-`;
-
-const HeroSubtitle = styled.p`
-  font-size: 18px;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-`;
-
-const HeroCTA = styled.a`
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-  color: #ffffff;
-  padding: 15px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  display: inline-block;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    padding: 12px 24px;
-    font-size: 16px;
-  }
-`;
 
 const Section = styled.section`
   padding: 60px 20px;
@@ -74,6 +12,10 @@ const Section = styled.section`
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
   border-radius: 10px;
   margin-bottom: 30px;
+
+  &:first-of-type {
+    margin-top: 90px;
+  }
 
   @media (max-width: 768px) {
     padding: 40px 15px;
@@ -396,6 +338,7 @@ const CTAText = styled.p`
 const DiscosHerniados = () => {
   const { t, language } = useLanguage();
   const [openFaq, setOpenFaq] = useState(null);
+  const isEnglish = language === 'en';
 
   const toggleFaq = (index) => {
     if (openFaq === index) {
@@ -406,124 +349,55 @@ const DiscosHerniados = () => {
   };
 
   const pageTitle = language === 'en' 
-    ? 'Herniated Discs in Puerto Rico | Causes, Symptoms and Treatment' 
-    : 'Discos Herniados en Puerto Rico | Causas, Síntomas y Tratamiento';
+    ? 'Herniated Disc Treatment in Puerto Rico | Non-Surgical Pain Relief' 
+    : 'Tratamiento de Discos Herniados en Puerto Rico | Alivio del Dolor Sin Cirugía';
   
   const pageDesc = language === 'en'
-    ? 'Learn about herniated discs, their symptoms and how spinal decompression can relieve pain in PR.'
-    : 'Aprende sobre discos herniados, sus síntomas y cómo la descompresión espinal puede aliviar el dolor en PR.';
+    ? 'Expert treatment for herniated discs in Puerto Rico. Learn about symptoms, causes, and how our non-surgical spinal decompression therapy can help relieve your pain. Free consultation available.'
+    : 'Tratamiento experto para discos herniados en Puerto Rico. Conozca los síntomas, causas y cómo nuestra terapia de descompresión espinal no quirúrgica puede ayudar a aliviar su dolor. Consulta gratuita disponible.';
 
   const ogTitle = language === 'en'
-    ? 'Herniated Discs | PR Decompression Centers'
-    : 'Discos Herniados | PR Decompression Centers';
+    ? 'Herniated Disc Treatment | PR Decompression Centers' 
+    : 'Tratamiento de Discos Herniados | PR Decompression Centers';
   
   const ogDesc = language === 'en'
-    ? 'Discover how we treat herniated discs with spinal decompression in Puerto Rico.'
-    : 'Descubre cómo tratamos discos herniados con descompresión espinal en Puerto Rico.';
+    ? 'Non-surgical treatment for herniated discs in Puerto Rico. Our spinal decompression therapy helps relieve pain and restore mobility. Schedule your consultation today.'
+    : 'Tratamiento no quirúrgico para discos herniados en Puerto Rico. Nuestra terapia de descompresión espinal ayuda a aliviar el dolor y restaurar la movilidad. Programe su consulta hoy.';
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": isEnglish ? "Herniated Disc Treatment | PR Decompression Centers" : "Tratamiento de Disco Herniado | PR Decompression Centers",
+    "description": isEnglish ?
+      "Expert treatment for herniated discs using non-surgical spinal decompression therapy. Learn about symptoms, causes, and effective treatment options." :
+      "Tratamiento experto para discos herniados usando terapia de descompresión espinal no quirúrgica. Conozca los síntomas, causas y opciones de tratamiento efectivas.",
+    "url": "https://www.prdecompressioncenters.com/discos-herniados",
+    "inLanguage": isEnglish ? "en-US" : "es-PR",
+    "mainEntity": {
+      "@type": "MedicalCondition",
+      "name": isEnglish ? "Herniated Disc" : "Disco Herniado",
+      "description": isEnglish ?
+        "A herniated disc occurs when the soft center of a spinal disc pushes through a crack in the tougher exterior casing." :
+        "Un disco herniado ocurre cuando el centro blando de un disco espinal empuja a través de una grieta en la cubierta exterior más dura.",
+      "possibleTreatment": {
+        "@type": "MedicalTherapy",
+        "name": isEnglish ? "Non-surgical Spinal Decompression" : "Descompresión Espinal No Quirúrgica",
+        "description": isEnglish ?
+          "A non-invasive treatment that gently stretches the spine to relieve pressure on the discs and nerves." :
+          "Un tratamiento no invasivo que estira suavemente la columna vertebral para aliviar la presión en los discos y nervios."
+      }
+    }
+  };
 
   return (
     <>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <meta property="og:title" content={ogTitle} />
-        <meta property="og:description" content={ogDesc} />
-        <meta property="og:image" content="https://www.prdecompressioncenters.com/images/disc-treatment.jpg" />
-        <meta property="og:url" content="https://www.prdecompressioncenters.com/discos-herniados" />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://www.prdecompressioncenters.com/discos-herniados" />
-        {/* Schema Markup for Google */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "MedicalWebPage",
-              "about": {
-                "@type": "MedicalCondition",
-                "name": language === 'en' ? "Herniated Disc" : "Disco Herniado",
-                "alternateName": language === 'en' ? "Slipped Disc" : "Hernia Discal",
-                "description": language === 'en' 
-                  ? "A condition where the inner material of an intervertebral disc protrudes outward, causing pain and other symptoms." 
-                  : "Una condición donde el material interior de un disco intervertebral se desplaza hacia afuera, causando dolor y otros síntomas.",
-                "possibleTreatment": {
-                  "@type": "MedicalTherapy",
-                  "name": language === 'en' ? "Spinal Decompression Therapy" : "Terapia de Descompresión Espinal",
-                  "description": language === 'en' 
-                    ? "Non-surgical treatment that relieves pressure on herniated discs." 
-                    : "Tratamiento no quirúrgico que alivia la presión en los discos herniados."
-                }
-              },
-              "specialty": {
-                "@type": "MedicalSpecialty",
-                "name": language === 'en' ? "Chiropractic" : "Quiropráctica"
-              },
-              "audience": {
-                "@type": "MedicalAudience",
-                "audienceType": language === 'en' 
-                  ? "Patients with back pain and herniated discs" 
-                  : "Pacientes con dolor de espalda y discos herniados"
-              },
-              "mainEntity": {
-                "@type": "FAQPage",
-                "mainEntity": [
-                  {
-                    "@type": "Question",
-                    "name": t('faqSafety'),
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": t('faqSafetyAnswer')
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": t('faqDuration'),
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": t('faqDurationAnswer')
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": t('faqSessions'),
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": t('faqSessionsAnswer')
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": t('faqInsurance'),
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": t('faqInsuranceAnswer')
-                    }
-                  }
-                ]
-              }
-            })
-          }}
-        />
-      </Head>
-
-      {/* Hero Section */}
-      <HeroSection>
-        <HeroContent>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <HeroTitle>{t('herniatedDiscHero')}</HeroTitle>
-            <HeroSubtitle>{t('herniatedDiscSubtitle')}</HeroSubtitle>
-            <HeroCTA href="https://wa.me/17872618258">
-              📱 {t('contactUsWhatsapp')}
-            </HeroCTA>
-          </motion.div>
-        </HeroContent>
-      </HeroSection>
-
-      <div style={{ marginTop: '50px' }}></div>
+      <SEOHead
+        title={t('pageTitle')}
+        description={t('pageDescription')}
+        ogTitle={t('ogTitle')}
+        ogDescription={t('ogDescription')}
+        schema={schema}
+      />
 
       {/* Section 1: ¿Qué es un Disco Herniado? */}
       <Section>
@@ -543,13 +417,20 @@ const DiscosHerniados = () => {
             <SectionText>
               <strong>{t('herniatedDiscTerm')}</strong> {t('herniatedDiscDefinitionShort')}
             </SectionText>
+            <CTAButton 
+              href="https://wa.me/17872618258" 
+              style={{ marginTop: '20px', marginBottom: '30px' }}
+            >
+              📱 ¡Escríbenos para sacar tu cita!
+            </CTAButton>
           </ContentColumn>
           <ContentColumn>
             <ImageContainer>
               <img 
-                src="/images/spinal-decompression-therapy-pr.png" 
+                src="/images/Herniated Disks.PNG" 
                 alt={t('herniatedDiscDiagram')}
                 loading="lazy"
+                style={{ width: '100%', maxWidth: '400px', borderRadius: '8px', margin: '0 auto', display: 'block' }}
               />
               <ImageCaption>{t('diagramCaption')}</ImageCaption>
             </ImageContainer>
@@ -606,16 +487,6 @@ const DiscosHerniados = () => {
       <Section>
         <SectionTitle>{t('causesTitle')}</SectionTitle>
         <ContentRow>
-          <ContentColumn>
-            <ImageContainer>
-              <img 
-                src="/images/Herniated Disks.PNG" 
-                alt={t('causesImage')}
-                loading="lazy"
-                style={{ width: '60%', maxWidth: '300px', borderRadius: '8px', margin: '0 auto', display: 'block' }}
-              />
-            </ImageContainer>
-          </ContentColumn>
           <ContentColumn>
             <CausesList>
               <CauseItem>

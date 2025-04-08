@@ -1,6 +1,9 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Allow: /discos-herniados
+Allow: /discos-herniados?lang=en
+Allow: /discos-herniados?lang=es
 
 # Sitemap location
 Sitemap: https://prdecompressioncenters.com/sitemap.xml
@@ -11,4 +14,9 @@ Crawl-delay: 1
 # Disallow crawling of unnecessary paths
 Disallow: /api/
 Disallow: /_next/
-Disallow: /*? 
+Disallow: /*?
+Disallow: /static/
+Disallow: /images/
+Disallow: /fonts/
+Disallow: /styles/
+Disallow: /scripts/ 
