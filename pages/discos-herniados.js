@@ -2,196 +2,377 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import SEOHead from '../components/SEOHead';
 import { useLanguage } from '../context/LanguageContext';
-import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaBookOpen, FaStethoscope, FaExclamationTriangle, FaHeartbeat } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-const Section = styled.section`
-  padding: 60px 20px;
-  max-width: 1200px;
+// Main Article Container
+const ArticleContainer = styled.article`
+  max-width: 900px;
   margin: 0 auto;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
-  border-radius: 10px;
-  margin-bottom: 30px;
-
-  &:first-of-type {
-    margin-top: 90px;
-  }
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  margin-top: 100px;
+  margin-bottom: 40px;
+  color: #333;
+  line-height: 1.8;
 
   @media (max-width: 768px) {
-    padding: 40px 15px;
+    margin: 80px 10px 20px;
+    padding: 30px 15px;
+    border-radius: 15px;
   }
 `;
 
-const SectionTitle = styled.h2`
-  font-size: 28px;
-  margin-bottom: 30px;
+// Article Header
+const ArticleHeader = styled.header`
   text-align: center;
-  color: white;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 3px solid #4facfe;
 `;
 
-const ContentRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 20px;
-  }
-`;
-
-const ContentColumn = styled.div`
-  flex: 1;
-  min-width: 300px;
-
-  @media (max-width: 768px) {
-    min-width: 100%;
-  }
-`;
-
-const SectionText = styled.p`
-  font-size: 16px;
+const MainTitle = styled.h1`
+  font-size: 42px;
+  font-weight: 700;
+  color: #2c3e50;
   margin-bottom: 20px;
-  line-height: 1.6;
-  color: white;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   @media (max-width: 768px) {
-    font-size: 15px;
+    font-size: 32px;
   }
 `;
 
-const SectionSubtitle = styled.h3`
+const ArticleSubtitle = styled.p`
   font-size: 20px;
-  margin-bottom: 15px;
-  color: white;
+  color: #7f8c8d;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     font-size: 18px;
   }
 `;
 
-const ImageContainer = styled.div`
-  text-align: center;
-  margin-bottom: 20px;
-
-  img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+// Table of Contents
+const TableOfContents = styled.nav`
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 40px;
+  border-left: 5px solid #4facfe;
 `;
 
-const ImageCaption = styled.p`
-  font-size: 14px;
-  color: white;
-  margin-top: 10px;
-  text-align: center;
+const TOCTitle = styled.h3`
+  font-size: 18px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
-const SymptomsList = styled.ul`
+const TOCList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
 `;
 
-const SymptomItem = styled.li`
+const TOCItem = styled.li`
+  margin-bottom: 8px;
+`;
+
+const TOCLink = styled.a`
+  color: #4facfe;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #00f2fe;
+    text-decoration: underline;
+  }
+`;
+
+// Section Styling
+const Section = styled.section`
+  margin-bottom: 50px;
+  scroll-margin-top: 100px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #ecf0f1;
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+`;
+
+const SectionSubtitle = styled.h3`
+  font-size: 24px;
+  color: #34495e;
+  margin: 30px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+`;
+
+const SectionText = styled.p`
+  font-size: 18px;
+  line-height: 1.8;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: justify;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    text-align: left;
+  }
+`;
+
+// Content Layout
+const ContentRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin: 30px 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+`;
+
+const ContentColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+// Image Styling
+const ImageContainer = styled.div`
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  border: 2px solid #dee2e6;
+
+  img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+`;
+
+const ImageCaption = styled.p`
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 15px;
+  text-align: center;
+  font-style: italic;
+`;
+
+// Information Boxes
+const InfoBox = styled.div`
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-left: 5px solid #4facfe;
+  padding: 25px;
+  border-radius: 12px;
+  margin: 25px 0;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.1);
+`;
+
+const InfoTitle = styled.h4`
+  font-size: 20px;
+  color: #1565c0;
   margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const InfoText = styled.p`
+  font-size: 16px;
+  color: #2c3e50;
+  line-height: 1.7;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+// Lists Styling
+const SymptomsList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border-radius: 15px;
+  padding: 25px;
+  border-left: 5px solid #ff9800;
+`;
+
+const SymptomItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(5px);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const SymptomIcon = styled.span`
-  font-size: 18px;
+  font-size: 20px;
   margin-right: 15px;
+  margin-top: 2px;
+  color: #e65100;
 `;
 
 const SymptomText = styled.span`
   font-size: 16px;
-  color: white;
+  color: #2c3e50;
+  line-height: 1.6;
+  font-weight: 500;
 
   @media (max-width: 768px) {
     font-size: 15px;
   }
 `;
 
-const FAQBox = styled.div`
-  background-color: rgba(247, 247, 247, 0.1);
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-`;
-
-const FAQTitle = styled.h3`
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: white;
-`;
-
+// Causes Styling
 const CausesList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 25px 0;
 `;
 
 const CauseItem = styled.li`
   display: flex;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-radius: 12px;
+  border-left: 5px solid #f44336;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(244, 67, 54, 0.15);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const CauseIcon = styled.span`
-  font-size: 20px;
-  margin-right: 15px;
-  margin-top: 2px;
+  font-size: 24px;
+  margin-right: 20px;
+  margin-top: 5px;
+  color: #c62828;
 `;
 
 const CauseContent = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const CauseTitle = styled.h4`
-  font-size: 17px;
-  margin-bottom: 5px;
-  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #c62828;
+  font-weight: 600;
 `;
 
 const CauseText = styled.p`
-  font-size: 15px;
-  color: white;
-  line-height: 1.5;
+  font-size: 16px;
+  color: #2c3e50;
+  line-height: 1.7;
+  margin: 0;
 `;
 
+// Treatment Styling
 const TreatmentContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
+  margin: 30px 0;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 `;
 
 const TreatmentCard = styled.div`
-  background-color: ${props => props.highlight ? '#f0f9ff' : '#ffffff'};
+  background: ${props => props.highlight
+    ? 'linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%)'
+    : 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)'};
   padding: 30px;
   border-radius: 15px;
-  margin: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  flex: 1;
-  min-width: 300px;
-  border: ${props => props.highlight ? '2px solid #4facfe' : 'none'};
+  border: ${props => props.highlight ? '3px solid #4caf50' : '2px solid #bdbdbd'};
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
 
-  @media (max-width: 768px) {
-    min-width: 100%;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   }
+
+  ${props => props.highlight && `
+    &::before {
+      content: "⭐ RECOMENDADO";
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  `}
 `;
 
 const TreatmentHeader = styled.div`
@@ -201,138 +382,181 @@ const TreatmentHeader = styled.div`
 `;
 
 const TreatmentIcon = styled.span`
-  font-size: 24px;
+  font-size: 28px;
   margin-right: 15px;
+  color: ${props => props.highlight ? '#4caf50' : '#757575'};
 `;
 
 const TreatmentTitle = styled.h3`
-  font-size: 20px;
-  color: #333;
+  font-size: 22px;
+  color: #2c3e50;
+  font-weight: 600;
 `;
 
 const TreatmentList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 20px 0;
 `;
 
 const TreatmentItem = styled.li`
   position: relative;
-  padding-left: 25px;
-  margin-bottom: 12px;
-  font-size: 15px;
-  color: #444;
-  line-height: 1.5;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #2c3e50;
+  line-height: 1.6;
 
   &:before {
     content: "✓";
     position: absolute;
     left: 0;
-    color: #4facfe;
+    color: #4caf50;
     font-weight: bold;
+    font-size: 18px;
   }
 `;
 
 const TreatmentSubtitle = styled.h4`
-  font-size: 17px;
-  margin: 20px 0 10px;
-  color: #333;
+  font-size: 18px;
+  margin: 25px 0 15px;
+  color: #2c3e50;
+  font-weight: 600;
 `;
 
+// CTA Styling
 const CTAButton = styled.a`
   background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
   color: #ffffff;
-  padding: 15px 30px;
+  padding: 18px 35px;
   border-radius: 50px;
   text-decoration: none;
   font-size: 16px;
-  font-weight: bold;
-  display: inline-block;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   text-align: center;
-  margin-top: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 35px rgba(79, 172, 254, 0.4);
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   }
 
   @media (max-width: 768px) {
-    padding: 12px 24px;
+    padding: 15px 25px;
     font-size: 15px;
     width: 100%;
   }
 `;
 
-const FAQContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-const FAQ = styled.div`
-  margin-bottom: 20px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-`;
-
-const FAQQuestion = styled.div`
-  padding: 15px 20px;
-  background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  color: white;
-  border-bottom: ${props => props.active ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'};
-`;
-
-const FAQIcon = styled.span`
-  color: white;
-`;
-
-const FAQAnswer = styled.div`
-  padding: ${props => props.active ? '15px 20px' : '0 20px'};
-  max-height: ${props => props.active ? '1000px' : '0'};
-  overflow: hidden;
-  transition: all 0.3s ease;
-  line-height: 1.6;
-  font-size: 15px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.2);
-`;
-
 const CTAContainer = styled.div`
   text-align: center;
-  margin-top: 50px;
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.1) 0%, rgba(79, 172, 254, 0.1) 100%);
-  padding: 30px;
-  border-radius: 15px;
+  margin: 50px 0;
+  padding: 40px;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 20px;
+  border: 2px solid #4facfe;
 `;
 
 const CTATitle = styled.h3`
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 15px;
-  color: white;
+  color: #1565c0;
+  font-weight: 700;
 
   @media (max-width: 768px) {
-    font-size: 20px;
+    font-size: 24px;
   }
 `;
 
 const CTAText = styled.p`
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 25px;
-  color: white;
+  color: #2c3e50;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.7;
 
   @media (max-width: 768px) {
-    font-size: 15px;
+    font-size: 16px;
   }
+`;
+
+// FAQ Styling
+const FAQContainer = styled.div`
+  margin: 40px 0;
+`;
+
+const FAQ = styled.div`
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const FAQQuestion = styled.div`
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 18px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #1565c0;
+  }
+
+  ${props => props.active && `
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+
+    &:hover {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+    }
+  `}
+`;
+
+const FAQIcon = styled.span`
+  color: inherit;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+
+  ${props => props.active && `
+    transform: rotate(180deg);
+  `}
+`;
+
+const FAQAnswer = styled.div`
+  padding: ${props => props.active ? '25px' : '0 25px'};
+  max-height: ${props => props.active ? '1000px' : '0'};
+  overflow: hidden;
+  transition: all 0.3s ease;
+  line-height: 1.7;
+  font-size: 16px;
+  color: #2c3e50;
+  background: white;
 `;
 
 const DiscosHerniados = () => {
@@ -399,225 +623,280 @@ const DiscosHerniados = () => {
         schema={schema}
       />
 
-      {/* Section 1: ¿Qué es un Disco Herniado? */}
-      <Section>
-        <SectionTitle>{t('whatIsHerniatedDisc')}</SectionTitle>
-        <ContentRow>
-          <ContentColumn>
-            <SectionText>
-              {t('herniatedDiscDefinition')}
-            </SectionText>
-            <SectionText>
-              {t('discFunction')}
-            </SectionText>
-            <SectionSubtitle>{t('differenceTitle')}</SectionSubtitle>
-            <SectionText>
+      <ArticleContainer>
+        {/* Article Header */}
+        <ArticleHeader>
+          <MainTitle>{t('whatIsHerniatedDisc')}</MainTitle>
+          <ArticleSubtitle>
+            Guía completa sobre discos herniados: síntomas, causas y tratamientos efectivos en Puerto Rico
+          </ArticleSubtitle>
+        </ArticleHeader>
+
+        {/* Table of Contents */}
+        <TableOfContents>
+          <TOCTitle>
+            <FaBookOpen />
+            Contenido del Artículo
+          </TOCTitle>
+          <TOCList>
+            <TOCItem><TOCLink href="#que-es">¿Qué es un Disco Herniado?</TOCLink></TOCItem>
+            <TOCItem><TOCLink href="#sintomas">Síntomas Principales</TOCLink></TOCItem>
+            <TOCItem><TOCLink href="#causas">Causas Comunes</TOCLink></TOCItem>
+            <TOCItem><TOCLink href="#tratamientos">Opciones de Tratamiento</TOCLink></TOCItem>
+            <TOCItem><TOCLink href="#preguntas">Preguntas Frecuentes</TOCLink></TOCItem>
+          </TOCList>
+        </TableOfContents>
+
+        {/* Section 1: ¿Qué es un Disco Herniado? */}
+        <Section id="que-es">
+          <SectionTitle>
+            <FaStethoscope />
+            {t('whatIsHerniatedDisc')}
+          </SectionTitle>
+
+          <ContentRow>
+            <ContentColumn>
+              <SectionText>
+                {t('herniatedDiscDefinition')}
+              </SectionText>
+              <SectionText>
+                {t('discFunction')}
+              </SectionText>
+            </ContentColumn>
+            <ContentColumn>
+              <ImageContainer>
+                <img
+                  src="/images/Herniated Disks.PNG"
+                  alt={t('herniatedDiscDiagram')}
+                  loading="lazy"
+                  style={{ width: '100%', maxWidth: '220px' }}
+                />
+                <ImageCaption>{t('diagramCaption')}</ImageCaption>
+              </ImageContainer>
+            </ContentColumn>
+          </ContentRow>
+
+          <SectionSubtitle>{t('differenceTitle')}</SectionSubtitle>
+
+          <InfoBox>
+            <InfoTitle>
+              <FaExclamationTriangle />
+              Diferencias Importantes
+            </InfoTitle>
+            <InfoText>
               <strong>{t('bulgingDisc')}</strong> {t('bulgingDiscDefinition')}
-            </SectionText>
-            <SectionText>
+            </InfoText>
+            <InfoText>
               <strong>{t('herniatedDiscTerm')}</strong> {t('herniatedDiscDefinitionShort')}
-            </SectionText>
-            <CTAButton 
-              href="https://wa.me/17872618258" 
-              style={{ marginTop: '20px', marginBottom: '30px' }}
-            >
-              📱 ¡Escríbenos para sacar tu cita!
-            </CTAButton>
-          </ContentColumn>
-          <ContentColumn>
-            <ImageContainer>
-              <img 
-                src="/images/Herniated Disks.PNG" 
-                alt={t('herniatedDiscDiagram')}
-                loading="lazy"
-                style={{ width: '100%', maxWidth: '400px', borderRadius: '8px', margin: '0 auto', display: 'block' }}
-              />
-              <ImageCaption>{t('diagramCaption')}</ImageCaption>
-            </ImageContainer>
-          </ContentColumn>
-        </ContentRow>
-      </Section>
+            </InfoText>
+          </InfoBox>
 
-      {/* Section 2: Síntomas de los Discos Herniados */}
-      <Section>
-        <SectionTitle>{t('symptomsTitle')}</SectionTitle>
-        <ContentRow>
-          <ContentColumn>
-            <SectionText>
-              {t('symptomsIntro')}
-            </SectionText>
-            <SymptomsList>
-              <SymptomItem>
-                <SymptomIcon>🔴</SymptomIcon>
-                <SymptomText>{t('symptomLowerBack')}</SymptomText>
-              </SymptomItem>
-              <SymptomItem>
-                <SymptomIcon>🔴</SymptomIcon>
-                <SymptomText>{t('symptomSciatica')}</SymptomText>
-              </SymptomItem>
-              <SymptomItem>
-                <SymptomIcon>🔴</SymptomIcon>
-                <SymptomText>{t('symptomNumbness')}</SymptomText>
-              </SymptomItem>
-              <SymptomItem>
-                <SymptomIcon>🔴</SymptomIcon>
-                <SymptomText>{t('symptomWeakness')}</SymptomText>
-              </SymptomItem>
-              <SymptomItem>
-                <SymptomIcon>🔴</SymptomIcon>
-                <SymptomText>{t('symptomMovement')}</SymptomText>
-              </SymptomItem>
-            </SymptomsList>
-          </ContentColumn>
-          <ContentColumn>
-            <FAQBox>
-              <FAQTitle>{t('earlySymptomsFAQ')}</FAQTitle>
-              <SectionText>
-                {t('earlySymptomsFAQAnswer1')}
+          <CTAButton href="https://wa.me/17872618258">
+            📱 ¡Escríbenos para sacar tu cita!
+          </CTAButton>
+        </Section>
+
+        {/* Section 2: Síntomas de los Discos Herniados */}
+        <Section id="sintomas">
+          <SectionTitle>
+            <FaHeartbeat />
+            {t('symptomsTitle')}
+          </SectionTitle>
+
+          <SectionText>
+            {t('symptomsIntro')}
+          </SectionText>
+
+          <SymptomsList>
+            <SymptomItem>
+              <SymptomIcon>🔴</SymptomIcon>
+              <SymptomText>{t('symptomLowerBack')}</SymptomText>
+            </SymptomItem>
+            <SymptomItem>
+              <SymptomIcon>🔴</SymptomIcon>
+              <SymptomText>{t('symptomSciatica')}</SymptomText>
+            </SymptomItem>
+            <SymptomItem>
+              <SymptomIcon>🔴</SymptomIcon>
+              <SymptomText>{t('symptomNumbness')}</SymptomText>
+            </SymptomItem>
+            <SymptomItem>
+              <SymptomIcon>🔴</SymptomIcon>
+              <SymptomText>{t('symptomWeakness')}</SymptomText>
+            </SymptomItem>
+            <SymptomItem>
+              <SymptomIcon>🔴</SymptomIcon>
+              <SymptomText>{t('symptomMovement')}</SymptomText>
+            </SymptomItem>
+          </SymptomsList>
+
+          <InfoBox>
+            <InfoTitle>
+              <FaExclamationTriangle />
+              {t('earlySymptomsFAQ')}
+            </InfoTitle>
+            <InfoText>
+              {t('earlySymptomsFAQAnswer1')}
+            </InfoText>
+            <InfoText>
+              {t('earlySymptomsFAQAnswer2')}
+            </InfoText>
+          </InfoBox>
+        </Section>
+
+        {/* Section 3: Causas de los Discos Herniados */}
+        <Section id="causas">
+          <SectionTitle>
+            <FaExclamationTriangle />
+            {t('causesTitle')}
+          </SectionTitle>
+
+          <CausesList>
+            <CauseItem>
+              <CauseIcon>⚠️</CauseIcon>
+              <CauseContent>
+                <CauseTitle>{t('causeAging')}</CauseTitle>
+                <CauseText>{t('causeAgingDesc')}</CauseText>
+              </CauseContent>
+            </CauseItem>
+            <CauseItem>
+              <CauseIcon>⚠️</CauseIcon>
+              <CauseContent>
+                <CauseTitle>{t('causeLifting')}</CauseTitle>
+                <CauseText>{t('causeLiftingDesc')}</CauseText>
+              </CauseContent>
+            </CauseItem>
+            <CauseItem>
+              <CauseIcon>⚠️</CauseIcon>
+              <CauseContent>
+                <CauseTitle>{t('causeRepetitive')}</CauseTitle>
+                <CauseText>{t('causeRepetitiveDesc')}</CauseText>
+              </CauseContent>
+            </CauseItem>
+            <CauseItem>
+              <CauseIcon>⚠️</CauseIcon>
+              <CauseContent>
+                <CauseTitle>{t('causeSedentary')}</CauseTitle>
+                <CauseText>{t('causeSedentaryDesc')}</CauseText>
+              </CauseContent>
+            </CauseItem>
+          </CausesList>
+        </Section>
+
+        {/* Section 4: Tratamientos para Discos Herniados en Puerto Rico */}
+        <Section id="tratamientos">
+          <SectionTitle>
+            <FaStethoscope />
+            {t('treatmentsTitle')}
+          </SectionTitle>
+
+          <SectionText>
+            {t('treatmentsIntro')}
+          </SectionText>
+
+          <TreatmentContainer>
+            <TreatmentCard>
+              <TreatmentHeader>
+                <TreatmentIcon>💊</TreatmentIcon>
+                <TreatmentTitle>{t('conventionalTreatments')}</TreatmentTitle>
+              </TreatmentHeader>
+              <TreatmentList>
+                <TreatmentItem>{t('medicationTreatment')}</TreatmentItem>
+                <TreatmentItem>{t('physicalTherapy')}</TreatmentItem>
+                <TreatmentItem>{t('steroidInjections')}</TreatmentItem>
+                <TreatmentItem>{t('surgery')}</TreatmentItem>
+              </TreatmentList>
+            </TreatmentCard>
+
+            <TreatmentCard highlight>
+              <TreatmentHeader>
+                <TreatmentIcon highlight>⭐</TreatmentIcon>
+                <TreatmentTitle>{t('ourSpecialty')}</TreatmentTitle>
+              </TreatmentHeader>
+              <TreatmentSubtitle>{t('howItWorks')}</TreatmentSubtitle>
+              <SectionText style={{ color: '#2c3e50', fontSize: '16px' }}>
+                {t('decompressionExplanation')}
               </SectionText>
-              <SectionText>
-                {t('earlySymptomsFAQAnswer2')}
-              </SectionText>
-            </FAQBox>
-          </ContentColumn>
-        </ContentRow>
-      </Section>
+              <TreatmentSubtitle>{t('benefits')}</TreatmentSubtitle>
+              <TreatmentList>
+                <TreatmentItem>{t('benefitNoninvasive')}</TreatmentItem>
+                <TreatmentItem>{t('benefitRootCause')}</TreatmentItem>
+                <TreatmentItem>{t('benefitSuccessRate')}</TreatmentItem>
+              </TreatmentList>
+              <CTAButton href="https://wa.me/17872618258">
+                📱 {t('contactUsWhatsapp')}
+              </CTAButton>
+            </TreatmentCard>
+          </TreatmentContainer>
+        </Section>
 
-      {/* Section 3: Causas de los Discos Herniados */}
-      <Section>
-        <SectionTitle>{t('causesTitle')}</SectionTitle>
-        <ContentRow>
-          <ContentColumn>
-            <CausesList>
-              <CauseItem>
-                <CauseIcon>⚠️</CauseIcon>
-                <CauseContent>
-                  <CauseTitle>{t('causeAging')}</CauseTitle>
-                  <CauseText>{t('causeAgingDesc')}</CauseText>
-                </CauseContent>
-              </CauseItem>
-              <CauseItem>
-                <CauseIcon>⚠️</CauseIcon>
-                <CauseContent>
-                  <CauseTitle>{t('causeLifting')}</CauseTitle>
-                  <CauseText>{t('causeLiftingDesc')}</CauseText>
-                </CauseContent>
-              </CauseItem>
-              <CauseItem>
-                <CauseIcon>⚠️</CauseIcon>
-                <CauseContent>
-                  <CauseTitle>{t('causeRepetitive')}</CauseTitle>
-                  <CauseText>{t('causeRepetitiveDesc')}</CauseText>
-                </CauseContent>
-              </CauseItem>
-              <CauseItem>
-                <CauseIcon>⚠️</CauseIcon>
-                <CauseContent>
-                  <CauseTitle>{t('causeSedentary')}</CauseTitle>
-                  <CauseText>{t('causeSedentaryDesc')}</CauseText>
-                </CauseContent>
-              </CauseItem>
-            </CausesList>
-          </ContentColumn>
-        </ContentRow>
-      </Section>
+        {/* Section 5: Preguntas Frecuentes (FAQ) */}
+        <Section id="preguntas">
+          <SectionTitle>
+            <FaBookOpen />
+            {t('faqTitle')}
+          </SectionTitle>
 
-      {/* Section 4: Tratamientos para Discos Herniados en Puerto Rico */}
-      <Section>
-        <SectionTitle style={{ color: '#fff' }}>{t('treatmentsTitle')}</SectionTitle>
-        <SectionText style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 30px', color: '#fff' }}>
-          {t('treatmentsIntro')}
-        </SectionText>
-        
-        <TreatmentContainer>
-          <TreatmentCard>
-            <TreatmentHeader>
-              <TreatmentIcon>💊</TreatmentIcon>
-              <TreatmentTitle>{t('conventionalTreatments')}</TreatmentTitle>
-            </TreatmentHeader>
-            <TreatmentList>
-              <TreatmentItem>{t('medicationTreatment')}</TreatmentItem>
-              <TreatmentItem>{t('physicalTherapy')}</TreatmentItem>
-              <TreatmentItem>{t('steroidInjections')}</TreatmentItem>
-              <TreatmentItem>{t('surgery')}</TreatmentItem>
-            </TreatmentList>
-          </TreatmentCard>
-          
-          <TreatmentCard highlight>
-            <TreatmentHeader>
-              <TreatmentIcon>⭐</TreatmentIcon>
-              <TreatmentTitle>{t('ourSpecialty')}</TreatmentTitle>
-            </TreatmentHeader>
-            <TreatmentSubtitle>{t('howItWorks')}</TreatmentSubtitle>
-            <SectionText style={{ color: '#444' }}>
-              {t('decompressionExplanation')}
-            </SectionText>
-            <TreatmentSubtitle>{t('benefits')}</TreatmentSubtitle>
-            <TreatmentList>
-              <TreatmentItem>{t('benefitNoninvasive')}</TreatmentItem>
-              <TreatmentItem>{t('benefitRootCause')}</TreatmentItem>
-              <TreatmentItem>{t('benefitSuccessRate')}</TreatmentItem>
-            </TreatmentList>
-            <CTAButton href="https://wa.me/17872618258">
-              📱 {t('contactUsWhatsapp')}
-            </CTAButton>
-          </TreatmentCard>
-        </TreatmentContainer>
-      </Section>
+          <FAQContainer>
+            <FAQ>
+              <FAQQuestion onClick={() => toggleFaq(0)} active={openFaq === 0}>
+                {t('faqSafety')}
+                <FAQIcon active={openFaq === 0}>
+                  {openFaq === 0 ? <FaChevronUp /> : <FaChevronDown />}
+                </FAQIcon>
+              </FAQQuestion>
+              <FAQAnswer active={openFaq === 0}>
+                {t('faqSafetyAnswer')}
+              </FAQAnswer>
+            </FAQ>
 
-      {/* Section 6: Preguntas Frecuentes (FAQ) */}
-      <Section>
-        <SectionTitle>{t('faqTitle')}</SectionTitle>
-        <FAQContainer>
-          <FAQ>
-            <FAQQuestion onClick={() => toggleFaq(0)} active={openFaq === 0}>
-              {t('faqSafety')}
-              <FAQIcon>{openFaq === 0 ? <FaChevronUp /> : <FaChevronDown />}</FAQIcon>
-            </FAQQuestion>
-            <FAQAnswer active={openFaq === 0}>
-              {t('faqSafetyAnswer')}
-            </FAQAnswer>
-          </FAQ>
-          
-          <FAQ>
-            <FAQQuestion onClick={() => toggleFaq(1)} active={openFaq === 1}>
-              {t('faqDuration')}
-              <FAQIcon>{openFaq === 1 ? <FaChevronUp /> : <FaChevronDown />}</FAQIcon>
-            </FAQQuestion>
-            <FAQAnswer active={openFaq === 1}>
-              {t('faqDurationAnswer')}
-            </FAQAnswer>
-          </FAQ>
-          
-          <FAQ>
-            <FAQQuestion onClick={() => toggleFaq(2)} active={openFaq === 2}>
-              {t('faqSessions')}
-              <FAQIcon>{openFaq === 2 ? <FaChevronUp /> : <FaChevronDown />}</FAQIcon>
-            </FAQQuestion>
-            <FAQAnswer active={openFaq === 2}>
-              {t('faqSessionsAnswer')}
-            </FAQAnswer>
-          </FAQ>
-          
-          <FAQ>
-            <FAQQuestion onClick={() => toggleFaq(3)} active={openFaq === 3}>
-              {t('faqInsurance')}
-              <FAQIcon>{openFaq === 3 ? <FaChevronUp /> : <FaChevronDown />}</FAQIcon>
-            </FAQQuestion>
-            <FAQAnswer active={openFaq === 3}>
-              {t('faqInsuranceAnswer')}
-            </FAQAnswer>
-          </FAQ>
-        </FAQContainer>
-        
+            <FAQ>
+              <FAQQuestion onClick={() => toggleFaq(1)} active={openFaq === 1}>
+                {t('faqDuration')}
+                <FAQIcon active={openFaq === 1}>
+                  {openFaq === 1 ? <FaChevronUp /> : <FaChevronDown />}
+                </FAQIcon>
+              </FAQQuestion>
+              <FAQAnswer active={openFaq === 1}>
+                {t('faqDurationAnswer')}
+              </FAQAnswer>
+            </FAQ>
+
+            <FAQ>
+              <FAQQuestion onClick={() => toggleFaq(2)} active={openFaq === 2}>
+                {t('faqSessions')}
+                <FAQIcon active={openFaq === 2}>
+                  {openFaq === 2 ? <FaChevronUp /> : <FaChevronDown />}
+                </FAQIcon>
+              </FAQQuestion>
+              <FAQAnswer active={openFaq === 2}>
+                {t('faqSessionsAnswer')}
+              </FAQAnswer>
+            </FAQ>
+
+            <FAQ>
+              <FAQQuestion onClick={() => toggleFaq(3)} active={openFaq === 3}>
+                {t('faqInsurance')}
+                <FAQIcon active={openFaq === 3}>
+                  {openFaq === 3 ? <FaChevronUp /> : <FaChevronDown />}
+                </FAQIcon>
+              </FAQQuestion>
+              <FAQAnswer active={openFaq === 3}>
+                {t('faqInsuranceAnswer')}
+              </FAQAnswer>
+            </FAQ>
+          </FAQContainer>
+        </Section>
+
+        {/* Final CTA */}
         <CTAContainer>
           <CTATitle>{t('readyForRelief')}</CTATitle>
           <CTAText>{t('teamReady')}</CTAText>
-          <CTAButton href="https://wa.me/17872618258" style={{ margin: '20px auto' }}>
+          <CTAButton href="https://wa.me/17872618258">
             📱 {t('contactUsWhatsapp')}
           </CTAButton>
         </CTAContainer>
-      </Section>
+      </ArticleContainer>
     </>
   );
 };

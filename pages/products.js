@@ -3,7 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaStethoscope, FaHeartbeat, FaBolt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Products = () => {
   const { t, language } = useLanguage();
@@ -24,7 +25,16 @@ const Products = () => {
 
           <ProductsContainer>
             {/* Chiropractic Section */}
-            <ProductSection id="chiropractic">
+            <AnimatedCard
+              id="chiropractic"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0 }}
+              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #00d9ff66' }}
+            >
+              <MedicalBadge color="#00d9ff">
+                <StethoscopeIcon />
+              </MedicalBadge>
               <ProductImage 
                 src="/images/chiropractic-treatment-toa-baja.jpeg" 
                 alt="Professional chiropractic treatment and adjustments in Toa Baja, Puerto Rico" 
@@ -50,10 +60,19 @@ const Products = () => {
                   </InfoText>
                 </InfoSection>
               </DropdownContent>
-            </ProductSection>
+            </AnimatedCard>
 
             {/* Decompression Section */}
-            <ProductSection id="decompression">
+            <AnimatedCard
+              id="decompression"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #00ffd966' }}
+            >
+              <MedicalBadge color="#00ffd9">
+                <SpineIcon />
+              </MedicalBadge>
               <ProductImage 
                 src="/images/spinal-decompression-therapy-pr.png" 
                 alt="Non-surgical spinal decompression therapy for herniated discs in Puerto Rico" 
@@ -75,10 +94,19 @@ const Products = () => {
                   <InfoText>{t('insuranceNotCovered')}</InfoText>
                 </InfoSection>
               </DropdownContent>
-            </ProductSection>
+            </AnimatedCard>
 
             {/* Laser Therapy Section */}
-            <ProductSection id="laser">
+            <AnimatedCard
+              id="laser"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #ff990066' }}
+            >
+              <MedicalBadge color="#ff9900">
+                <LaserIcon />
+              </MedicalBadge>
               <ProductImage 
                 src="/images/advanced-laser-therapy-treatment.png" 
                 alt="Advanced laser therapy for pain relief and healing in Puerto Rico" 
@@ -104,10 +132,19 @@ const Products = () => {
                   </InfoText>
                 </InfoSection>
               </DropdownContent>
-            </ProductSection>
+            </AnimatedCard>
 
             {/* Matrix Section */}
-            <ProductSection id="matrix">
+            <AnimatedCard
+              id="matrix"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #00ff9966' }}
+            >
+              <MedicalBadge color="#00ff99">
+                <MatrixIcon />
+              </MedicalBadge>
               <ProductImage 
                 src="/images/matrix-rehabilitation-therapy.jpeg" 
                 alt="Matrix rehabilitation therapy for muscle recovery and pain management" 
@@ -129,7 +166,7 @@ const Products = () => {
                   <InfoText>{t('insuranceNotCovered')}</InfoText>
                 </InfoSection>
               </DropdownContent>
-            </ProductSection>
+            </AnimatedCard>
           </ProductsContainer>
         </Content>
       </PageContainer>
@@ -221,29 +258,74 @@ const ProductsContainer = styled.div`
   }
 `;
 
-const ProductSection = styled.div`
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-  padding: 30px;
+const AnimatedCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 20px;
+  padding: 56px 28px 28px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 217, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  border: 1.5px solid rgba(0, 217, 255, 0.25);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+  margin-bottom: 20px;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border-color: #00d9ff;
+    box-shadow: 0 0 40px #00d9ff44;
+    transform: translateY(-4px) scale(1.025);
   }
 
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 24px 10px 18px 10px;
     border-radius: 15px;
   }
+`;
+
+// Medical badge for icons
+const MedicalBadge = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  background: ${({ color }) => color || '#00d9ff'};
+  color: white;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px ${({ color }) => color || '#00d9ff'}44;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  z-index: 2;
+  border: 2px solid #fff;
+  animation: badge-pop 0.7s cubic-bezier(.7,-0.25,.6,1.5);
+
+  @keyframes badge-pop {
+    0% { transform: scale(0.6); opacity: 0; }
+    70% { transform: scale(1.12); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+`;
+
+const StethoscopeIcon = styled(FaStethoscope)`
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px #00d9ff88);
+`;
+const SpineIcon = styled(FaHeartbeat)`
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px #00ffd988);
+`;
+const LaserIcon = styled(FaBolt)`
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px #ff990088);
+`;
+
+const MatrixIcon = styled(FaHeartbeat)`
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px #00ff9988);
 `;
 
 const ProductImage = styled.img`
