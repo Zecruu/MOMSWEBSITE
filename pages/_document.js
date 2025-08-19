@@ -59,9 +59,9 @@ export default class MyDocument extends Document {
           <link rel="canonical" href="https://prdecompressioncenters.com/" />
 
           {/* Favicon */}
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" href="/images/pr-decompression-centers-logo.png" />
+          <link rel="shortcut icon" type="image/png" href="/images/pr-decompression-centers-logo.png" />
+          <link rel="apple-touch-icon" href="/images/pr-decompression-centers-logo.png" />
           <link rel="manifest" href="/site.webmanifest" />
 
           {/* Structured Data */}
@@ -136,7 +136,7 @@ export default class MyDocument extends Document {
 
           {/* Additional Meta Tags */}
           <meta name="format-detection" content="telephone=no" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
           <meta name="apple-mobile-web-app-title" content="PR Decompression Centers" />
           <meta name="application-name" content="PR Decompression Centers" />

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useLanguage } from "../context/LanguageContext";
 import { FaChevronDown, FaStethoscope, FaHeartbeat, FaBolt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 const Products = () => {
   const { t, language } = useLanguage();
@@ -14,8 +15,90 @@ const Products = () => {
     setOpenProduct(openProduct === product ? null : product);
   };
 
+  const pageTitle = language === 'en' 
+    ? 'Chiropractic Services Puerto Rico | Spinal Decompression & Laser Therapy Toa Baja | PR Decompression Centers'
+    : 'Servicios Quiroprácticos Puerto Rico | Descompresión Espinal y Terapia Láser Toa Baja | PR Decompression Centers';
+  
+  const pageDescription = language === 'en'
+    ? 'Comprehensive chiropractic services in Puerto Rico including spinal decompression therapy, advanced laser treatment, and matrix rehabilitation. Expert care for herniated discs, back pain, and sciatica in Toa Baja.'
+    : 'Servicios quiroprácticos integrales en Puerto Rico incluyendo terapia de descompresión espinal, tratamiento láser avanzado y rehabilitación matrix. Atención especializada para hernias discales, dolor de espalda y ciática en Toa Baja.';
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "PR Decompression Centers",
+    "url": "https://prdecompressioncenters.com/products",
+    "telephone": "+1-787-261-8258",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "RH-16 Ave. Building, Los Dominicos",
+      "addressLocality": "Toa Baja",
+      "addressRegion": "PR",
+      "postalCode": "00949",
+      "addressCountry": "PR"
+    },
+    "availableService": [
+      {
+        "@type": "MedicalTherapy",
+        "name": "Chiropractic Treatment",
+        "description": language === 'en' 
+          ? "Professional chiropractic adjustments and spinal alignment therapy"
+          : "Ajustes quiroprácticos profesionales y terapia de alineación espinal"
+      },
+      {
+        "@type": "MedicalTherapy", 
+        "name": "Spinal Decompression Therapy",
+        "description": language === 'en'
+          ? "Non-surgical treatment for herniated discs and spinal compression"
+          : "Tratamiento no quirúrgico para hernias discales y compresión espinal"
+      },
+      {
+        "@type": "MedicalTherapy",
+        "name": "Laser Therapy",
+        "description": language === 'en'
+          ? "Advanced laser treatment for pain relief and tissue healing"
+          : "Tratamiento láser avanzado para alivio del dolor y sanación de tejidos"
+      },
+      {
+        "@type": "MedicalTherapy",
+        "name": "Matrix Rehabilitation",
+        "description": language === 'en'
+          ? "Matrix therapy for muscle recovery and pain management"
+          : "Terapia matrix para recuperación muscular y manejo del dolor"
+      }
+    ]
+  };
+
   return (
     <MainContainer>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="chiropractic services Puerto Rico, servicios quiroprácticos, spinal decompression therapy, terapia descompresión espinal, laser therapy Toa Baja, matrix rehabilitation, herniated disc treatment, tratamiento hernia discal, back pain relief Puerto Rico, dolor espalda" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prdecompressioncenters.com/products" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content="https://prdecompressioncenters.com/images/chiropractic-treatment-toa-baja.jpeg" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://prdecompressioncenters.com/products" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://prdecompressioncenters.com/images/chiropractic-treatment-toa-baja.jpeg" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://prdecompressioncenters.com/products" />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
       <NavbarWrapper>
         <Navbar />
       </NavbarWrapper>
@@ -210,17 +293,22 @@ const PageContainer = styled.div`
 
 const Content = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   text-align: center;
-  padding: 120px 0 250px 0;
+  padding: 120px 60px 250px 60px;
   margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  @media (max-width: 1400px) {
+    max-width: 1200px;
+    padding: 120px 40px 250px 40px;
+  }
+
   @media (max-width: 768px) {
-    padding: 100px 0 60px;
+    padding: 100px 20px 60px 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -246,15 +334,20 @@ const ProductsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 90%;
-  max-width: 800px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
+
+  @media (max-width: 1200px) {
+    max-width: 1000px;
+  }
 
   @media (max-width: 768px) {
     width: 95%;
     gap: 30px;
     padding: 10px;
+    max-width: 800px;
   }
 `;
 

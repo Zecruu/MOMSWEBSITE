@@ -52,14 +52,25 @@
   <!-- Location Page -->
   <url>
     <loc>https://prdecompressioncenters.com/locate</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2025-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/locate" />
     <xhtml:link rel="alternate" hreflang="en" href="https://prdecompressioncenters.com/locate?lang=en" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/locate" />
   </url>
-  
+
+  <!-- Cookie Policy Page -->
+  <url>
+    <loc>https://prdecompressioncenters.com/cookie-policy</loc>
+    <lastmod>2025-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/cookie-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://prdecompressioncenters.com/cookie-policy?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/cookie-policy" />
+  </url>
+
   <!-- Additional Test Pages -->
   <url>
     <loc>https://prdecompressioncenters.com/test</loc>

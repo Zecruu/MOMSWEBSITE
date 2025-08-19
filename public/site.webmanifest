@@ -2,14 +2,7 @@
   "name": "PR Decompression Centers",
   "short_name": "PR Decompression",
   "description": "Centro líder en terapia de descompresión espinal y tratamiento quiropráctico en Puerto Rico",
-  "icons": [
-    {
-      "src": "/images/pr-decompression-centers-logo.png",
-      "sizes": "16x16 32x32 180x180 192x192 512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
+  "icons": [],
   "theme_color": "#4facfe",
   "background_color": "#ffffff",
   "display": "standalone",

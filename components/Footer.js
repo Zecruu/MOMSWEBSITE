@@ -24,7 +24,6 @@ const Footer = () => {
           <FooterSection>
             <SectionTitle>{t('contactUs')}</SectionTitle>
             <FooterLink href="tel:7872618258" rel="noopener">787-261-8258</FooterLink>
-            <FooterLink href="mailto:aivinmorales@gmail.com" rel="noopener">aivinmorales@gmail.com</FooterLink>
             <AddressButton onClick={() => router.push('/locate')}>
               <AddressText>RH-16 Ave. Building, Los Dominicos,</AddressText>
               <AddressText>Toa Baja, Levittown, Puerto Rico (PR)</AddressText>
@@ -80,6 +79,15 @@ const Footer = () => {
 
       <BottomBar>
         <Copyright>&copy;{currentYear} PR Decompression Centers</Copyright>
+        <PoweredBy>
+          <PoweredByText>Powered by</PoweredByText>
+          <NuvanaLink href="https://www.nuvanaweb.com/" target="_blank" rel="noopener noreferrer">
+            <NuvanaLogo 
+              src="/images/Nuvana Logo.jpg" 
+              alt="Nuvana Web Development" 
+            />
+          </NuvanaLink>
+        </PoweredBy>
       </BottomBar>
     </FooterContainer>
   );
@@ -311,7 +319,7 @@ const AddressText = styled.p`
 
 const BottomBar = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin: 30px auto 0;
@@ -322,6 +330,8 @@ const BottomBar = styled.div`
   @media (max-width: 768px) {
     margin-top: 20px;
     padding: 15px 10px 0;
+    flex-direction: column;
+    gap: 15px;
   }
 `;
 
@@ -331,4 +341,38 @@ const Copyright = styled.p`
   margin: 0;
   text-align: center;
   text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+`;
+
+const PoweredBy = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const PoweredByText = styled.span`
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+`;
+
+const NuvanaLink = styled.a`
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));
+  }
+`;
+
+const NuvanaLogo = styled.img`
+  height: 24px;
+  width: auto;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  
+  @media (max-width: 768px) {
+    height: 20px;
+  }
 `;

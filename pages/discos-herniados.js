@@ -7,9 +7,9 @@ import { motion } from 'framer-motion';
 
 // Main Article Container
 const ArticleContainer = styled.article`
-  max-width: 900px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 40px 60px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -18,7 +18,13 @@ const ArticleContainer = styled.article`
   color: #333;
   line-height: 1.8;
 
+  @media (max-width: 1200px) {
+    max-width: 1000px;
+    padding: 40px 40px;
+  }
+
   @media (max-width: 768px) {
+    max-width: 900px;
     margin: 80px 10px 20px;
     padding: 30px 15px;
     border-radius: 15px;
@@ -573,12 +579,12 @@ const DiscosHerniados = () => {
   };
 
   const pageTitle = language === 'en' 
-    ? 'Herniated Disc Treatment in Puerto Rico | Non-Surgical Pain Relief' 
-    : 'Tratamiento de Discos Herniados en Puerto Rico | Alivio del Dolor Sin Cirugía';
+    ? 'Herniated Disc Treatment Puerto Rico | #1 Non-Surgical Spinal Decompression Toa Baja | PR Decompression Centers' 
+    : 'Tratamiento Discos Herniados Puerto Rico | #1 Descompresión Espinal No Quirúrgica Toa Baja | PR Decompression Centers';
   
   const pageDesc = language === 'en'
-    ? 'Expert treatment for herniated discs in Puerto Rico. Learn about symptoms, causes, and how our non-surgical spinal decompression therapy can help relieve your pain. Free consultation available.'
-    : 'Tratamiento experto para discos herniados en Puerto Rico. Conozca los síntomas, causas y cómo nuestra terapia de descompresión espinal no quirúrgica puede ayudar a aliviar su dolor. Consulta gratuita disponible.';
+    ? 'Expert herniated disc treatment in Puerto Rico using advanced spinal decompression therapy. Serving Toa Baja, Levittown, Bayamón. Learn symptoms, causes, and non-surgical solutions. Free consultation available.'
+    : 'Tratamiento experto para discos herniados en Puerto Rico usando terapia avanzada de descompresión espinal. Sirviendo Toa Baja, Levittown, Bayamón. Conozca síntomas, causas y soluciones no quirúrgicas. Consulta gratuita disponible.';
 
   const ogTitle = language === 'en'
     ? 'Herniated Disc Treatment | PR Decompression Centers' 
@@ -591,24 +597,46 @@ const DiscosHerniados = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "name": isEnglish ? "Herniated Disc Treatment | PR Decompression Centers" : "Tratamiento de Disco Herniado | PR Decompression Centers",
+    "name": isEnglish ? "Herniated Disc Treatment Puerto Rico | PR Decompression Centers" : "Tratamiento Discos Herniados Puerto Rico | PR Decompression Centers",
     "description": isEnglish ?
-      "Expert treatment for herniated discs using non-surgical spinal decompression therapy. Learn about symptoms, causes, and effective treatment options." :
-      "Tratamiento experto para discos herniados usando terapia de descompresión espinal no quirúrgica. Conozca los síntomas, causas y opciones de tratamiento efectivas.",
-    "url": "https://www.prdecompressioncenters.com/discos-herniados",
+      "Expert herniated disc treatment in Puerto Rico using advanced spinal decompression therapy. Serving Toa Baja, Levittown, Bayamón with non-surgical solutions." :
+      "Tratamiento experto para discos herniados en Puerto Rico usando terapia avanzada de descompresión espinal. Sirviendo Toa Baja, Levittown, Bayamón con soluciones no quirúrgicas.",
+    "url": "https://prdecompressioncenters.com/discos-herniados",
     "inLanguage": isEnglish ? "en-US" : "es-PR",
+    "keywords": isEnglish ? 
+      "herniated disc treatment, spinal decompression, Puerto Rico, Toa Baja, non-surgical, back pain relief" :
+      "tratamiento discos herniados, descompresión espinal, Puerto Rico, Toa Baja, no quirúrgico, alivio dolor espalda",
+    "about": {
+      "@type": "MedicalBusiness",
+      "name": "PR Decompression Centers",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "RH-16 Ave. Building, Los Dominicos",
+        "addressLocality": "Toa Baja",
+        "addressRegion": "PR",
+        "postalCode": "00949",
+        "addressCountry": "PR"
+      },
+      "telephone": "+1-787-261-8258"
+    },
     "mainEntity": {
       "@type": "MedicalCondition",
       "name": isEnglish ? "Herniated Disc" : "Disco Herniado",
       "description": isEnglish ?
-        "A herniated disc occurs when the soft center of a spinal disc pushes through a crack in the tougher exterior casing." :
-        "Un disco herniado ocurre cuando el centro blando de un disco espinal empuja a través de una grieta en la cubierta exterior más dura.",
+        "A herniated disc occurs when the soft center of a spinal disc pushes through a crack in the tougher exterior casing, causing pain and nerve compression." :
+        "Un disco herniado ocurre cuando el centro blando de un disco espinal empuja a través de una grieta en la cubierta exterior más dura, causando dolor y compresión nerviosa.",
+      "symptom": [
+        isEnglish ? "Lower back pain" : "Dolor lumbar",
+        isEnglish ? "Sciatica" : "Ciática", 
+        isEnglish ? "Numbness in legs" : "Entumecimiento en piernas",
+        isEnglish ? "Muscle weakness" : "Debilidad muscular"
+      ],
       "possibleTreatment": {
         "@type": "MedicalTherapy",
-        "name": isEnglish ? "Non-surgical Spinal Decompression" : "Descompresión Espinal No Quirúrgica",
+        "name": isEnglish ? "Non-surgical Spinal Decompression Therapy" : "Terapia de Descompresión Espinal No Quirúrgica",
         "description": isEnglish ?
-          "A non-invasive treatment that gently stretches the spine to relieve pressure on the discs and nerves." :
-          "Un tratamiento no invasivo que estira suavemente la columna vertebral para aliviar la presión en los discos y nervios."
+          "Advanced non-invasive treatment that gently stretches the spine to relieve pressure on herniated discs and compressed nerves, promoting natural healing." :
+          "Tratamiento avanzado no invasivo que estira suavemente la columna vertebral para aliviar la presión en discos herniados y nervios comprimidos, promoviendo la curación natural."
       }
     }
   };

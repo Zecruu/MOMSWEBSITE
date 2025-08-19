@@ -32,10 +32,12 @@ const Reviews = () => {
     }
   ];
 
-  const pageTitle = language === 'en' ? 'Testimonials - PR Decompression Centers' : 'Testimonios - PR Decompression Centers';
+  const pageTitle = language === 'en' 
+    ? 'Patient Reviews & Testimonials Puerto Rico | Best Chiropractor Toa Baja | PR Decompression Centers' 
+    : 'Reseñas y Testimonios de Pacientes Puerto Rico | Mejor Quiropráctico Toa Baja | PR Decompression Centers';
   const pageDescription = language === 'en' 
-    ? 'Read testimonials from our satisfied patients about their experience with our spinal decompression therapy and chiropractic treatments.'
-    : 'Lea testimonios de nuestros pacientes satisfechos sobre su experiencia con nuestra terapia de descompresión espinal y tratamientos quiroprácticos.';
+    ? 'Read authentic patient testimonials and reviews about our chiropractic care and spinal decompression therapy in Puerto Rico. See why we are the top-rated chiropractor in Toa Baja, serving Levittown and Bayamón.'
+    : 'Lea testimonios auténticos y reseñas de pacientes sobre nuestro cuidado quiropráctico y terapia de descompresión espinal en Puerto Rico. Vea por qué somos el quiropráctico mejor calificado en Toa Baja, sirviendo Levittown y Bayamón.';
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -72,12 +74,26 @@ const Reviews = () => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="patient reviews Puerto Rico, testimonials chiropractor, reseñas pacientes, testimonios quiropráctico, best chiropractor Toa Baja, mejor quiropráctico, spinal decompression reviews, patient testimonials Levittown, Bayamón chiropractic reviews" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prdecompressioncenters.com/reviews" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content="https://prdecompressioncenters.com/reviews" />
-        <meta property="og:type" content="website" />
         <meta property="og:image" content="https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://prdecompressioncenters.com/reviews" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png" />
+
+        {/* Canonical URL */}
         <link rel="canonical" href="https://prdecompressioncenters.com/reviews" />
+
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -159,31 +175,32 @@ const NavbarWrapper = styled.div`
 const PageContainer = styled.div`
   display: flex;
   flex-grow: 1;
-  width: calc(100% - 260px);
-  margin-left: 260px;
+  width: 100%;
   padding: 0;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
 
   @media (max-width: 768px) {
     width: 100%;
-    margin-left: 0;
     justify-content: center;
   }
 `;
 
 const Content = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   text-align: center;
-  padding: 50px 0 250px 0;
+  padding: 120px 60px 250px 60px;
   margin: 0 auto;
   position: relative;
-  left: -200px;
+
+  @media (max-width: 1400px) {
+    max-width: 1200px;
+    padding: 120px 40px 250px 40px;
+  }
 
   @media (max-width: 768px) {
-    left: 0;
-    padding: 80px 0 60px;
+    padding: 100px 20px 60px 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -207,18 +224,24 @@ const Title = styled.h1`
 
 const ReviewsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  width: 90%;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
+
+  @media (max-width: 1200px) {
+    max-width: 1000px;
+    gap: 30px;
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     width: 95%;
     gap: 20px;
     padding: 10px;
+    max-width: 600px;
   }
 `;
 

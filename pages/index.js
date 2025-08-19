@@ -82,12 +82,12 @@ const Index = () => {
   };
 
   const pageTitle = language === 'en' 
-    ? 'PR Decompression Centers - Expert Chiropractic & Spinal Treatment in Puerto Rico' 
-    : 'PR Decompression Centers - Tratamiento Quiropráctico y Espinal en Puerto Rico';
+    ? 'Best Chiropractor in Puerto Rico | #1 Spinal Decompression Center Toa Baja | PR Decompression Centers' 
+    : 'Mejor Quiropráctico en Puerto Rico | Centro #1 de Descompresión Espinal Toa Baja | PR Decompression Centers';
   
   const pageDescription = language === 'en'
-    ? 'Specialized chiropractic care and spinal decompression therapy in Puerto Rico. We treat back pain, herniated discs, sciatica and more with advanced non-surgical techniques.'
-    : 'Cuidado quiropráctico especializado y terapia de descompresión espinal en Puerto Rico. Tratamos dolor de espalda, hernias discales, ciática y más con técnicas avanzadas no quirúrgicas.';
+    ? 'Top-rated chiropractor in Puerto Rico specializing in spinal decompression therapy, herniated disc treatment, and sciatica relief. Located in Toa Baja, serving Levittown, Bayamón, and surrounding areas. Advanced non-surgical pain relief solutions.'
+    : 'Quiropráctico #1 en Puerto Rico especializado en terapia de descompresión espinal, tratamiento de hernias discales y alivio de ciática. Ubicado en Toa Baja, sirviendo Levittown, Bayamón y áreas circundantes. Soluciones avanzadas no quirúrgicas para el dolor.';
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -141,7 +141,7 @@ const Index = () => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="chiropractic, spinal decompression, back pain, herniated disc, Puerto Rico, terapia descompresión, quiropractico, dolor espalda, hernia discal" />
+        <meta name="keywords" content="chiropractor Puerto Rico, quiropráctico Puerto Rico, spinal decompression Toa Baja, terapia descompresión espinal, herniated disc treatment, hernia discal tratamiento, back pain relief, dolor espalda, sciatica treatment, ciática, Levittown chiropractor, Bayamón chiropractic, non-surgical pain relief, laser therapy Puerto Rico" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
@@ -647,11 +647,16 @@ const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  padding: 0 40px;
-  max-width: 1400px;
+  padding: 0 60px;
+  max-width: 1600px;
   margin: 0 auto 80px;
   width: 100%;
   perspective: 1000px;
+  
+  @media (max-width: 1400px) {
+    max-width: 1200px;
+    padding: 0 40px;
+  }
   
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
@@ -1151,12 +1156,18 @@ const TestimonialSection = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto 80px;
-  padding: 0 20px;
+  padding: 0 60px;
+
+  @media (max-width: 1200px) {
+    max-width: 1200px;
+    padding: 0 40px;
+  }
 
   @media (max-width: 768px) {
     margin-bottom: 40px;
+    padding: 0 20px;
   }
 `;
 

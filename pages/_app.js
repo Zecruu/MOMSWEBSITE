@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import FloatingButtons from '../components/FloatingButtons';
+import CookieConsent from '../components/CookieConsent';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -94,6 +95,7 @@ function MyApp({ Component, pageProps }) {
             <Footer />
           </MainContent>
           {mounted && <FloatingButtons />}
+          {mounted && <CookieConsent />}
         </AppContainer>
       </LanguageProvider>
     </StyleSheetManager>

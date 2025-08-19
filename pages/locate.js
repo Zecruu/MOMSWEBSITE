@@ -10,11 +10,11 @@ const Locate = () => {
   const { t, language } = useLanguage();
 
   const pageTitle = language === 'en' 
-    ? 'Location & Contact - PR Decompression Centers' 
-    : 'Ubicación y Contacto - PR Decompression Centers';
+    ? 'Location & Contact | Best Chiropractor Toa Baja Puerto Rico | PR Decompression Centers' 
+    : 'Ubicación y Contacto | Mejor Quiropráctico Toa Baja Puerto Rico | PR Decompression Centers';
   const pageDescription = language === 'en'
-    ? 'Visit our chiropractic and spinal decompression center in Toa Baja, Puerto Rico. Contact us today for appointments and directions.'
-    : 'Visite nuestro centro quiropráctico y de descompresión espinal en Toa Baja, Puerto Rico. Contáctenos hoy para citas e indicaciones.';
+    ? 'Visit our top-rated chiropractic and spinal decompression center in Toa Baja, Puerto Rico. Serving Levittown, Bayamón, and surrounding areas. Call 787-261-8258 for appointments and directions.'
+    : 'Visite nuestro centro quiropráctico y de descompresión espinal mejor calificado en Toa Baja, Puerto Rico. Sirviendo Levittown, Bayamón y áreas circundantes. Llame 787-261-8258 para citas e indicaciones.';
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -24,7 +24,6 @@ const Locate = () => {
     "image": "/images/pr-decompression-centers-logo.png",
     "url": "https://prdecompressioncenters.com",
     "telephone": "+1-787-261-8258",
-    "email": "aivinmorales@gmail.com",
     "description": language === 'en'
       ? "Expert spinal decompression therapy & chiropractic care in Puerto Rico. Advanced treatment for back pain, herniated discs, and sciatica."
       : "Terapia de descompresión espinal y cuidado quiropráctico en Puerto Rico. Tratamiento avanzado para dolor de espalda y hernias discales.",
@@ -110,12 +109,26 @@ const Locate = () => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="chiropractor location Toa Baja, ubicación quiropráctico, contact chiropractor Puerto Rico, contacto quiropráctico, spinal decompression center address, dirección centro descompresión, Levittown chiropractor, Bayamón chiropractic, PR Decompression Centers location" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prdecompressioncenters.com/locate" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content="https://prdecompressioncenters.com/locate" />
-        <meta property="og:type" content="website" />
         <meta property="og:image" content="https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://prdecompressioncenters.com/locate" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png" />
+
+        {/* Canonical URL */}
         <link rel="canonical" href="https://prdecompressioncenters.com/locate" />
+
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -143,20 +156,10 @@ const Locate = () => {
 
             <InfoCard>
               <IconWrapper>
-                <PhoneIcon />
+                <FaPhone />
               </IconWrapper>
               <InfoTitle>{language === 'en' ? 'Phone' : 'Teléfono'}</InfoTitle>
               <InfoLink href="tel:7872618258">787-261-8258</InfoLink>
-            </InfoCard>
-
-            <InfoCard>
-              <IconWrapper>
-                <FaEnvelope />
-              </IconWrapper>
-              <InfoTitle>Email</InfoTitle>
-              <InfoLink href="mailto:aivinmorales@gmail.com">
-                aivinmorales@gmail.com
-              </InfoLink>
             </InfoCard>
 
             <InfoCard>
@@ -203,7 +206,7 @@ const PageContainer = styled.div`
   flex-grow: 1;
   width: 100%;
   padding: 0;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
 
   @media (max-width: 768px) {
@@ -214,14 +217,19 @@ const PageContainer = styled.div`
 
 const Content = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   text-align: center;
-  padding: 120px 0 250px 0;
+  padding: 120px 60px 250px 60px;
   margin: 0 auto;
   position: relative;
 
+  @media (max-width: 1400px) {
+    max-width: 1200px;
+    padding: 120px 40px 250px 40px;
+  }
+
   @media (max-width: 768px) {
-    padding: 100px 0 60px;
+    padding: 100px 20px 60px 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -244,16 +252,21 @@ const Title = styled.h1`
 
 const InfoSection = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto 50px;
   padding: 0;
 
   @media (max-width: 1200px) {
+    max-width: 1000px;
+    gap: 30px;
+  }
+
+  @media (max-width: 900px) {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 20px;
+    gap: 25px;
   }
 
   @media (max-width: 768px) {
@@ -261,6 +274,7 @@ const InfoSection = styled.div`
     gap: 20px;
     margin-bottom: 30px;
     padding: 0 10px;
+    max-width: 600px;
   }
 `;
 
