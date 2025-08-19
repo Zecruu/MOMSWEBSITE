@@ -24,7 +24,8 @@ export const deleteCookie = (name) => {
 };
 
 export const hasConsent = () => {
-  return getCookie('cookieConsent') === 'accepted';
+  const consent = getCookie('cookieConsent');
+  return consent; // Returns 'accepted', 'declined', or null
 };
 
 export const acceptCookies = () => {
