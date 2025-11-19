@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }) {
     <StyleSheetManager shouldComponentUpdate>
       <LanguageProvider>
         <Head>
+          <title>PR Decompression Centers</title>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         </Head>
         {/* Google Analytics tag (gtag.js) */}
