@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #333;
+        }
+        .instructions {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .server-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f7ef;
+            border-radius: 5px;
+        }
+        .qr-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Next.js Server Connection Test</h1>
+        
+        <div class="instructions">
+            <h2>Instructions:</h2>
+            <p>This page helps you test the connection to your Next.js development server from mobile devices.</p>
+            <p>Make sure your mobile device is connected to the same WiFi network as this computer.</p>
+        </div>
+        
+        <div class="server-info">
+            <h2>Server Information:</h2>
+            <p><strong>Local IP Address:</strong> <span id="ipAddress">192.168.0.25</span></p>
+            <p><strong>Port:</strong> <span id="port">3051</span></p>
+            <p><strong>URL to access from mobile:</strong> <a id="serverUrl" href="http://192.168.0.25:3051" target="_blank">http://192.168.0.25:3051</a></p>
+        </div>
+        
+        <div class="qr-section">
+            <h2>Scan QR Code to Access:</h2>
+            <p>Use your mobile device's camera to scan this QR code:</p>
+            <div id="qrcode"></div>
+            <p><small>If QR code doesn't appear, you may need to install a QR code generator library.</small></p>
+        </div>
+        
+        <div style="margin-top: 20px; text-align: center;">
+            <button onclick="testConnection()">Test Connection</button>
+        </div>
+    </div>
+
+    <script>
+        function testConnection() {
+            const ipAddress = document.getElementById('ipAddress').textContent;
+            const port = document.getElementById('port').textContent;
+            const url = `http://${ipAddress}:${port}`;
+            
+            fetch(url, { mode: 'no-cors' })
+                .then(() => {
+                    alert('Connection successful! The server is accessible.');
+                })
+                .catch(error => {
+                    alert('Connection failed. Please check your server and firewall settings.\n\nError: ' + error.message);
+                });
+        }
+    </script>
+</body>
+</html> 

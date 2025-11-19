@@ -1,0 +1,21 @@
+{
+  "name": "PR Decompression Centers",
+  "short_name": "PR Decompression",
+  "description": "Centro líder en terapia de descompresión espinal y tratamiento quiropráctico en Puerto Rico",
+  "icons": [],
+  "theme_color": "#4facfe",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait",
+  "lang": "es-PR",
+  "dir": "ltr",
+  "categories": ["medical", "health", "chiropractic"],
+  "screenshots": [
+    {
+      "src": "/images/non-surgical-pain-relief.JPG",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    }
+  ]
+} 
