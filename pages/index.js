@@ -150,7 +150,7 @@ const Index = () => {
       
       <div className="flex-1 w-full">
         {/* Hero Section */}
-        <div className="relative w-full h-[calc(100vh-70px)] -mt-[70px] pt-[70px] flex flex-col justify-center items-center bg-[url('/images/non-surgical-pain-relief.JPG')] bg-cover bg-center bg-no-repeat bg-fixed">
+        <div className="relative w-full h-[calc(100vh-70px)] -mt-[70px] pt-[70px] flex flex-col justify-center items-center bg-[url('/images/non-surgical-pain-relief.JPG')] bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed">
           <div className="absolute inset-0 bg-black/30 z-10" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] z-20" />
           
