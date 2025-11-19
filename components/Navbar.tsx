@@ -41,6 +41,34 @@ const Navbar = () => {
     { href: '/locate', label: language === 'en' ? 'Location' : 'Ubicación' },
   ];
 
+  const LanguageToggle = () => (
+    <div 
+      onClick={toggleLanguage}
+      className="relative flex items-center cursor-pointer bg-black/50 border border-white/20 rounded-full p-1 w-24 h-9 select-none"
+    >
+      <div 
+        className={cn(
+          "absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-gradient-to-r from-[#00f2fe] to-[#4facfe] transition-all duration-300 ease-in-out",
+          language === 'en' ? "left-1" : "left-[calc(50%)]"
+        )}
+      />
+      <div className="flex w-full justify-between text-xs font-bold z-10">
+        <span className={cn(
+          "flex-1 text-center transition-colors duration-300",
+          language === 'en' ? "text-white" : "text-white/50"
+        )}>
+          EN
+        </span>
+        <span className={cn(
+          "flex-1 text-center transition-colors duration-300",
+          language === 'es' ? "text-white" : "text-white/50"
+        )}>
+          ES
+        </span>
+      </div>
+    </div>
+  );
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 h-[70px]">
       <div className="container mx-auto h-full px-4 flex items-center justify-between max-w-7xl">
@@ -70,14 +98,7 @@ const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={toggleLanguage}
-            className="bg-gradient-to-r from-[#00f2fe] to-[#4facfe] border-none text-white hover:opacity-90 hover:translate-y-[-2px] transition-all duration-300 shadow-lg"
-          >
-            {language === 'en' ? 'Español' : 'English'}
-          </Button>
+          <LanguageToggle />
 
           <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
             <DialogTrigger asChild>
@@ -150,14 +171,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center gap-4">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={toggleLanguage}
-            className="text-white hover:bg-white/10"
-          >
-            {language === 'en' ? 'ES' : 'EN'}
-          </Button>
+          <LanguageToggle />
 
           <Sheet>
             <SheetTrigger asChild>
@@ -211,4 +225,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
