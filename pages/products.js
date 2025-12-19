@@ -90,7 +90,6 @@ const Products = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0 }}
-              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #00d9ff66' }}
             >
               <MedicalBadge color="#00d9ff">
                 <StethoscopeIcon />
@@ -128,7 +127,6 @@ const Products = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #00ffd966' }}
             >
               <MedicalBadge color="#00ffd9">
                 <SpineIcon />
@@ -162,7 +160,6 @@ const Products = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #ff990066' }}
             >
               <MedicalBadge color="#ff9900">
                 <LaserIcon />
@@ -200,7 +197,6 @@ const Products = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              whileHover={{ scale: 1.04, boxShadow: '0 0 32px #00ff9966' }}
             >
               <MedicalBadge color="#00ff99">
                 <MatrixIcon />
@@ -329,14 +325,7 @@ const AnimatedCard = styled(motion.div)`
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
-  transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
   margin-bottom: 20px;
-
-  &:hover {
-    border-color: #00d9ff;
-    box-shadow: 0 0 40px #00d9ff44;
-    transform: translateY(-4px) scale(1.025);
-  }
 
   @media (max-width: 768px) {
     padding: 24px 10px 18px 10px;
@@ -450,10 +439,11 @@ const InfoSection = styled.div`
 `;
 
 const InfoTitle = styled.h3`
-  color: #00d9ff;
+  color: #ffffff;
   font-size: 20px;
   margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+  font-weight: bold;
+  font-style: italic;
 
   @media (max-width: 768px) {
     font-size: 18px;
@@ -472,18 +462,14 @@ const InfoText = styled.p`
 `;
 
 const PhoneLink = styled.a`
-  color: #00d9ff;
+  color: #ffffff;
   text-decoration: none !important;
   font-weight: bold;
-  transition: all 0.3s ease;
   display: inline-block;
   margin: 0 5px;
   border-bottom: none;
 
   &:hover, &:focus, &:active {
-    color: #000033;
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
-    transform: translateY(-1px);
     text-decoration: none;
     border-bottom: none;
   }

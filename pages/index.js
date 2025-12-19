@@ -179,9 +179,8 @@ const Index = () => {
 
         <div className="container mx-auto px-4 py-16 md:py-24">
           {/* Testimonials Section */}
-          <h2 id="testimonials" className="text-3xl md:text-5xl font-extrabold text-center mb-16 relative pb-4 text-[#000033]">
+          <h2 id="testimonials" className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-[#000033]">
             {t('testimonialsSectionTitle')}
-            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-[#00f2fe] via-[#4facfe] to-[#b465da] rounded-full" />
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
@@ -195,7 +194,7 @@ const Index = () => {
                 caption: language === 'en' ? 'Non-Surgical Solutions for Back and Neck Pain' : 'Soluciones Sin Cirugía para el Dolor de Espalda y Cuello'
               }
             ].map((video, index) => (
-              <Card key={index} className="bg-black border-none overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <Card key={index} className="bg-black border-none overflow-hidden shadow-xl">
                 <CardContent className="p-0">
                   <video 
                     controls 
@@ -212,7 +211,7 @@ const Index = () => {
             ))}
           </div>
 
-          <p className="text-center text-gray-600 max-w-3xl mx-auto text-lg mb-12 leading-relaxed">
+          <p className="text-center text-white max-w-3xl mx-auto text-lg mb-12 leading-relaxed">
             {language === 'en' 
               ? 'Hear directly from our patients about their experience with our decompression therapy and non-surgical solutions for back and neck pain. In these testimonials you can also hear how the decompression machine has helped to improve their quality of life.'
               : 'Escuche directamente de nuestros pacientes sobre su experiencia con nuestra terapia de descompresión y soluciones sin cirugía para el dolor de espalda y para el dolor de cuello. En estos testimonios también puedes escuchar cómo la máquina de descompresión ha ayudado a mejorar su calidad de vida.'}
@@ -230,9 +229,8 @@ const Index = () => {
           </div>
 
           {/* Services Section */}
-          <h2 id="services" className="text-3xl md:text-5xl font-extrabold text-center mb-16 relative pb-4 text-[#000033]">
+          <h2 id="services" className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-[#000033]">
             {t('specializedServices')}
-            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-[#00f2fe] via-[#4facfe] to-[#b465da] rounded-full" />
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8 max-w-6xl mx-auto mb-24 px-4">
@@ -266,19 +264,19 @@ const Index = () => {
                 btnText: "Learn More About Matrix"
               }
             ].map((service, index) => (
-              <Card key={index} className="group bg-black border-2 border-transparent hover:border-transparent relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                 <div className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-br from-[#009fff] to-[#ec2f4b] -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card key={index} className="bg-black border-2 border-transparent relative overflow-hidden shadow-xl">
+                 <div className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-br from-[#009fff] to-[#ec2f4b] -z-10 opacity-0" />
                 <CardHeader className="p-6 pb-2">
                   <div className="h-64 w-full overflow-hidden rounded-md bg-black/50 p-4">
                     <img 
                       src={service.img} 
                       alt={service.alt}
-                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                 </CardHeader>
                 <CardContent className="flex flex-col items-center text-center p-6">
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-[#009fff] to-[#ec2f4b] bg-clip-text text-transparent mb-6 min-h-[4rem] flex items-center justify-center">
+                  <h3 className="text-2xl font-bold text-black mb-6 min-h-[4rem] flex items-center justify-center">
                     {service.title}
                   </h3>
                   <Button 
@@ -405,7 +403,7 @@ const Index = () => {
                 type: "video"
               }
             ].map((video, index) => (
-              <Card key={index} className="bg-black/90 border-slate-800 overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+              <Card key={index} className="bg-black/90 border-slate-800 overflow-hidden shadow-lg">
                 <CardContent className="p-4 space-y-4">
                   <h3 className="text-xl font-bold text-white text-center h-14 flex items-center justify-center">
                     {video.title}

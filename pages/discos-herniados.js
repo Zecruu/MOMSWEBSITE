@@ -375,9 +375,7 @@ const ArticleContainer = styled.article`
   max-width: 1400px;
   margin: 0 auto;
   padding: 40px 60px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: transparent;
   margin-top: 40px;
   margin-bottom: 40px;
   color: #333;
@@ -392,7 +390,6 @@ const ArticleContainer = styled.article`
     max-width: 900px;
     margin: 30px 10px 20px;
     padding: 30px 15px;
-    border-radius: 15px;
   }
 `;
 
@@ -421,7 +418,7 @@ const MainTitle = styled.h1`
 
 const ArticleSubtitle = styled.p`
   font-size: 20px;
-  color: #7f8c8d;
+  color: #ffffff;
   font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
@@ -483,13 +480,13 @@ const Section = styled.section`
 
 const SectionTitle = styled.h2`
   font-size: 32px;
-  color: #2c3e50;
+  color: #ffffff;
   margin-bottom: 25px;
   display: flex;
   align-items: center;
   gap: 15px;
   padding-bottom: 15px;
-  border-bottom: 2px solid #ecf0f1;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 
   @media (max-width: 768px) {
     font-size: 26px;
@@ -498,7 +495,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.h3`
   font-size: 24px;
-  color: #34495e;
+  color: #ffffff;
   margin: 30px 0 20px;
   display: flex;
   align-items: center;
@@ -512,7 +509,7 @@ const SectionSubtitle = styled.h3`
 const SectionText = styled.p`
   font-size: 18px;
   line-height: 1.8;
-  color: #2c3e50;
+  color: #ffffff;
   margin-bottom: 20px;
   text-align: justify;
 
