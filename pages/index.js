@@ -82,58 +82,99 @@ const Index = () => {
   };
 
   const pageTitle = language === 'en' 
-    ? 'Best Chiropractor in Puerto Rico | #1 Spinal Decompression Center Toa Baja | PR Decompression Centers' 
-    : 'Mejor Quiropráctico en Puerto Rico | Centro #1 de Descompresión Espinal Toa Baja | PR Decompression Centers';
+    ? '#1 Chiropractor in Levittown PR | Best Spinal Decompression Levittown Puerto Rico | PR Decompression Centers' 
+    : '#1 Quiropráctico en Levittown PR | Mejor Descompresión Espinal Levittown Puerto Rico | PR Decompression Centers';
   
   const pageDescription = language === 'en'
-    ? 'Top-rated chiropractor in Puerto Rico specializing in spinal decompression therapy, herniated disc treatment, and sciatica relief. Located in Toa Baja, serving Levittown, Bayamón, and surrounding areas. Advanced non-surgical pain relief solutions.'
-    : 'Quiropráctico #1 en Puerto Rico especializado en terapia de descompresión espinal, tratamiento de hernias discales y alivio de ciática. Ubicado en Toa Baja, sirviendo Levittown, Bayamón y áreas circundantes. Soluciones avanzadas no quirúrgicas para el dolor.';
+    ? 'Best chiropractor in Levittown, Puerto Rico. #1 rated spinal decompression center serving Levittown, Toa Baja, Bayamón. Specializing in herniated disc treatment, sciatica relief, back pain & neck pain. Non-surgical solutions. Call 787-261-8258.'
+    : 'El mejor quiropráctico en Levittown, Puerto Rico. Centro #1 de descompresión espinal sirviendo Levittown, Toa Baja, Bayamón. Especialistas en hernias discales, ciática, dolor de espalda y cuello. Soluciones no quirúrgicas. Llame 787-261-8258.';
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "PR Decompression Centers",
-    "image": "https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png",
+    "@type": "Chiropractor",
+    "name": "PR Decompression Centers - Chiropractor Levittown",
+    "alternateName": ["Chiropractor Levittown PR", "Quiropráctico Levittown", "Best Chiropractor Levittown Puerto Rico"],
+    "image": [
+      "https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png",
+      "https://prdecompressioncenters.com/images/non-surgical-pain-relief.JPG",
+      "https://prdecompressioncenters.com/images/chiropractic-treatment-toa-baja.jpeg"
+    ],
     "url": "https://prdecompressioncenters.com",
     "telephone": "+1-787-261-8258",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "RH-16 Ave. Building, Los Dominicos",
-      "addressLocality": "Toa Baja",
+      "addressLocality": "Levittown",
       "addressRegion": "PR",
       "postalCode": "00949",
-      "addressCountry": "PR"
+      "addressCountry": "US"
     },
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 18.4447,
       "longitude": -66.1916
     },
+    "areaServed": [
+      {"@type": "City", "name": "Levittown"},
+      {"@type": "City", "name": "Toa Baja"},
+      {"@type": "City", "name": "Bayamón"},
+      {"@type": "City", "name": "Cataño"},
+      {"@type": "City", "name": "Dorado"},
+      {"@type": "City", "name": "Guaynabo"},
+      {"@type": "City", "name": "San Juan"}
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "12:00"
+      }
+    ],
     "medicalSpecialty": ["Chiropractic", "Physical Therapy", "Pain Management"],
     "availableService": [
       {
         "@type": "MedicalTherapy",
-        "name": "Spinal Decompression Therapy",
+        "name": "Chiropractic Treatment Levittown",
         "description": language === 'en' 
-          ? "Non-surgical treatment for herniated discs and back pain" 
-          : "Tratamiento no quirúrgico para hernias discales y dolor de espalda"
+          ? "Professional chiropractic adjustments and spinal care in Levittown, Puerto Rico" 
+          : "Ajustes quiroprácticos profesionales y cuidado espinal en Levittown, Puerto Rico"
       },
       {
         "@type": "MedicalTherapy",
-        "name": "Chiropractic Treatment",
-        "description": language === 'en'
-          ? "Advanced chiropractic care for spine and joint issues"
-          : "Cuidado quiropráctico avanzado para problemas de columna y articulaciones"
+        "name": "Spinal Decompression Therapy Levittown",
+        "description": language === 'en' 
+          ? "Non-surgical spinal decompression treatment for herniated discs in Levittown PR" 
+          : "Tratamiento de descompresión espinal no quirúrgico para hernias discales en Levittown PR"
       },
       {
         "@type": "MedicalTherapy",
         "name": "Laser Therapy",
         "description": language === 'en'
-          ? "Advanced laser treatment for pain and inflammation"
-          : "Tratamiento láser avanzado para dolor e inflamación"
+          ? "Advanced laser treatment for pain and inflammation in Levittown"
+          : "Tratamiento láser avanzado para dolor e inflamación en Levittown"
+      },
+      {
+        "@type": "MedicalTherapy",
+        "name": "Sciatica Treatment Levittown",
+        "description": language === 'en'
+          ? "Effective sciatica and nerve pain treatment in Levittown, Puerto Rico"
+          : "Tratamiento efectivo de ciática y dolor nervioso en Levittown, Puerto Rico"
       }
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "150",
+      "bestRating": "5"
+    }
   };
 
   return (
@@ -141,7 +182,7 @@ const Index = () => {
       <SEOHead
         title={pageTitle}
         description={pageDescription}
-        keywords="chiropractor Puerto Rico, quiropráctico Puerto Rico, spinal decompression Toa Baja, terapia descompresión espinal, herniated disc treatment, hernia discal tratamiento, back pain relief, dolor espalda, sciatica treatment, ciática, Levittown chiropractor, Bayamón chiropractic, non-surgical pain relief, laser therapy Puerto Rico"
+        keywords="chiropractor Levittown, chiropractor Levittown PR, chiropractor Levittown Puerto Rico, best chiropractor Levittown, quiropráctico Levittown, Levittown chiropractor near me, chiropractic Levittown, spine doctor Levittown PR, back pain doctor Levittown, spinal decompression Levittown, herniated disc Levittown, sciatica treatment Levittown, neck pain Levittown, chiropractor Toa Baja, chiropractor Bayamón, quiropráctico Puerto Rico, dolor de espalda Levittown, hernia discal Levittown"
         ogTitle={pageTitle}
         ogDescription={pageDescription}
         canonicalUrl="https://prdecompressioncenters.com/"

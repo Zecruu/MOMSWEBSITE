@@ -14,48 +14,54 @@ const Products = () => {
   };
 
   const pageTitle = language === 'en' 
-    ? 'Chiropractic Services Puerto Rico | Spinal Decompression & Laser Therapy Toa Baja | PR Decompression Centers'
-    : 'Servicios Quiroprácticos Puerto Rico | Descompresión Espinal y Terapia Láser Toa Baja | PR Decompression Centers';
+    ? 'Chiropractic Services Levittown PR | Spinal Decompression & Laser Therapy Levittown Puerto Rico | PR Decompression Centers'
+    : 'Servicios Quiroprácticos Levittown PR | Descompresión Espinal y Terapia Láser Levittown Puerto Rico | PR Decompression Centers';
   
   const pageDescription = language === 'en'
-    ? 'Comprehensive chiropractic services in Puerto Rico including spinal decompression therapy, advanced laser treatment, and matrix rehabilitation. Expert care for herniated discs, back pain, and sciatica in Toa Baja.'
-    : 'Servicios quiroprácticos integrales en Puerto Rico incluyendo terapia de descompresión espinal, tratamiento láser avanzado y rehabilitación matrix. Atención especializada para hernias discales, dolor de espalda y ciática en Toa Baja.';
+    ? 'Best chiropractic services in Levittown, Puerto Rico. Spinal decompression therapy, laser treatment, chiropractic adjustments. Expert care for herniated discs, back pain, sciatica in Levittown PR. Call 787-261-8258.'
+    : 'Los mejores servicios quiroprácticos en Levittown, Puerto Rico. Terapia de descompresión espinal, tratamiento láser, ajustes quiroprácticos. Atención experta para hernias discales, dolor de espalda, ciática en Levittown PR. Llame 787-261-8258.';
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "PR Decompression Centers",
+    "@type": "Chiropractor",
+    "name": "PR Decompression Centers - Chiropractic Services Levittown",
+    "alternateName": ["Chiropractor Levittown Services", "Servicios Quiroprácticos Levittown"],
     "url": "https://prdecompressioncenters.com/products",
     "telephone": "+1-787-261-8258",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "RH-16 Ave. Building, Los Dominicos",
-      "addressLocality": "Toa Baja",
+      "addressLocality": "Levittown",
       "addressRegion": "PR",
       "postalCode": "00949",
-      "addressCountry": "PR"
+      "addressCountry": "US"
     },
+    "areaServed": [
+      {"@type": "City", "name": "Levittown"},
+      {"@type": "City", "name": "Toa Baja"},
+      {"@type": "City", "name": "Bayamón"}
+    ],
     "availableService": [
       {
         "@type": "MedicalTherapy",
-        "name": "Chiropractic Treatment",
+        "name": "Chiropractic Treatment Levittown",
         "description": language === 'en' 
-          ? "Professional chiropractic adjustments and spinal alignment therapy"
-          : "Ajustes quiroprácticos profesionales y terapia de alineación espinal"
+          ? "Professional chiropractic adjustments and spinal alignment therapy in Levittown PR"
+          : "Ajustes quiroprácticos profesionales y terapia de alineación espinal en Levittown PR"
       },
       {
         "@type": "MedicalTherapy", 
-        "name": "Spinal Decompression Therapy",
+        "name": "Spinal Decompression Therapy Levittown",
         "description": language === 'en'
-          ? "Non-surgical treatment for herniated discs and spinal compression"
-          : "Tratamiento no quirúrgico para hernias discales y compresión espinal"
+          ? "Non-surgical treatment for herniated discs and spinal compression in Levittown Puerto Rico"
+          : "Tratamiento no quirúrgico para hernias discales y compresión espinal en Levittown Puerto Rico"
       },
       {
         "@type": "MedicalTherapy",
-        "name": "Laser Therapy",
+        "name": "Laser Therapy Levittown",
         "description": language === 'en'
-          ? "Advanced laser treatment for pain relief and tissue healing"
-          : "Tratamiento láser avanzado para alivio del dolor y sanación de tejidos"
+          ? "Advanced laser treatment for pain relief and tissue healing in Levittown"
+          : "Tratamiento láser avanzado para alivio del dolor y sanación de tejidos en Levittown"
       },
       {
         "@type": "MedicalTherapy",
@@ -72,7 +78,7 @@ const Products = () => {
       <SEOHead
         title={pageTitle}
         description={pageDescription}
-        keywords="chiropractic services Puerto Rico, servicios quiroprácticos, spinal decompression therapy, terapia descompresión espinal, laser therapy Toa Baja, matrix rehabilitation, herniated disc treatment, tratamiento hernia discal, back pain relief Puerto Rico, dolor espalda"
+        keywords="chiropractic services Levittown, chiropractor services Levittown PR, spinal decompression Levittown, laser therapy Levittown Puerto Rico, chiropractic treatment Levittown, servicios quiroprácticos Levittown, herniated disc treatment Levittown, back pain treatment Levittown PR, sciatica treatment Levittown, matrix therapy Levittown"
         ogTitle={pageTitle}
         ogDescription={pageDescription}
         canonicalUrl="https://prdecompressioncenters.com/products"

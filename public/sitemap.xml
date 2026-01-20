@@ -5,10 +5,10 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Homepage -->
+  <!-- Homepage - Chiropractor Levittown PR -->
   <url>
     <loc>https://prdecompressioncenters.com/</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/" />
@@ -16,11 +16,11 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/" />
   </url>
 
-  <!-- Products/Services Page -->
+  <!-- Products/Services Page - Chiropractic Services Levittown -->
   <url>
     <loc>https://prdecompressioncenters.com/products</loc>
-    <lastmod>2024-03-19</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/products" />
     <xhtml:link rel="alternate" hreflang="en" href="https://prdecompressioncenters.com/products?lang=en" />
@@ -30,7 +30,7 @@
   <!-- Herniated Disc Page -->
   <url>
     <loc>https://prdecompressioncenters.com/discos-herniados</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/discos-herniados" />
@@ -41,7 +41,7 @@
   <!-- Reviews Page -->
   <url>
     <loc>https://prdecompressioncenters.com/reviews</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/reviews" />
@@ -49,12 +49,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/reviews" />
   </url>
 
-  <!-- Location Page -->
+  <!-- Location Page - Chiropractor Levittown Location -->
   <url>
     <loc>https://prdecompressioncenters.com/locate</loc>
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/locate" />
     <xhtml:link rel="alternate" hreflang="en" href="https://prdecompressioncenters.com/locate?lang=en" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/locate" />
@@ -63,7 +63,7 @@
   <!-- Cookie Policy Page -->
   <url>
     <loc>https://prdecompressioncenters.com/cookie-policy</loc>
-    <lastmod>2025-08-19</lastmod>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/cookie-policy" />
@@ -71,26 +71,4 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/cookie-policy" />
   </url>
 
-  <!-- Additional Test Pages -->
-  <url>
-    <loc>https://prdecompressioncenters.com/test</loc>
-    <lastmod>2024-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
-  <url>
-    <loc>https://prdecompressioncenters.com/simple</loc>
-    <lastmod>2024-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
-  <url>
-    <loc>https://prdecompressioncenters.com/basic</loc>
-    <lastmod>2024-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-</urlset> 
+</urlset>

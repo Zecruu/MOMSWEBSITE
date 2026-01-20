@@ -9,36 +9,45 @@ const Locate = () => {
   const { t, language } = useLanguage();
 
   const pageTitle = language === 'en' 
-    ? 'Location & Contact | Best Chiropractor Toa Baja Puerto Rico | PR Decompression Centers' 
-    : 'Ubicación y Contacto | Mejor Quiropráctico Toa Baja Puerto Rico | PR Decompression Centers';
+    ? 'Chiropractor Levittown PR Location | Best Chiropractor Near Me Levittown Puerto Rico | PR Decompression Centers' 
+    : 'Ubicación Quiropráctico Levittown PR | Mejor Quiropráctico Cerca de Mí Levittown Puerto Rico | PR Decompression Centers';
   const pageDescription = language === 'en'
-    ? 'Visit our top-rated chiropractic and spinal decompression center in Toa Baja, Puerto Rico. Serving Levittown, Bayamón, and surrounding areas. Call 787-261-8258 for appointments and directions.'
-    : 'Visite nuestro centro quiropráctico y de descompresión espinal mejor calificado en Toa Baja, Puerto Rico. Sirviendo Levittown, Bayamón y áreas circundantes. Llame 787-261-8258 para citas e indicaciones.';
+    ? 'Visit the #1 chiropractor in Levittown, Puerto Rico. Located in Toa Baja serving Levittown, Bayamón, Cataño, Dorado. Best spinal decompression & chiropractic care. Call 787-261-8258 for appointments.'
+    : 'Visite el #1 quiropráctico en Levittown, Puerto Rico. Ubicado en Toa Baja sirviendo Levittown, Bayamón, Cataño, Dorado. Mejor descompresión espinal y cuidado quiropráctico. Llame 787-261-8258.';
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "PR Decompression Centers",
-    "alternateName": "Centro Quiropráctico Dra. Morales",
-    "image": "/images/pr-decompression-centers-logo.png",
+    "@type": "Chiropractor",
+    "name": "PR Decompression Centers - Chiropractor Levittown",
+    "alternateName": ["Chiropractor Levittown PR", "Centro Quiropráctico Levittown", "Quiropráctico Levittown Puerto Rico"],
+    "image": "https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png",
     "url": "https://prdecompressioncenters.com",
     "telephone": "+1-787-261-8258",
     "description": language === 'en'
-      ? "Expert spinal decompression therapy & chiropractic care in Puerto Rico. Advanced treatment for back pain, herniated discs, and sciatica."
-      : "Terapia de descompresión espinal y cuidado quiropráctico en Puerto Rico. Tratamiento avanzado para dolor de espalda y hernias discales.",
+      ? "Best chiropractor in Levittown, Puerto Rico. Expert spinal decompression therapy & chiropractic care. #1 rated for back pain, herniated discs, and sciatica treatment in Levittown PR."
+      : "El mejor quiropráctico en Levittown, Puerto Rico. Terapia de descompresión espinal y cuidado quiropráctico experto. #1 en tratamiento de dolor de espalda, hernias discales y ciática en Levittown PR.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "RH-16 Ave. Building, Los Dominicos",
-      "addressLocality": "Toa Baja",
-      "addressRegion": "Levittown",
+      "addressLocality": "Levittown",
+      "addressRegion": "PR",
       "postalCode": "00949",
-      "addressCountry": "PR"
+      "addressCountry": "US"
     },
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 18.4233,
       "longitude": -66.2013
     },
+    "areaServed": [
+      {"@type": "City", "name": "Levittown"},
+      {"@type": "City", "name": "Toa Baja"},
+      {"@type": "City", "name": "Bayamón"},
+      {"@type": "City", "name": "Cataño"},
+      {"@type": "City", "name": "Dorado"},
+      {"@type": "City", "name": "Guaynabo"},
+      {"@type": "City", "name": "San Juan"}
+    ],
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -61,8 +70,13 @@ const Locate = () => {
     "availableService": [
       {
         "@type": "MedicalTherapy",
-        "name": "Spinal Decompression Therapy",
-        "alternateName": "Terapia de Descompresión Espinal"
+        "name": "Chiropractic Adjustment Levittown",
+        "alternateName": "Ajuste Quiropráctico Levittown"
+      },
+      {
+        "@type": "MedicalTherapy",
+        "name": "Spinal Decompression Therapy Levittown",
+        "alternateName": "Terapia de Descompresión Espinal Levittown"
       },
       {
         "@type": "MedicalTherapy",
@@ -73,11 +87,6 @@ const Locate = () => {
         "@type": "MedicalTherapy",
         "name": "Matrix Therapy",
         "alternateName": "Terapia Matrix"
-      },
-      {
-        "@type": "MedicalTherapy",
-        "name": "Chiropractic Adjustment",
-        "alternateName": "Ajuste Quiropráctico"
       }
     ],
     "hasMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.8876712478387!2d-66.19061492412567!3d18.448931982636723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c036b68d4b339d9%3A0x6c296dac41fc7f5f!2sPR%20Decompression%20Centers!5e0!3m2!1sen!2spr!4v1689127608595!5m2!1sen!2spr",
@@ -87,14 +96,11 @@ const Locate = () => {
     ],
     "priceRange": "$$",
     "paymentAccepted": ["Cash", "Credit Card", "Insurance"],
-    "areaServed": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 18.4233,
-        "longitude": -66.2013
-      },
-      "geoRadius": "20000"
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "150",
+      "bestRating": "5"
     }
   };
 
@@ -108,7 +114,7 @@ const Locate = () => {
       <SEOHead
         title={pageTitle}
         description={pageDescription}
-        keywords="chiropractor location Toa Baja, ubicación quiropráctico, contact chiropractor Puerto Rico, contacto quiropráctico, spinal decompression center address, dirección centro descompresión, Levittown chiropractor, Bayamón chiropractic, PR Decompression Centers location"
+        keywords="chiropractor Levittown location, chiropractor Levittown PR address, chiropractor near me Levittown, quiropráctico Levittown ubicación, chiropractor Levittown Puerto Rico directions, best chiropractor Levittown contact, Levittown chiropractic center, chiropractor Toa Baja, chiropractor Bayamón, spine doctor Levittown PR"
         ogTitle={pageTitle}
         ogDescription={pageDescription}
         canonicalUrl="https://prdecompressioncenters.com/locate"
