@@ -20,6 +20,7 @@ const CookiePolicy = () => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
+        <meta name="robots" content="noindex, follow" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content="https://prdecompressioncenters.com/cookie-policy" />

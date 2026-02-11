@@ -17,9 +17,9 @@ const DiscosHerniados = () => {
     }
   };
 
-  const pageTitle = language === 'en' 
-    ? 'Herniated Disc Treatment Puerto Rico | #1 Non-Surgical Spinal Decompression Toa Baja | PR Decompression Centers' 
-    : 'Tratamiento Discos Herniados Puerto Rico | #1 Descompresión Espinal No Quirúrgica Toa Baja | PR Decompression Centers';
+  const pageTitle = language === 'en'
+    ? 'Herniated Disc Treatment | Non-Surgical Spinal Decompression Levittown & Toa Baja PR | PR Decompression Centers'
+    : 'Tratamiento Discos Herniados | Descompresión Espinal Sin Cirugía Levittown y Toa Baja PR | PR Decompression Centers';
   
   const pageDesc = language === 'en'
     ? 'Expert herniated disc treatment in Puerto Rico using advanced spinal decompression therapy. Serving Toa Baja, Levittown, Bayamón. Learn symptoms, causes, and non-surgical solutions. Free consultation available.'
@@ -85,8 +85,10 @@ const DiscosHerniados = () => {
       <SEOHead
         title={pageTitle}
         description={pageDesc}
+        keywords="herniated disc treatment, herniated disc treatment Puerto Rico, spinal decompression herniated disc, decompression therapy, decompression, non-surgical disc treatment, tratamiento hernia discal, hernia discal Puerto Rico, descompresión espinal hernia discal, tratamiento disco herniado, disco herniado Levittown, disco herniado Toa Baja"
         ogTitle={ogTitle}
         ogDescription={ogDesc}
+        canonicalUrl="https://prdecompressioncenters.com/discos-herniados"
         schema={schema}
       />
 

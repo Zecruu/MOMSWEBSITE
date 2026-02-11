@@ -31,12 +31,12 @@ const Reviews = () => {
     }
   ];
 
-  const pageTitle = language === 'en' 
-    ? 'Patient Reviews & Testimonials Puerto Rico | Best Chiropractor Toa Baja | PR Decompression Centers' 
-    : 'Reseñas y Testimonios de Pacientes Puerto Rico | Mejor Quiropráctico Toa Baja | PR Decompression Centers';
-  const pageDescription = language === 'en' 
-    ? 'Read authentic patient testimonials and reviews about our chiropractic care and spinal decompression therapy in Puerto Rico. See why we are the top-rated chiropractor in Toa Baja, serving Levittown and Bayamón.'
-    : 'Lea testimonios auténticos y reseñas de pacientes sobre nuestro cuidado quiropráctico y terapia de descompresión espinal en Puerto Rico. Vea por qué somos el quiropráctico mejor calificado en Toa Baja, sirviendo Levittown y Bayamón.';
+  const pageTitle = language === 'en'
+    ? 'Patient Reviews | Best Chiropractor Levittown & Toa Baja PR | PR Decompression Centers'
+    : 'Reseñas de Pacientes | Mejor Quiropráctico Levittown y Toa Baja PR | PR Decompression Centers';
+  const pageDescription = language === 'en'
+    ? 'Read real patient reviews about chiropractic care and spinal decompression therapy at PR Decompression Centers in Levittown and Toa Baja, Puerto Rico. Top-rated chiropractor serving Bayamón, Cataño, Dorado. Call 787-261-8258.'
+    : 'Lea reseñas reales de pacientes sobre cuidado quiropráctico y terapia de descompresión espinal en PR Decompression Centers en Levittown y Toa Baja, Puerto Rico. Quiropráctico mejor calificado sirviendo Bayamón, Cataño, Dorado. Llame 787-261-8258.';
 
   const structuredData = {
     "@context": "https://schema.org",

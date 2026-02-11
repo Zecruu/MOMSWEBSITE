@@ -8,12 +8,12 @@ import SEOHead from '../components/SEOHead';
 const Locate = () => {
   const { t, language } = useLanguage();
 
-  const pageTitle = language === 'en' 
-    ? 'Chiropractor Levittown PR Location | Best Chiropractor Near Me Levittown Puerto Rico | PR Decompression Centers' 
-    : 'Ubicación Quiropráctico Levittown PR | Mejor Quiropráctico Cerca de Mí Levittown Puerto Rico | PR Decompression Centers';
+  const pageTitle = language === 'en'
+    ? 'Location & Hours | Chiropractor Near Me in Levittown & Toa Baja PR | PR Decompression Centers'
+    : 'Ubicación y Horario | Quiropráctico Cerca de Mí en Levittown y Toa Baja PR | PR Decompression Centers';
   const pageDescription = language === 'en'
-    ? 'Visit the #1 chiropractor in Levittown, Puerto Rico. Located in Toa Baja serving Levittown, Bayamón, Cataño, Dorado. Best spinal decompression & chiropractic care. Call 787-261-8258 for appointments.'
-    : 'Visite el #1 quiropráctico en Levittown, Puerto Rico. Ubicado en Toa Baja sirviendo Levittown, Bayamón, Cataño, Dorado. Mejor descompresión espinal y cuidado quiropráctico. Llame 787-261-8258.';
+    ? 'Find PR Decompression Centers in Toa Baja, serving Levittown, Bayamón, Cataño, Dorado. Chiropractor near me in Puerto Rico. Spinal decompression & chiropractic care. Mon-Fri. Call 787-261-8258.'
+    : 'Encuentre PR Decompression Centers en Toa Baja, sirviendo Levittown, Bayamón, Cataño, Dorado. Quiropráctico cerca de mí en Puerto Rico. Descompresión espinal y cuidado quiropráctico. Lun-Vie. Llame 787-261-8258.';
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -114,7 +114,7 @@ const Locate = () => {
       <SEOHead
         title={pageTitle}
         description={pageDescription}
-        keywords="chiropractor Levittown location, chiropractor Levittown PR address, chiropractor near me Levittown, quiropráctico Levittown ubicación, chiropractor Levittown Puerto Rico directions, best chiropractor Levittown contact, Levittown chiropractic center, chiropractor Toa Baja, chiropractor Bayamón, spine doctor Levittown PR"
+        keywords="chiropractor near me, chiropractor near me Levittown, chiropractor near me Toa Baja, chiropractor in Levittown, chiropractor in Toa Baja, quiropráctico cerca de mí, quiropráctico cerca de mí Levittown, quiropráctico en Toa Baja, decompression therapy near me, descompresión espinal cerca de mí, chiropractor Levittown location, chiropractor Bayamón, chiropractor Cataño, chiropractor Dorado"
         ogTitle={pageTitle}
         ogDescription={pageDescription}
         canonicalUrl="https://prdecompressioncenters.com/locate"

@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }) {
     <StyleSheetManager shouldComponentUpdate>
       <LanguageProvider>
         <Head>
-          <title>PR Decompression Centers</title>
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         </Head>
         {/* Google Analytics tag (gtag.js) */}
@@ -59,7 +58,7 @@ function MyApp({ Component, pageProps }) {
         <div className="min-h-screen flex flex-col font-sans antialiased bg-gradient-to-r from-[#009fff] to-[#ec2f4b] text-white">
           <Navbar />
           <main className="flex-grow w-full flex flex-col min-h-screen pt-[70px]">
-             {mounted && <Component {...pageProps} />}
+             <Component {...pageProps} />
              <Footer />
           </main>
           {mounted && <FloatingButtons />}

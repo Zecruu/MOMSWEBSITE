@@ -13,7 +13,7 @@ const nextConfig = {
   i18n: {
     locales: ['en', 'es'],
     defaultLocale: 'es',
-    localeDetection: true,
+    localeDetection: false,
   },
   async headers() {
     return [

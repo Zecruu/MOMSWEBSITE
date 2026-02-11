@@ -1,26 +1,12 @@
-# robots.txt for PR Decompression Centers - Best Chiropractor Levittown Puerto Rico
+# robots.txt for PR Decompression Centers
 # https://prdecompressioncenters.com
 
-# Allow all crawlers
 User-agent: *
 Allow: /
-
-# Sitemap location
-Sitemap: https://prdecompressioncenters.com/sitemap.xml
-
-# Disallow crawling of internal paths
 Disallow: /api/
 Disallow: /_next/
 Disallow: /test
 Disallow: /simple
 Disallow: /basic
 
-# Google specific
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-# Bing specific
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
+Sitemap: https://prdecompressioncenters.com/sitemap.xml

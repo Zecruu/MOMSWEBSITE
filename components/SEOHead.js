@@ -1,43 +1,56 @@
 import Head from 'next/head';
 import { useLanguage } from '../context/LanguageContext';
 
-const SEOHead = ({ 
-  title, 
-  description, 
+const SITE_URL = "https://prdecompressioncenters.com";
+
+const SEOHead = ({
+  title,
+  description,
   keywords,
-  ogTitle, 
-  ogDescription, 
-  ogImage = "https://www.prdecompressioncenters.com/images/non-surgical-pain-relief.JPG",
+  ogTitle,
+  ogDescription,
+  ogImage = `${SITE_URL}/images/non-surgical-pain-relief.JPG`,
   canonicalUrl,
-  schema
+  schema,
+  noindex = false
 }) => {
   const { language } = useLanguage();
 
-  const defaultKeywords = "chiropractor Levittown, chiropractor Levittown PR, chiropractor Levittown Puerto Rico, quiropráctico Levittown, best chiropractor Levittown, Levittown chiropractor, chiropractor near me Levittown, chiropractic Levittown PR, spine doctor Levittown, back pain Levittown, chiropractor Toa Baja, quiropráctico Toa Baja, chiropractor Puerto Rico, quiropráctico Puerto Rico, spinal decompression Levittown, spinal decompression Puerto Rico, herniated disc treatment Levittown, sciatica treatment Levittown, back pain treatment Levittown PR, neck pain chiropractor Levittown, decompression therapy Puerto Rico, discos herniados Levittown, dolor de espalda Levittown, ciática tratamiento Levittown";
-  
+  // Bilingual default keywords targeting all requested search terms
+  const defaultKeywordsEN = "chiropractor near me, chiropractor Levittown, chiropractor Toa Baja, chiropractor Levittown PR, chiropractor Levittown Puerto Rico, chiropractor in Toa Baja, chiropractor in Levittown, best chiropractor Levittown, spinal decompression, spinal decompression therapy, decompression therapy, decompression therapy near me, spinal decompression Levittown, spinal decompression Puerto Rico, herniated disc treatment, sciatica treatment, back pain treatment, neck pain chiropractor, chiropractic care Puerto Rico, non-surgical back pain relief";
+
+  const defaultKeywordsES = "quiropráctico cerca de mí, quiropráctico Levittown, quiropráctico Toa Baja, quiropráctico en Toa Baja, quiropráctico en Levittown, mejor quiropráctico Levittown, descompresión espinal, terapia de descompresión, descompresión espinal Levittown, descompresión espinal Puerto Rico, tratamiento hernia discal, tratamiento ciática, dolor de espalda tratamiento, dolor de cuello quiropráctico, cuidado quiropráctico Puerto Rico, alivio dolor de espalda sin cirugía, quiropráctico Bayamón, descompresión Toa Baja";
+
+  const defaultKeywords = `${defaultKeywordsEN}, ${defaultKeywordsES}`;
   const combinedKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
 
   // Primary Local Business Schema for Chiropractor
   const chiropractorSchema = {
     "@context": "https://schema.org",
     "@type": "Chiropractor",
-    "@id": "https://www.prdecompressioncenters.com/#chiropractor",
-    "name": "PR Decompression Centers - Chiropractor Levittown",
-    "alternateName": ["PR Decompression Centers", "Centro Quiropráctico Levittown", "Chiropractor Levittown PR"],
-    "url": "https://www.prdecompressioncenters.com",
-    "logo": "https://www.prdecompressioncenters.com/images/pr-decompression-centers-logo.png",
-    "image": [
-      "https://www.prdecompressioncenters.com/images/non-surgical-pain-relief.JPG",
-      "https://www.prdecompressioncenters.com/images/chiropractic-treatment-toa-baja.jpeg",
-      "https://www.prdecompressioncenters.com/images/spinal-decompression-therapy-pr.png"
+    "@id": `${SITE_URL}/#chiropractor`,
+    "name": "PR Decompression Centers",
+    "alternateName": [
+      "PR Decompression Centers - Chiropractor Levittown",
+      "Centro Quiropráctico Levittown",
+      "Chiropractor Levittown PR",
+      "Quiropráctico Toa Baja",
+      "Centro de Descompresión Espinal PR"
     ],
-    "description": language === 'es' 
-      ? "El mejor quiropráctico en Levittown, Puerto Rico. Especialistas en descompresión espinal, tratamiento de hernias discales y alivio del dolor de espalda. Sirviendo Levittown, Toa Baja, Bayamón y áreas cercanas."
-      : "Best chiropractor in Levittown, Puerto Rico. Specialists in spinal decompression, herniated disc treatment, and back pain relief. Serving Levittown, Toa Baja, Bayamón and surrounding areas.",
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/images/pr-decompression-centers-logo.png`,
+    "image": [
+      `${SITE_URL}/images/non-surgical-pain-relief.JPG`,
+      `${SITE_URL}/images/chiropractic-treatment-toa-baja.jpeg`,
+      `${SITE_URL}/images/spinal-decompression-therapy-pr.png`
+    ],
+    "description": language === 'es'
+      ? "El mejor quiropráctico en Levittown y Toa Baja, Puerto Rico. Especialistas en descompresión espinal, tratamiento de hernias discales y alivio del dolor de espalda. Sirviendo Levittown, Toa Baja, Bayamón y áreas cercanas."
+      : "Best chiropractor in Levittown and Toa Baja, Puerto Rico. Specialists in spinal decompression, herniated disc treatment, and back pain relief. Serving Levittown, Toa Baja, Bayamón and surrounding areas.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "RH-16 Ave. Building, Los Dominicos",
-      "addressLocality": "Levittown",
+      "addressLocality": "Toa Baja",
       "addressRegion": "PR",
       "postalCode": "00949",
       "addressCountry": "US"
@@ -45,7 +58,7 @@ const SEOHead = ({
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": "18.4425",
-      "longitude": "-66.1946" 
+      "longitude": "-66.1946"
     },
     "areaServed": [
       {
@@ -56,30 +69,12 @@ const SEOHead = ({
           "name": "Puerto Rico"
         }
       },
-      {
-        "@type": "City",
-        "name": "Toa Baja"
-      },
-      {
-        "@type": "City",
-        "name": "Bayamón"
-      },
-      {
-        "@type": "City",
-        "name": "Cataño"
-      },
-      {
-        "@type": "City",
-        "name": "Dorado"
-      },
-      {
-        "@type": "City",
-        "name": "Guaynabo"
-      },
-      {
-        "@type": "City",
-        "name": "San Juan"
-      }
+      { "@type": "City", "name": "Toa Baja" },
+      { "@type": "City", "name": "Bayamón" },
+      { "@type": "City", "name": "Cataño" },
+      { "@type": "City", "name": "Dorado" },
+      { "@type": "City", "name": "Guaynabo" },
+      { "@type": "City", "name": "San Juan" }
     ],
     "telephone": "+1-787-261-8258",
     "priceRange": "$$",
@@ -88,20 +83,20 @@ const SEOHead = ({
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "18:00"
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "16:30"
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "08:00",
-        "closes": "12:00"
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "11:30"
       }
     ],
     "sameAs": [
-      "https://www.facebook.com/prdecompressioncenters",
-      "https://www.instagram.com/prdecompressioncenters"
+      "https://www.facebook.com/centro.morales",
+      "https://www.instagram.com/prdecompressioncenter/"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -111,16 +106,16 @@ const SEOHead = ({
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Chiropractic Adjustment",
-            "description": "Professional spinal adjustments for pain relief"
+            "name": "Spinal Decompression Therapy",
+            "description": "Non-surgical spinal decompression treatment for herniated discs and back pain"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Spinal Decompression Therapy",
-            "description": "Non-surgical treatment for herniated discs"
+            "name": "Chiropractic Adjustment",
+            "description": "Professional spinal adjustments and chiropractic care"
           }
         },
         {
@@ -128,7 +123,15 @@ const SEOHead = ({
           "itemOffered": {
             "@type": "Service",
             "name": "Laser Therapy",
-            "description": "Advanced laser treatment for pain and inflammation"
+            "description": "Advanced laser treatment for pain and inflammation relief"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Matrix Rehabilitation Therapy",
+            "description": "Muscle recovery and pain management rehabilitation"
           }
         }
       ]
@@ -158,13 +161,13 @@ const SEOHead = ({
   };
 
   // Merge passed schema with chiropractor schema
-  let finalSchema = schema;
-  if (!finalSchema) {
+  let finalSchema;
+  if (!schema) {
     finalSchema = chiropractorSchema;
-  } else if (Array.isArray(finalSchema)) {
-     finalSchema = [...finalSchema, chiropractorSchema];
+  } else if (Array.isArray(schema)) {
+    finalSchema = [...schema, chiropractorSchema];
   } else {
-     finalSchema = [finalSchema, chiropractorSchema];
+    finalSchema = [schema, chiropractorSchema];
   }
 
   return (
@@ -172,49 +175,42 @@ const SEOHead = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={combinedKeywords} />
-      
-      {/* Mobile Web App Capability */}
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      <meta name="apple-mobile-web-app-title" content="PR Decompression Centers" />
-      <meta name="application-name" content="PR Decompression Centers" />
-      
-      {/* Favicon and App Icons */}
-      <link rel="icon" type="image/png" sizes="32x32" href="/images/pr-decompression-centers-logo.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/images/pr-decompression-centers-logo.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/images/pr-decompression-centers-logo.png" />
-      <link rel="manifest" href="/site.webmanifest" />
-      <meta name="theme-color" content="#4facfe" />
-      
+
+      {/* Robots directive - explicitly tell search engines to index */}
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+      <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+
+      {/* Canonical URL */}
+      <link rel="canonical" href={canonicalUrl} />
+
+      {/* Alternate Language Links - use proper Next.js i18n paths */}
+      <link rel="alternate" hrefLang="es" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en${new URL(canonicalUrl).pathname === '/' ? '' : new URL(canonicalUrl).pathname}`} />
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={ogTitle} />
-      <meta property="og:description" content={ogDescription} />
+      <meta property="og:title" content={ogTitle || title} />
+      <meta property="og:description" content={ogDescription || description} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="PR Decompression Centers" />
       <meta property="og:locale" content={language === 'es' ? 'es_PR' : 'en_US'} />
-      
+      <meta property="og:locale:alternate" content={language === 'es' ? 'en_US' : 'es_PR'} />
+
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={ogTitle} />
-      <meta name="twitter:description" content={ogDescription} />
+      <meta name="twitter:title" content={ogTitle || title} />
+      <meta name="twitter:description" content={ogDescription || description} />
       <meta name="twitter:image" content={ogImage} />
-      
-      <link rel="canonical" href={canonicalUrl} />
-      
-      {/* Alternate Language Links */}
-      <link rel="alternate" hrefLang="en" href={`${canonicalUrl}?lang=en`} />
-      <link rel="alternate" hrefLang="es" href={`${canonicalUrl}?lang=es`} />
-      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
       {/* Schema Markup */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(finalSchema)
+          __html: JSON.stringify(Array.isArray(finalSchema) ? finalSchema : finalSchema)
         }}
       />
     </Head>
