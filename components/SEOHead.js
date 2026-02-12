@@ -27,8 +27,8 @@ const SEOHead = ({
   // Primary Local Business Schema for Chiropractor
   const chiropractorSchema = {
     "@context": "https://schema.org",
-    "@type": "Chiropractor",
-    "@id": `${SITE_URL}/#chiropractor`,
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/#business`,
     "name": "PR Decompression Centers",
     "alternateName": [
       "PR Decompression Centers - Chiropractor Levittown",

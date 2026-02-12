@@ -244,12 +244,6 @@ const Index = () => {
             : "Terapia de rehabilitación para recuperación muscular y manejo del dolor"
         }
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "150",
-        "bestRating": "5"
-      }
     }
   ];
 
