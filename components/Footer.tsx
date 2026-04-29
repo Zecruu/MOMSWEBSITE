@@ -119,6 +119,9 @@ const Footer = () => {
               <button onClick={() => router.push('/reviews')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
                 {safeT('reviews')}
               </button>
+              <button onClick={() => router.push('/insights')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+                {language === 'en' ? 'Insights' : 'Artículos'}
+              </button>
               <button onClick={() => router.push('/locate')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
                 {safeT('locateUs')}
               </button>

@@ -38,6 +38,7 @@ const Navbar = () => {
     { href: '/products', label: language === 'en' ? 'Services' : 'Servicios' },
     { href: '/discos-herniados', label: language === 'en' ? 'Herniated Discs' : 'Discos Herniados' },
     { href: '/reviews', label: language === 'en' ? 'Reviews' : 'Testimonios' },
+    { href: '/insights', label: language === 'en' ? 'Insights' : 'Artículos' },
     { href: '/locate', label: language === 'en' ? 'Location' : 'Ubicación' },
   ];
 
