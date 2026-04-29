@@ -166,6 +166,14 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/insights/:path*',
+        destination: 'https://seo.nexulonllc.com/public/eb7a7468585f8e5a68d08af72a20adf8/:path*',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig; 

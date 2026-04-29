@@ -62,6 +62,9 @@ export default class MyDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
           <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+          {/* Nexulon SEO */}
+          <script async src="https://seo.nexulonllc.com/embed.js?t=eb7a7468585f8e5a68d08af72a20adf8"></script>
         </Head>
         <body>
           <Main />
