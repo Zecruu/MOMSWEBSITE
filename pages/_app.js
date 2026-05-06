@@ -5,6 +5,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingButtons from '../components/FloatingButtons';
 import CookieConsent from '../components/CookieConsent';
+import dynamic from 'next/dynamic';
+
+const QuestionnaireModal = dynamic(() => import('../components/QuestionnaireModal'), { ssr: false });
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -63,6 +66,7 @@ function MyApp({ Component, pageProps }) {
           </main>
           {mounted && <FloatingButtons />}
           {mounted && <CookieConsent />}
+          {mounted && <QuestionnaireModal />}
         </div>
       </LanguageProvider>
     </StyleSheetManager>

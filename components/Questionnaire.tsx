@@ -42,7 +42,12 @@ function pick(text: { en: string; es: string }, lang: Locale): string {
   return text[lang] ?? text.en
 }
 
-const Questionnaire: React.FC = () => {
+type QuestionnaireProps = {
+  onComplete?: () => void
+  bare?: boolean
+}
+
+const Questionnaire: React.FC<QuestionnaireProps> = ({ onComplete, bare = false }) => {
   const { language } = useLanguage()
   const lang = (language as Locale) ?? 'en'
 
@@ -52,6 +57,12 @@ const Questionnaire: React.FC = () => {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    if (!done || !onComplete) return
+    const t = setTimeout(() => onComplete(), 2800)
+    return () => clearTimeout(t)
+  }, [done, onComplete])
 
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([])
   const liveRef = useRef<HTMLDivElement | null>(null)
@@ -138,13 +149,13 @@ const Questionnaire: React.FC = () => {
     }
   }
 
-  return (
-    <section
-      id="questionnaire"
-      className="w-full max-w-2xl mx-auto px-4 py-12 md:py-16 text-white"
-      aria-label={pick({ en: 'Lead questionnaire', es: 'Cuestionario' }, lang)}
-    >
-      <div className="rounded-3xl bg-black/70 backdrop-blur-md border border-[#00d9ff33] shadow-[0_0_30px_rgba(0,217,255,0.15)] p-6 md:p-10">
+  const cardClasses = bare
+    ? 'rounded-3xl bg-transparent p-0 md:p-2 text-white'
+    : 'rounded-3xl bg-black/70 backdrop-blur-md border border-[#00d9ff33] shadow-[0_0_30px_rgba(0,217,255,0.15)] p-6 md:p-10 text-white'
+
+  const inner = (
+    <>
+      <div className={cardClasses}>
         {/* Progress */}
         <div className="mb-6">
           <div className="flex items-center justify-between text-xs text-white/60 mb-2 uppercase tracking-wider">
@@ -314,6 +325,18 @@ const Questionnaire: React.FC = () => {
           ) : null}
         </AnimatePresence>
       </div>
+    </>
+  )
+
+  if (bare) return inner
+
+  return (
+    <section
+      id="questionnaire"
+      className="w-full max-w-2xl mx-auto px-4 py-12 md:py-16 text-white"
+      aria-label={pick({ en: 'Lead questionnaire', es: 'Cuestionario' }, lang)}
+    >
+      {inner}
     </section>
   )
 }

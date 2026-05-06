@@ -281,6 +281,18 @@ const Index = () => {
                 {language === 'en' ? 'Discover Our Services' : 'Descubra Nuestros Servicios'}
               </a>
             </Button>
+
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-questionnaire'))
+                }
+              }}
+              className="mt-5 text-white/90 hover:text-[#00d9ff] underline underline-offset-4 decoration-white/40 hover:decoration-[#00d9ff] text-sm md:text-base font-medium transition-colors"
+            >
+              {language === 'en' ? 'Or take our quick questionnaire →' : 'O toma nuestro cuestionario rápido →'}
+            </button>
           </div>
 
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 animate-bounce">
