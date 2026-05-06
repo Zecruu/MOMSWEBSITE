@@ -13,6 +13,7 @@ export type ChoiceQuestion = {
   text: LocalizedText;
   options: ChoiceOption[];
   required?: boolean;
+  showWhen?: (answers: Answers) => boolean;
 };
 
 export type ContactFieldType = 'text' | 'email' | 'phone';

@@ -36,10 +36,12 @@ export function renderEmail(answers: Answers, meta: Meta) {
   const topA = answerLabel(topQ.id, answers[topQ.id] ?? '');
   const subject = `New lead: ${name} — ${topA}`;
 
-  const rows = questions.map((q) => ({
-    question: q.text.en,
-    answer: answerLabel(q.id, answers[q.id] ?? ''),
-  }));
+  const rows = questions
+    .filter((q) => !q.showWhen || q.showWhen(answers))
+    .map((q) => ({
+      question: q.text.en,
+      answer: answerLabel(q.id, answers[q.id] ?? ''),
+    }));
 
   const contactRows = contactFields.map((f) => ({
     label: f.label.en,

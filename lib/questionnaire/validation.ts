@@ -5,6 +5,7 @@ export type ValidationResult = { ok: true } | { ok: false; error: string };
 
 export function validateAnswers(answers: Answers): ValidationResult {
   for (const q of questions) {
+    if (q.showWhen && !q.showWhen(answers)) continue;
     const a = answers[q.id];
     if (q.required !== false && !a) {
       return { ok: false, error: `Missing answer: ${q.id}` };

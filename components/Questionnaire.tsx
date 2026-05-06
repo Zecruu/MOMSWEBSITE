@@ -51,7 +51,6 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onComplete, bare = false 
   const { language } = useLanguage()
   const lang = (language as Locale) ?? 'en'
 
-  const totalSteps = questions.length + 1
   const [stepIndex, setStepIndex] = useState(0)
   const [answers, setAnswers] = useState<Answers>({})
   const [submitting, setSubmitting] = useState(false)
@@ -67,8 +66,14 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onComplete, bare = false 
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([])
   const liveRef = useRef<HTMLDivElement | null>(null)
 
-  const isContactStep = stepIndex === questions.length
-  const currentQuestion = !isContactStep ? questions[stepIndex] : null
+  const visibleQuestions = useMemo(
+    () => questions.filter((q) => !q.showWhen || q.showWhen(answers)),
+    [answers]
+  )
+  const totalSteps = visibleQuestions.length + 1
+  const safeStepIndex = Math.min(stepIndex, visibleQuestions.length)
+  const isContactStep = safeStepIndex === visibleQuestions.length
+  const currentQuestion = !isContactStep ? visibleQuestions[safeStepIndex] : null
 
   useEffect(() => {
     optionRefs.current = []
@@ -78,8 +83,8 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onComplete, bare = false 
   }, [stepIndex, lang, currentQuestion])
 
   const progress = useMemo(() => {
-    return Math.min(100, ((stepIndex + (done ? 1 : 0)) / totalSteps) * 100)
-  }, [stepIndex, totalSteps, done])
+    return Math.min(100, ((safeStepIndex + (done ? 1 : 0)) / totalSteps) * 100)
+  }, [safeStepIndex, totalSteps, done])
 
   const goBack = () => {
     setError(null)
@@ -160,7 +165,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onComplete, bare = false 
         <div className="mb-6">
           <div className="flex items-center justify-between text-xs text-white/60 mb-2 uppercase tracking-wider">
             <span>
-              {pick(COPY.step, lang)} {Math.min(stepIndex + 1, totalSteps)} {pick(COPY.of, lang)} {totalSteps}
+              {pick(COPY.step, lang)} {Math.min(safeStepIndex + 1, totalSteps)} {pick(COPY.of, lang)} {totalSteps}
             </span>
             <span>{Math.round(progress)}%</span>
           </div>

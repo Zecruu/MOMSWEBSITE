@@ -18,6 +18,21 @@ export const questions: ChoiceQuestion[] = [
     ],
   },
   {
+    id: 'mri',
+    type: 'choice',
+    text: {
+      en: 'Do you have an MRI of your spine?',
+      es: '¿Tienes un MRI de tu columna?',
+    },
+    showWhen: (answers) => answers.concern === 'herniated-disc',
+    options: [
+      { id: 'recent', value: 'recent', label: { en: 'Yes — within the last year', es: 'Sí — del último año' } },
+      { id: 'older', value: 'older', label: { en: 'Yes — but older than a year', es: 'Sí — pero de hace más de un año' } },
+      { id: 'no', value: 'no', label: { en: "No, I don't have one", es: 'No, no tengo uno' } },
+      { id: 'unsure', value: 'unsure', label: { en: 'Not sure', es: 'No estoy seguro' } },
+    ],
+  },
+  {
     id: 'duration',
     type: 'choice',
     text: {
