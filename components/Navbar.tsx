@@ -53,7 +53,7 @@ const Navbar = () => {
           language === 'en' ? "left-1" : "left-[calc(50%)]"
         )}
       />
-      <div className="flex w-full justify-between text-xs font-bold z-10">
+      <div className="relative flex w-full justify-between text-xs font-bold z-10">
         <span className={cn(
           "flex-1 text-center transition-colors duration-300",
           language === 'en' ? "text-white" : "text-white/50"
