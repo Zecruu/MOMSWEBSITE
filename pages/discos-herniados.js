@@ -23,8 +23,8 @@ const DiscosHerniados = () => {
     : 'Tratamiento Discos Herniados | Descompresión Accu-SPINA Puerto Rico | PR Decompression Centers';
 
   const pageDesc = isEn
-    ? 'Non-surgical herniated disc treatment in Puerto Rico using the Accu-SPINA IDD Therapy system. Lumbar and cervical decompression in Levittown & Toa Baja. Free consultation.'
-    : 'Tratamiento no quirúrgico para discos herniados en Puerto Rico con el sistema Accu-SPINA IDD. Descompresión lumbar y cervical en Levittown y Toa Baja. Consulta gratuita.';
+    ? 'Non-surgical herniated disc treatment in Puerto Rico using the Accu-SPINA IDD Therapy system. Lumbar and cervical decompression in Levittown & Toa Baja.'
+    : 'Tratamiento no quirúrgico para discos herniados en Puerto Rico con el sistema Accu-SPINA IDD. Descompresión lumbar y cervical en Levittown y Toa Baja.';
 
   const schema = {
     '@context': 'https://schema.org',
@@ -95,7 +95,7 @@ const DiscosHerniados = () => {
             </div>
             <DiagramWrap>
               <img
-                src="/images/Herniated Disks.PNG"
+                src="/images/lumbar-anatomy.png"
                 alt={t('herniatedDiscDiagram')}
                 loading="lazy"
               />
@@ -118,7 +118,9 @@ const DiscosHerniados = () => {
 
           <AreaGrid>
             <AreaCard href="/cervical-decompression">
-              <AreaIcon>🧠</AreaIcon>
+              <AreaIcon>
+                <img src="/images/icon-cervical-area.png" alt="" aria-hidden="true" />
+              </AreaIcon>
               <AreaTitle>{t('cardCervicalTitle')}</AreaTitle>
               <AreaDesc>{t('cardCervicalDesc')}</AreaDesc>
               <AreaCTA>
@@ -126,7 +128,9 @@ const DiscosHerniados = () => {
               </AreaCTA>
             </AreaCard>
             <AreaCard href="/lumbar-decompression">
-              <AreaIcon>🦴</AreaIcon>
+              <AreaIcon>
+                <img src="/images/icon-lumbar-area.png" alt="" aria-hidden="true" />
+              </AreaIcon>
               <AreaTitle>{t('cardLumbarTitle')}</AreaTitle>
               <AreaDesc>{t('cardLumbarDesc')}</AreaDesc>
               <AreaCTA>
@@ -150,7 +154,7 @@ const DiscosHerniados = () => {
             </SplitText>
             <SplitImage>
               <img
-                src="/images/accu-spina-spinal-decompression-system-landscape.png"
+                src="/images/accu-spina-studio.png"
                 alt={t('accuSpinaTitle')}
                 loading="lazy"
               />
@@ -264,16 +268,21 @@ const Page = styled.div`
 
 const Hero = styled.section`
   position: relative;
-  min-height: 65vh;
-  background: url('/images/decompression-therapy-hero-bg.png') center/cover no-repeat, #0b1220;
+  min-height: 60vh;
+  background:
+    radial-gradient(ellipse at 75% 50%, rgba(0, 159, 255, 0.18) 0%, transparent 60%),
+    url('/images/hero-lumbar-decompression.png') center right/cover no-repeat,
+    #0b1220;
   display: flex;
   align-items: center;
+  overflow: hidden;
 `;
 
 const HeroOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(11, 18, 32, 0.92) 0%, rgba(11, 18, 32, 0.65) 55%, rgba(11, 18, 32, 0.35) 100%);
+  background:
+    linear-gradient(100deg, rgba(11, 18, 32, 0.98) 0%, rgba(11, 18, 32, 0.92) 35%, rgba(11, 18, 32, 0.65) 65%, rgba(11, 18, 32, 0.45) 100%);
 `;
 
 const HeroInner = styled.div`
@@ -304,11 +313,9 @@ const HeroTitle = styled.h1`
   font-weight: 800;
   line-height: 1.05;
   margin: 0 0 20px;
-  max-width: 820px;
-  background: linear-gradient(135deg, #ffffff 0%, #4facfe 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  max-width: 640px;
+  color: #ffffff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 
   @media (max-width: 768px) {
     font-size: 36px;
@@ -316,11 +323,12 @@ const HeroTitle = styled.h1`
 `;
 
 const HeroSub = styled.p`
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 680px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 560px;
   margin: 0 0 32px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 768px) {
     font-size: 17px;
@@ -518,8 +526,16 @@ const AreaCard = styled(Link)`
 `;
 
 const AreaIcon = styled.div`
-  font-size: 40px;
+  width: 56px;
+  height: 56px;
   margin-bottom: 18px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
 `;
 
 const AreaTitle = styled.h3`

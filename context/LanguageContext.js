@@ -173,11 +173,11 @@ const translations = {
     cardCervicalTitle: "Neck (Cervical)",
     cardCervicalDesc: "Pinched nerve, arm pain, tingling fingers, C5-C6 / C6-C7 herniations.",
     learnMore: "Learn more",
-    bookConsult: "Book a Free Consult",
+    bookConsult: "Book a Consultation",
 
     // Lumbar page
     lumbarHero: "Lumbar Decompression in Puerto Rico",
-    lumbarHeroSub: "Non-surgical relief for herniated discs, sciatica, and chronic lower back pain — using the Accu-SPINA® IDD Therapy system.",
+    lumbarHeroSub: "Non-surgical relief for herniated discs, sciatica, and chronic lower back pain using the Accu-SPINA® IDD Therapy system.",
     lumbarWhatTreats: "What Lumbar Decompression Treats",
     lumbarCond1: "Lumbar herniated or bulging discs (L1–L5, L5–S1)",
     lumbarCond2: "Sciatica and pain radiating down the leg",
@@ -401,11 +401,11 @@ const translations = {
     cardCervicalTitle: "Cuello (Cervical)",
     cardCervicalDesc: "Nervio pinchado, dolor en el brazo, hormigueo en los dedos, hernias C5-C6 / C6-C7.",
     learnMore: "Más información",
-    bookConsult: "Agenda una Consulta Gratis",
+    bookConsult: "Agendar Consulta",
 
     // Página Lumbar
     lumbarHero: "Descompresión Lumbar en Puerto Rico",
-    lumbarHeroSub: "Alivio sin cirugía para hernias discales, ciática y dolor crónico en la espalda baja — utilizando el sistema Accu-SPINA® de Terapia IDD.",
+    lumbarHeroSub: "Alivio sin cirugía para hernias discales, ciática y dolor crónico en la espalda baja con el sistema Accu-SPINA® de Terapia IDD.",
     lumbarWhatTreats: "Qué Trata la Descompresión Lumbar",
     lumbarCond1: "Hernias o protrusiones discales lumbares (L1–L5, L5–S1)",
     lumbarCond2: "Ciática y dolor que se irradia por la pierna",

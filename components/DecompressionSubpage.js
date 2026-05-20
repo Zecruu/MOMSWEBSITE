@@ -228,16 +228,21 @@ const Page = styled.div`
 
 const Hero = styled.section`
   position: relative;
-  min-height: 70vh;
-  background: ${(p) => `url(${p.$img}) center/cover no-repeat`}, #0b1220;
+  min-height: 64vh;
+  background:
+    radial-gradient(ellipse at 75% 50%, rgba(0, 159, 255, 0.18) 0%, transparent 60%),
+    ${(p) => `url(${p.$img}) center right/cover no-repeat`},
+    #0b1220;
   display: flex;
   align-items: center;
+  overflow: hidden;
 `;
 
 const HeroOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(11, 18, 32, 0.92) 0%, rgba(11, 18, 32, 0.65) 55%, rgba(11, 18, 32, 0.3) 100%);
+  background:
+    linear-gradient(100deg, rgba(11, 18, 32, 0.98) 0%, rgba(11, 18, 32, 0.92) 35%, rgba(11, 18, 32, 0.65) 65%, rgba(11, 18, 32, 0.45) 100%);
 `;
 
 const HeroInner = styled.div`
@@ -271,11 +276,9 @@ const HeroTitle = styled.h1`
   font-weight: 800;
   line-height: 1.05;
   margin: 0 0 20px;
-  max-width: 820px;
-  background: linear-gradient(135deg, #ffffff 0%, #4facfe 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  max-width: 640px;
+  color: #ffffff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 
   @media (max-width: 768px) {
     font-size: 36px;
@@ -283,11 +286,12 @@ const HeroTitle = styled.h1`
 `;
 
 const HeroSub = styled.p`
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 680px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 560px;
   margin: 0 0 32px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 768px) {
     font-size: 17px;

@@ -59,16 +59,16 @@ const CervicalDecompressionPage = () => {
   return (
     <DecompressionSubpage
       region="cervical"
-      heroImage="/images/decompression-therapy-hero-bg.png"
-      anatomyImage="/images/Herniated Disks.PNG"
-      accuSpinaImage="/images/accu-spina-spinal-decompression-system-landscape.png"
+      heroImage="/images/hero-cervical-decompression.png"
+      anatomyImage="/images/cervical-anatomy.png"
+      accuSpinaImage="/images/accu-spina-studio.png"
       seo={{
         title: isEn
           ? 'Cervical Decompression Therapy Puerto Rico | Neck Herniated Disc | PR Decompression Centers'
           : 'Descompresión Cervical Puerto Rico | Hernia Discal Cervical | PR Decompression Centers',
         description: isEn
-          ? 'Non-surgical cervical decompression in Levittown & Toa Baja PR. Accu-SPINA IDD Therapy for C5-C6 / C6-C7 herniated discs, pinched nerves, and arm pain. Free consult.'
-          : 'Descompresión cervical no quirúrgica en Levittown y Toa Baja PR. Terapia IDD Accu-SPINA para hernias C5-C6 / C6-C7, nervios pinchados y dolor en el brazo. Consulta gratis.',
+          ? 'Non-surgical cervical decompression in Levittown & Toa Baja PR. Accu-SPINA IDD Therapy for C5-C6 / C6-C7 herniated discs, pinched nerves, and arm pain.'
+          : 'Descompresión cervical no quirúrgica en Levittown y Toa Baja PR. Terapia IDD Accu-SPINA para hernias C5-C6 / C6-C7, nervios pinchados y dolor en el brazo.',
         canonical: 'https://prdecompressioncenters.com/cervical-decompression',
         schema,
       }}

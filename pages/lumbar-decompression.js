@@ -18,7 +18,7 @@ const LumbarDecompressionPage = () => {
         },
         {
           q: 'Can I do this if I already had back surgery?',
-          a: 'Often yes. We treat patients with failed back surgery syndrome, but we will review your MRI and surgical history during the free consultation to make sure you are a safe candidate.',
+          a: 'Often yes. We treat patients with failed back surgery syndrome, but we will review your MRI and surgical history during your initial consultation to make sure you are a safe candidate.',
         },
         {
           q: 'How quickly will I feel relief?',
@@ -36,7 +36,7 @@ const LumbarDecompressionPage = () => {
         },
         {
           q: '¿Puedo hacerlo si ya tuve cirugía de espalda?',
-          a: 'Muchas veces sí. Tratamos pacientes con síndrome de cirugía fallida, pero revisaremos tu MRI e historial quirúrgico en la consulta gratuita para asegurarnos de que eres un candidato seguro.',
+          a: 'Muchas veces sí. Tratamos pacientes con síndrome de cirugía fallida, pero revisaremos tu MRI e historial quirúrgico en tu consulta inicial para asegurarnos de que eres un candidato seguro.',
         },
         {
           q: '¿Qué tan rápido voy a sentir alivio?',
@@ -59,16 +59,16 @@ const LumbarDecompressionPage = () => {
   return (
     <DecompressionSubpage
       region="lumbar"
-      heroImage="/images/decompression-therapy-hero-bg.png"
-      anatomyImage="/images/Herniated Disks.PNG"
-      accuSpinaImage="/images/accu-spina-spinal-decompression-system-landscape.png"
+      heroImage="/images/hero-lumbar-decompression.png"
+      anatomyImage="/images/lumbar-anatomy.png"
+      accuSpinaImage="/images/accu-spina-studio.png"
       seo={{
         title: isEn
           ? 'Lumbar Decompression Therapy Puerto Rico | Herniated Disc & Sciatica | PR Decompression Centers'
           : 'Descompresión Lumbar Puerto Rico | Hernia Discal y Ciática | PR Decompression Centers',
         description: isEn
-          ? 'Non-surgical lumbar decompression in Levittown & Toa Baja PR. Accu-SPINA IDD Therapy for L4-L5 / L5-S1 herniated discs, sciatica, and chronic lower back pain. Free consult.'
-          : 'Descompresión lumbar no quirúrgica en Levittown y Toa Baja PR. Terapia IDD Accu-SPINA para hernias L4-L5 / L5-S1, ciática y dolor lumbar crónico. Consulta gratis.',
+          ? 'Non-surgical lumbar decompression in Levittown & Toa Baja PR. Accu-SPINA IDD Therapy for L4-L5 / L5-S1 herniated discs, sciatica, and chronic lower back pain.'
+          : 'Descompresión lumbar no quirúrgica en Levittown y Toa Baja PR. Terapia IDD Accu-SPINA para hernias L4-L5 / L5-S1, ciática y dolor lumbar crónico.',
         canonical: 'https://prdecompressioncenters.com/lumbar-decompression',
         schema,
       }}
