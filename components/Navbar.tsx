@@ -25,6 +25,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from '@/lib/utils'
@@ -36,11 +38,37 @@ const Navbar = () => {
   const navLinks = [
     { href: '/', label: language === 'en' ? 'Home' : 'Inicio' },
     { href: '/products', label: language === 'en' ? 'Services' : 'Servicios' },
-    { href: '/discos-herniados', label: language === 'en' ? 'Herniated Discs' : 'Discos Herniados' },
     { href: '/reviews', label: language === 'en' ? 'Reviews' : 'Testimonios' },
     { href: '/insights', label: language === 'en' ? 'Insights' : 'Artículos' },
     { href: '/locate', label: language === 'en' ? 'Location' : 'Ubicación' },
   ];
+
+  const decompressionMenu = {
+    label: language === 'en' ? 'Decompression' : 'Descompresión',
+    items: [
+      {
+        href: '/discos-herniados',
+        title: language === 'en' ? 'Herniated Discs' : 'Discos Herniados',
+        desc: language === 'en'
+          ? 'Overview of herniated discs & Accu-SPINA treatment'
+          : 'Resumen de discos herniados y tratamiento Accu-SPINA',
+      },
+      {
+        href: '/cervical-decompression',
+        title: language === 'en' ? 'Cervical Decompression' : 'Descompresión Cervical',
+        desc: language === 'en'
+          ? 'Neck herniated discs, pinched nerves, arm pain'
+          : 'Hernias cervicales, nervios pinchados, dolor en el brazo',
+      },
+      {
+        href: '/lumbar-decompression',
+        title: language === 'en' ? 'Lumbar Decompression' : 'Descompresión Lumbar',
+        desc: language === 'en'
+          ? 'Lower back herniated discs, sciatica, leg pain'
+          : 'Hernias lumbares, ciática, dolor en la pierna',
+      },
+    ],
+  };
 
   const LanguageToggle = () => (
     <div 
@@ -87,7 +115,37 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-6">
           <NavigationMenu>
             <NavigationMenuList>
-              {navLinks.map((link) => (
+              {navLinks.slice(0, 2).map((link) => (
+                <NavigationMenuItem key={link.href}>
+                  <Link href={link.href} legacyBehavior passHref>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[active]:bg-white/10 data-[active]:text-white font-semibold")}>
+                      {link.label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              ))}
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[active]:bg-white/10 data-[active]:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white font-semibold">
+                  {decompressionMenu.label}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[420px] gap-2 p-3 bg-black/95 border border-white/10 rounded-md">
+                    {decompressionMenu.items.map((item) => (
+                      <li key={item.href}>
+                        <Link href={item.href} legacyBehavior passHref>
+                          <NavigationMenuLink className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-white/10 focus:bg-white/10 text-white">
+                            <div className="text-sm font-semibold leading-none mb-1">{item.title}</div>
+                            <p className="line-clamp-2 text-xs leading-snug text-white/60">{item.desc}</p>
+                          </NavigationMenuLink>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {navLinks.slice(2).map((link) => (
                 <NavigationMenuItem key={link.href}>
                   <Link href={link.href} legacyBehavior passHref>
                     <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[active]:bg-white/10 data-[active]:text-white font-semibold")}>
@@ -185,9 +243,38 @@ const Navbar = () => {
                 <SheetTitle className="text-left text-white border-b border-white/10 pb-4">Menu</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-4 mt-8">
-                {navLinks.map((link) => (
+                {navLinks.slice(0, 2).map((link) => (
                   <SheetClose key={link.href} asChild>
-                    <Link 
+                    <Link
+                      href={link.href}
+                      className="text-lg font-semibold hover:text-[#00d9ff] transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+
+                <div className="px-4 py-2">
+                  <div className="text-xs uppercase tracking-wider text-white/40 mb-2">
+                    {decompressionMenu.label}
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    {decompressionMenu.items.map((item) => (
+                      <SheetClose key={item.href} asChild>
+                        <Link
+                          href={item.href}
+                          className="text-base font-medium hover:text-[#00d9ff] transition-colors py-2 rounded-lg hover:bg-white/5"
+                        >
+                          {item.title}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </div>
+                </div>
+
+                {navLinks.slice(2).map((link) => (
+                  <SheetClose key={link.href} asChild>
+                    <Link
                       href={link.href}
                       className="text-lg font-semibold hover:text-[#00d9ff] transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
                     >
