@@ -35,14 +35,10 @@ const DecompressionSubpage = ({
   const { t, language } = useLanguage();
   const [openFaq, setOpenFaq] = useState(null);
 
-  const conditions = [
-    t(`${region}Cond1`),
-    t(`${region}Cond2`),
-    t(`${region}Cond3`),
-    t(`${region}Cond4`),
-    t(`${region}Cond5`),
-    t(`${region}Cond6`),
-  ];
+  const conditions = [1, 2, 3, 4, 5, 6]
+    .map((i) => ({ key: `${region}Cond${i}`, value: t(`${region}Cond${i}`) }))
+    .filter(({ key, value }) => value && value !== key)
+    .map(({ value }) => value);
 
   const symptoms = [
     t(`${region}Sym1`),

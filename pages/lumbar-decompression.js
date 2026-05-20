@@ -17,10 +17,6 @@ const LumbarDecompressionPage = () => {
           a: 'No. Most patients describe it as a gentle stretch in the lower back. Many fall asleep on the table.',
         },
         {
-          q: 'Can I do this if I already had back surgery?',
-          a: 'Often yes. We treat patients with failed back surgery syndrome, but we will review your MRI and surgical history during your initial consultation to make sure you are a safe candidate.',
-        },
-        {
           q: 'How quickly will I feel relief?',
           a: 'Most lumbar patients feel meaningful relief between sessions 6 and 10. The full protocol of 20–30 sessions is what produces lasting structural change in the disc.',
         },
@@ -33,10 +29,6 @@ const LumbarDecompressionPage = () => {
         {
           q: '¿Sentiré dolor durante el tratamiento?',
           a: 'No. La mayoría de los pacientes lo describe como un estiramiento suave en la espalda baja. Muchos se quedan dormidos en la mesa.',
-        },
-        {
-          q: '¿Puedo hacerlo si ya tuve cirugía de espalda?',
-          a: 'Muchas veces sí. Tratamos pacientes con síndrome de cirugía fallida, pero revisaremos tu MRI e historial quirúrgico en tu consulta inicial para asegurarnos de que eres un candidato seguro.',
         },
         {
           q: '¿Qué tan rápido voy a sentir alivio?',
