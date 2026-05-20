@@ -61,7 +61,7 @@ const CervicalDecompressionPage = () => {
       region="cervical"
       heroImage="/images/hero-cervical-decompression.png"
       anatomyImage="/images/cervical-anatomy.png"
-      accuSpinaImage="/images/accu-spina-studio.png"
+      accuSpinaImage="/images/accu-spina-spinal-decompression-system-landscape.png"
       seo={{
         title: isEn
           ? 'Cervical Decompression Therapy Puerto Rico | Neck Herniated Disc | PR Decompression Centers'

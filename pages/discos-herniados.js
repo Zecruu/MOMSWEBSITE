@@ -154,7 +154,7 @@ const DiscosHerniados = () => {
             </SplitText>
             <SplitImage>
               <img
-                src="/images/accu-spina-studio.png"
+                src="/images/accu-spina-spinal-decompression-system-landscape.png"
                 alt={t('accuSpinaTitle')}
                 loading="lazy"
               />

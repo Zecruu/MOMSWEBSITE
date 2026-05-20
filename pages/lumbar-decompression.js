@@ -61,7 +61,7 @@ const LumbarDecompressionPage = () => {
       region="lumbar"
       heroImage="/images/hero-lumbar-decompression.png"
       anatomyImage="/images/lumbar-anatomy.png"
-      accuSpinaImage="/images/accu-spina-studio.png"
+      accuSpinaImage="/images/accu-spina-spinal-decompression-system-landscape.png"
       seo={{
         title: isEn
           ? 'Lumbar Decompression Therapy Puerto Rico | Herniated Disc & Sciatica | PR Decompression Centers'
