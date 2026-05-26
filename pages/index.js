@@ -1,567 +1,1081 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useLanguage } from "../context/LanguageContext";
+import styled, { keyframes } from "styled-components";
+import {
+  FaArrowRight,
+  FaBolt,
+  FaCalendarAlt,
+  FaCheckCircle,
+  FaHeartbeat,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaPlay,
+  FaShieldAlt,
+  FaStethoscope,
+  FaTimes,
+} from "react-icons/fa";
 import SEOHead from "../components/SEOHead";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronDown, X } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+
+const painPointIds = [
+  { top: "23%", left: "48.7%", id: "neckPain" },
+  { top: "36%", left: "48.7%", id: "midBackPain" },
+  { top: "47.5%", left: "48.7%", id: "lowerBackPain" },
+  { top: "29%", left: "38%", id: "leftShoulderPain" },
+  { top: "29%", left: "59%", id: "rightShoulderPain" },
+  { top: "72%", left: "38.5%", id: "leftKneePain" },
+  { top: "72%", left: "60.5%", id: "rightKneePain" },
+];
 
 const Index = () => {
   const [selectedPainPoint, setSelectedPainPoint] = useState(null);
   const { t, language } = useLanguage();
+  const isEn = language === "en";
 
   const getPainPointContent = (painPoint) => {
     const content = {
-      [t('neckPain')]: {
-        causes: language === 'en' 
-          ? "Neck pain often results from poor posture, prolonged screen use, whiplash injuries, or degenerative conditions. This can lead to muscle tension, pinched nerves, and cervical spine misalignment."
-          : "El dolor cervical frecuentemente es consecuencia de una postura inadecuada, uso prolongado de pantallas, lesiones por latigazo cervical o condiciones degenerativas. Estas situaciones pueden provocar tensión muscular, compresión de nervios y desalineación de la columna cervical, afectando significativamente su calidad de vida.",
-        treatment: language === 'en'
-          ? "Our chiropractic adjustments and decompression therapy can help realign your cervical spine, reduce nerve pressure, and relax tense muscles. Laser therapy can also help reduce inflammation and accelerate healing in the affected area."
-          : "Nuestros ajustes quiroprácticos especializados y la terapia de descompresión ayudan a realinear su columna cervical, reducir la presión sobre los nervios y relajar los músculos tensos. Complementamos el tratamiento con terapia láser avanzada para reducir la inflamación y acelerar la recuperación del área afectada."
+      [t("neckPain")]: {
+        causes: isEn
+          ? "Neck pain often comes from posture, screen use, whiplash, disc changes, or irritated cervical nerves."
+          : "El dolor de cuello puede venir de postura, uso de pantallas, latigazo cervical, cambios discales o nervios irritados.",
+        treatment: isEn
+          ? "We combine cervical evaluation, chiropractic care, decompression when appropriate, and laser therapy to reduce pressure and inflammation."
+          : "Combinamos evaluacion cervical, cuidado quiropractico, descompresion cuando aplica y laser para bajar presion e inflamacion.",
       },
-      [t('midBackPain')]: {
-        causes: language === 'en' 
-          ? "Mid back pain typically stems from poor posture, repetitive movements, muscle strain, or spinal disc issues. This area is particularly affected by prolonged sitting and workplace ergonomics."
-          : "El dolor en la espalda media generalmente se origina por diversos factores como postura incorrecta, movimientos repetitivos, tensión muscular o problemas en los discos vertebrales. Esta zona es particularmente vulnerable durante periodos prolongados de sedestación y por una ergonomía inadecuada en el lugar de trabajo, lo que puede resultar en molestias crónicas si no se trata adecuadamente.",
-        treatment: language === 'en'
-          ? "We offer targeted chiropractic care to improve thoracic spine mobility, combined with matrix therapy to address muscle tension. Our decompression techniques can help relieve pressure on spinal discs and nerves in this region."
-          : "Ofrecemos atención quiropráctica específica para mejorar la movilidad de la columna torácica, combinada con terapia matrix para tratar la tensión muscular. Nuestras técnicas avanzadas de descompresión ayudan a aliviar la presión en los discos vertebrales y nervios de esta región, promoviendo una recuperación integral y duradera."
+      [t("midBackPain")]: {
+        causes: isEn
+          ? "Mid-back pain is often tied to posture, repetitive work, rib or thoracic joint restriction, and muscle guarding."
+          : "El dolor de espalda media suele estar relacionado con postura, trabajo repetitivo, restriccion toracica y tension muscular.",
+        treatment: isEn
+          ? "Targeted chiropractic care and rehabilitation support can improve mobility and calm overloaded tissues."
+          : "El cuidado quiropractico dirigido y la rehabilitacion ayudan a mejorar movilidad y calmar tejidos sobrecargados.",
       },
-      [t('lowerBackPain')]: {
-        causes: language === 'en'
-          ? "Lower back pain can be caused by herniated discs, sciatica, muscle strains, or degenerative conditions. Lifestyle factors like heavy lifting, prolonged sitting, or lack of exercise can worsen the condition."
-          : "El dolor lumbar puede ser causado por hernias discales, ciática, distensiones musculares o condiciones degenerativas. Factores del estilo de vida como levantar objetos pesados, permanecer sentado por largos períodos o la falta de ejercicio pueden agravar significativamente estas condiciones. La región lumbar es fundamental para la movilidad y estabilidad del cuerpo.",
-        treatment: language === 'en'
-          ? "Our comprehensive approach includes spinal decompression to relieve disc pressure, chiropractic adjustments for proper alignment, and laser therapy to reduce inflammation. Matrix therapy helps address muscle imbalances and promotes faster healing."
-          : "Nuestro enfoque integral incluye descompresión espinal para aliviar la presión discal, ajustes quiroprácticos para una alineación óptima y terapia láser para reducir la inflamación. La terapia matrix complementa el tratamiento, ayudando a corregir desequilibrios musculares y promoviendo una recuperación más rápida y efectiva."
+      [t("lowerBackPain")]: {
+        causes: isEn
+          ? "Lower back pain may come from herniated discs, sciatica, muscle strain, stenosis, or prolonged sitting."
+          : "El dolor lumbar puede venir de hernias discales, ciatica, tension muscular, estenosis o estar sentado por mucho tiempo.",
+        treatment: isEn
+          ? "Lumbar decompression, chiropractic care, and laser therapy can reduce disc pressure and help restore function."
+          : "La descompresion lumbar, quiropractica y laser pueden reducir presion discal y mejorar funcion.",
       },
-      [t('leftShoulderPain')]: {
-        causes: language === 'en'
-          ? "Shoulder pain may result from rotator cuff injuries, frozen shoulder, arthritis, or referred pain from neck issues. Poor posture and repetitive movements often contribute to the problem."
-          : "El dolor de hombro puede surgir por lesiones del manguito rotador, hombro congelado, artritis o dolor referido de problemas cervicales. La postura inadecuada y los movimientos repetitivos frecuentemente contribuyen al problema. Esta articulación compleja requiere un diagnóstico preciso para un tratamiento efectivo.",
-        treatment: language === 'en'
-          ? "We utilize a combination of chiropractic care and laser therapy to address both the joint and surrounding soft tissues. Matrix therapy helps improve range of motion and reduce muscle tension."
-          : "Utilizamos una combinación especializada de atención quiropráctica y terapia láser para tratar tanto la articulación como los tejidos blandos circundantes. La terapia matrix ayuda a mejorar el rango de movimiento, reducir la tensión muscular y restaurar la funcionalidad normal del hombro."
+      [t("leftShoulderPain")]: {
+        causes: isEn
+          ? "Shoulder pain can involve the rotator cuff, joint irritation, posture, or referred pain from the neck."
+          : "El dolor de hombro puede envolver manguito rotador, irritacion articular, postura o dolor referido del cuello.",
+        treatment: isEn
+          ? "We evaluate the neck and shoulder together, then use hands-on care, laser therapy, and rehab support."
+          : "Evaluamos cuello y hombro juntos, luego usamos cuidado manual, laser y apoyo de rehabilitacion.",
       },
-      [t('rightShoulderPain')]: {
-        causes: language === 'en'
-          ? "Shoulder pain may result from rotator cuff injuries, frozen shoulder, arthritis, or referred pain from neck issues. Poor posture and repetitive movements often contribute to the problem."
-          : "El dolor de hombro puede surgir por lesiones del manguito rotador, hombro congelado, artritis o dolor referido de problemas cervicales. La postura inadecuada y los movimientos repetitivos frecuentemente contribuyen al problema. Esta articulación compleja requiere un diagnóstico preciso para un tratamiento efectivo.",
-        treatment: language === 'en'
-          ? "We utilize a combination of chiropractic care and laser therapy to address both the joint and surrounding soft tissues. Matrix therapy helps improve range of motion and reduce muscle tension."
-          : "Utilizamos una combinación especializada de atención quiropráctica y terapia láser para tratar tanto la articulación como los tejidos blandos circundantes. La terapia matrix ayuda a mejorar el rango de movimiento, reducir la tensión muscular y restaurar la funcionalidad normal del hombro."
+      [t("rightShoulderPain")]: {
+        causes: isEn
+          ? "Shoulder pain can involve the rotator cuff, joint irritation, posture, or referred pain from the neck."
+          : "El dolor de hombro puede envolver manguito rotador, irritacion articular, postura o dolor referido del cuello.",
+        treatment: isEn
+          ? "We evaluate the neck and shoulder together, then use hands-on care, laser therapy, and rehab support."
+          : "Evaluamos cuello y hombro juntos, luego usamos cuidado manual, laser y apoyo de rehabilitacion.",
       },
-      [t('leftKneePain')]: {
-        causes: language === 'en'
-          ? "Knee pain can stem from osteoarthritis, ligament injuries, meniscus tears, or alignment issues. Being a weight-bearing joint, it's particularly susceptible to wear and tear."
-          : "El dolor de rodilla puede originarse por osteoartritis, lesiones ligamentarias, desgarros de menisco o problemas de alineación. Al ser una articulación que soporta peso, es particularmente susceptible al desgaste. Los problemas biomecánicos pueden afectar toda la cadena cinética de la pierna.",
-        treatment: language === 'en'
-          ? "Our treatment combines laser therapy to reduce inflammation and promote healing, along with chiropractic care to address any alignment issues that may be affecting your knee. Matrix therapy helps strengthen surrounding muscles."
-          : "Nuestro tratamiento combina terapia láser avanzada para reducir la inflamación y promover la curación, junto con atención quiropráctica para abordar problemas de alineación que puedan estar afectando su rodilla. La terapia matrix ayuda a fortalecer los músculos circundantes y mejorar la estabilidad articular."
+      [t("leftKneePain")]: {
+        causes: isEn
+          ? "Knee pain may come from arthritis, meniscus irritation, alignment issues, or overuse."
+          : "El dolor de rodilla puede venir de artritis, irritacion de menisco, alineacion o sobreuso.",
+        treatment: isEn
+          ? "Care focuses on inflammation control, movement quality, and the mechanics affecting the knee."
+          : "El cuidado se enfoca en controlar inflamacion, mejorar movimiento y corregir mecanica.",
       },
-      [t('rightKneePain')]: {
-        causes: language === 'en'
-          ? "Knee pain can stem from osteoarthritis, ligament injuries, meniscus tears, or alignment issues. Being a weight-bearing joint, it's particularly susceptible to wear and tear."
-          : "El dolor de rodilla puede originarse por osteoartritis, lesiones ligamentarias, desgarros de menisco o problemas de alineación. Al ser una articulación que soporta peso, es particularmente susceptible al desgaste. Los problemas biomecánicos pueden afectar toda la cadena cinética de la pierna.",
-        treatment: language === 'en'
-          ? "Our treatment combines laser therapy to reduce inflammation and promote healing, along with chiropractic care to address any alignment issues that may be affecting your knee. Matrix therapy helps strengthen surrounding muscles."
-          : "Nuestro tratamiento combina terapia láser avanzada para reducir la inflamación y promover la curación, junto con atención quiropráctica para abordar problemas de alineación que puedan estar afectando su rodilla. La terapia matrix ayuda a fortalecer los músculos circundantes y mejorar la estabilidad articular."
-      }
+      [t("rightKneePain")]: {
+        causes: isEn
+          ? "Knee pain may come from arthritis, meniscus irritation, alignment issues, or overuse."
+          : "El dolor de rodilla puede venir de artritis, irritacion de menisco, alineacion o sobreuso.",
+        treatment: isEn
+          ? "Care focuses on inflammation control, movement quality, and the mechanics affecting the knee."
+          : "El cuidado se enfoca en controlar inflamacion, mejorar movimiento y corregir mecanica.",
+      },
     };
 
     return content[painPoint] || {
-      causes: language === 'en' 
-        ? "Pain in this area can have various causes."
-        : "El dolor en esta área puede tener varias causas.",
-      treatment: language === 'en'
-        ? "We offer multiple treatment options to help address your specific condition."
-        : "Ofrecemos múltiples opciones de tratamiento para ayudar a tratar su condición específica."
+      causes: isEn ? "Pain in this area can have several causes." : "El dolor en esta area puede tener varias causas.",
+      treatment: isEn
+        ? "We evaluate your condition and match the treatment plan to your findings."
+        : "Evaluamos tu condicion y ajustamos el plan a los hallazgos.",
     };
   };
 
-  const pageTitle = language === 'en'
-    ? 'Chiropractor in Levittown & Toa Baja PR | Spinal Decompression Puerto Rico | PR Decompression Centers'
-    : 'Quiropráctico en Levittown y Toa Baja PR | Descompresión Espinal Puerto Rico | PR Decompression Centers';
+  const pageTitle = isEn
+    ? "Chiropractor in Levittown & Toa Baja PR | Spinal Decompression Puerto Rico | PR Decompression Centers"
+    : "Quiropractico en Levittown y Toa Baja PR | Descompresion Espinal Puerto Rico | PR Decompression Centers";
 
-  const pageDescription = language === 'en'
-    ? 'Top-rated chiropractor in Levittown and Toa Baja, Puerto Rico. Spinal decompression therapy, herniated disc treatment, sciatica relief, back & neck pain. Serving Bayamón, Cataño, Dorado. Non-surgical solutions. Call 787-261-8258.'
-    : 'Quiropráctico en Levittown y Toa Baja, Puerto Rico. Terapia de descompresión espinal, tratamiento de hernias discales, ciática, dolor de espalda y cuello. Sirviendo Bayamón, Cataño, Dorado. Soluciones sin cirugía. Llame 787-261-8258.';
+  const pageDescription = isEn
+    ? "Top-rated chiropractor in Levittown and Toa Baja, Puerto Rico. Spinal decompression therapy, herniated disc treatment, sciatica relief, back and neck pain care. Call 787-261-8258."
+    : "Quiropractico en Levittown y Toa Baja, Puerto Rico. Terapia de descompresion espinal, tratamiento de hernias discales, ciatica, dolor de espalda y cuello. Llame 787-261-8258.";
 
-  // FAQ Schema for rich snippets in Google - bilingual
-  const faqSchema = {
+  const structuredData = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": language === 'en' ? [
-      {
-        "@type": "Question",
-        "name": "What is spinal decompression therapy?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Spinal decompression therapy is a non-surgical treatment that gently stretches the spine to relieve pressure on herniated or bulging discs, pinched nerves, and spinal stenosis. At PR Decompression Centers in Levittown, we use advanced decompression technology to provide effective pain relief without surgery."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Where can I find a chiropractor near me in Levittown or Toa Baja?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "PR Decompression Centers is located at RH-16 Ave. Building, Los Dominicos, Toa Baja, PR 00949, serving the Levittown, Toa Baja, Bayamón, Cataño, and Dorado areas. Call 787-261-8258 for an appointment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What conditions does a chiropractor treat?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Our chiropractors treat herniated discs, sciatica, back pain, neck pain, shoulder pain, knee pain, and other musculoskeletal conditions using chiropractic adjustments, spinal decompression therapy, laser therapy, and matrix rehabilitation."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you accept insurance for chiropractic treatment in Puerto Rico?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, PR Decompression Centers accepts most major insurance plans, as well as cash, credit cards, and debit cards. Contact us at 787-261-8258 to verify your insurance coverage."
-        }
-      }
-    ] : [
-      {
-        "@type": "Question",
-        "name": "¿Qué es la terapia de descompresión espinal?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La terapia de descompresión espinal es un tratamiento no quirúrgico que estira suavemente la columna vertebral para aliviar la presión en discos herniados, nervios comprimidos y estenosis espinal. En PR Decompression Centers en Levittown, utilizamos tecnología avanzada de descompresión para proporcionar alivio efectivo del dolor sin cirugía."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Dónde puedo encontrar un quiropráctico cerca de mí en Levittown o Toa Baja?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "PR Decompression Centers está ubicado en RH-16 Ave. Building, Los Dominicos, Toa Baja, PR 00949, sirviendo las áreas de Levittown, Toa Baja, Bayamón, Cataño y Dorado. Llame al 787-261-8258 para una cita."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué condiciones trata un quiropráctico?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nuestros quiroprácticos tratan hernias discales, ciática, dolor de espalda, dolor de cuello, dolor de hombro, dolor de rodilla y otras condiciones musculoesqueléticas utilizando ajustes quiroprácticos, terapia de descompresión espinal, terapia láser y rehabilitación matrix."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Aceptan seguro médico para tratamiento quiropráctico en Puerto Rico?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, PR Decompression Centers acepta la mayoría de los planes de seguro principales, así como efectivo, tarjetas de crédito y débito. Contáctenos al 787-261-8258 para verificar su cobertura de seguro."
-        }
-      }
-    ]
+    "@type": "MedicalBusiness",
+    name: "PR Decompression Centers",
+    url: "https://prdecompressioncenters.com",
+    telephone: "+1-787-261-8258",
+    image: "https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "RH-16 Ave. Building, Los Dominicos",
+      addressLocality: "Toa Baja",
+      addressRegion: "PR",
+      postalCode: "00949",
+      addressCountry: "US",
+    },
+    medicalSpecialty: ["Chiropractic", "Physical Therapy", "Pain Management"],
   };
 
-  const structuredData = [
-    faqSchema,
+  const services = useMemo(
+    () => [
+      {
+        title: t("advancedChiropractic"),
+        text: isEn
+          ? "Hands-on spinal care for alignment, mobility, and nerve irritation."
+          : "Cuidado espinal manual para alineacion, movilidad e irritacion nerviosa.",
+        image: "/images/chiropractic-treatment-toa-baja.jpeg",
+        href: "/products#chiropractic",
+        icon: <FaStethoscope />,
+      },
+      {
+        title: t("spinalDecompressionTitle"),
+        text: isEn
+          ? "Accu-SPINA decompression for herniated discs, sciatica, and neck or back pain."
+          : "Descompresion Accu-SPINA para hernias discales, ciatica y dolor de cuello o espalda.",
+        image: "/images/accu-spina-spinal-decompression-system-landscape.png",
+        href: "/discos-herniados",
+        icon: <FaHeartbeat />,
+      },
+      {
+        title: t("advancedLaserTitle"),
+        text: isEn
+          ? "Light therapy to support pain relief, inflammation control, and tissue recovery."
+          : "Terapia de luz para apoyar alivio, inflamacion y recuperacion de tejidos.",
+        image: "/images/advanced-laser-therapy-treatment.png",
+        href: "/products#laser",
+        icon: <FaBolt />,
+      },
+      {
+        title: t("matrix"),
+        text: isEn
+          ? "Rehabilitation support for movement, chronic tension, and recovery."
+          : "Apoyo de rehabilitacion para movimiento, tension cronica y recuperacion.",
+        image: "/images/matrix-rehabilitation-therapy.jpeg",
+        href: "/products#matrix",
+        icon: <FaShieldAlt />,
+      },
+    ],
+    [isEn, t]
+  );
+
+  const videos = [
     {
-      "@context": "https://schema.org",
-      "@type": "MedicalBusiness",
-      "name": "PR Decompression Centers",
-      "alternateName": ["Chiropractor Levittown PR", "Quiropráctico Levittown", "Quiropráctico Toa Baja", "Centro de Descompresión Espinal"],
-      "image": [
-        "https://prdecompressioncenters.com/images/pr-decompression-centers-logo.png",
-        "https://prdecompressioncenters.com/images/non-surgical-pain-relief.JPG",
-        "https://prdecompressioncenters.com/images/chiropractic-treatment-toa-baja.jpeg"
-      ],
-      "url": "https://prdecompressioncenters.com",
-      "telephone": "+1-787-261-8258",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "RH-16 Ave. Building, Los Dominicos",
-        "addressLocality": "Toa Baja",
-        "addressRegion": "PR",
-        "postalCode": "00949",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 18.4425,
-        "longitude": -66.1946
-      },
-      "areaServed": [
-        {"@type": "City", "name": "Levittown"},
-        {"@type": "City", "name": "Toa Baja"},
-        {"@type": "City", "name": "Bayamón"},
-        {"@type": "City", "name": "Cataño"},
-        {"@type": "City", "name": "Dorado"},
-        {"@type": "City", "name": "Guaynabo"},
-        {"@type": "City", "name": "San Juan"}
-      ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-          "opens": "09:00",
-          "closes": "16:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Friday",
-          "opens": "09:00",
-          "closes": "11:30"
-        }
-      ],
-      "medicalSpecialty": ["Chiropractic", "Physical Therapy", "Pain Management"],
-      "availableService": [
-        {
-          "@type": "MedicalTherapy",
-          "name": "Spinal Decompression Therapy",
-          "description": language === 'en'
-            ? "Non-surgical spinal decompression treatment for herniated discs in Levittown and Toa Baja, Puerto Rico"
-            : "Tratamiento de descompresión espinal no quirúrgico para hernias discales en Levittown y Toa Baja, Puerto Rico"
-        },
-        {
-          "@type": "MedicalTherapy",
-          "name": "Chiropractic Treatment",
-          "description": language === 'en'
-            ? "Professional chiropractic adjustments and spinal care in Levittown, Puerto Rico"
-            : "Ajustes quiroprácticos profesionales y cuidado espinal en Levittown, Puerto Rico"
-        },
-        {
-          "@type": "MedicalTherapy",
-          "name": "Laser Therapy",
-          "description": language === 'en'
-            ? "Advanced laser treatment for pain and inflammation"
-            : "Tratamiento láser avanzado para dolor e inflamación"
-        },
-        {
-          "@type": "MedicalTherapy",
-          "name": "Matrix Rehabilitation",
-          "description": language === 'en'
-            ? "Muscle recovery and pain management rehabilitation therapy"
-            : "Terapia de rehabilitación para recuperación muscular y manejo del dolor"
-        }
-      ],
-    }
+      title: t("spinalDecompressionVideo"),
+      src: "https://www.youtube.com/embed/tJahlOwwuGM",
+      type: "iframe",
+    },
+    {
+      title: t("chiropracticVideo"),
+      src: "https://www.youtube.com/embed/iWwJeSb7Dh4",
+      type: "iframe",
+    },
+    {
+      title: t("clinicVideo"),
+      src: "/videos/Centro-Quiropractico-Dra.-Morales.mp4",
+      type: "video",
+    },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen w-full overflow-x-hidden bg-transparent">
+    <Page>
       <SEOHead
         title={pageTitle}
         description={pageDescription}
-        keywords="chiropractor Levittown, chiropractor in Levittown, chiropractor Toa Baja, chiropractor in Toa Baja, chiropractor near me, chiropractor near me Levittown, best chiropractor Levittown PR, decompression therapy, decompression, spinal decompression, spinal decompression therapy near me, quiropráctico Levittown, quiropráctico Toa Baja, quiropráctico cerca de mí, descompresión espinal, descompresión, terapia de descompresión, herniated disc treatment Puerto Rico, sciatica treatment Levittown, dolor de espalda Levittown, hernia discal tratamiento"
+        keywords="chiropractor Levittown, chiropractor Toa Baja, spinal decompression Puerto Rico, decompression therapy, herniated disc treatment, sciatica treatment, dolor de espalda, discos herniados"
         ogTitle={pageTitle}
         ogDescription={pageDescription}
         canonicalUrl="https://prdecompressioncenters.com/"
         schema={structuredData}
       />
-      
-      <div className="flex-1 w-full">
-        {/* Hero Section */}
-        <div className="relative w-full h-[70vh] md:h-[calc(100vh-70px)] -mt-[70px] pt-[70px] flex flex-col justify-center items-center bg-[url('/images/accu-spina-spinal-decompression-system-landscape.png')] md:bg-[url('/images/accu-spina-spinal-decompression-system-desktop.png')] bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed">
-          <div className="absolute inset-0 bg-black/30 z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] z-20" />
-          
-          <div className="z-30 flex flex-col items-center px-6 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 max-w-5xl drop-shadow-lg tracking-tight leading-tight">
-              {t('mainTitle')}
-            </h1>
-            <h2 className="text-xl md:text-3xl text-white/95 font-medium mb-10 max-w-3xl drop-shadow-md">
-              {t('mainSubtitle')}
-            </h2>
-            <Button 
-              asChild 
-              size="lg"
-              className="bg-transparent hover:bg-white hover:text-[#000033] text-white border-2 border-white rounded-full text-lg font-semibold px-8 py-6 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 uppercase tracking-wide"
-            >
-              <a href="#services">
-                {language === 'en' ? 'Discover Our Services' : 'Descubra Nuestros Servicios'}
-              </a>
-            </Button>
 
-            <button
-              type="button"
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  window.dispatchEvent(new CustomEvent('open-questionnaire'))
-                }
-              }}
-              className="mt-5 text-white/90 hover:text-[#00d9ff] underline underline-offset-4 decoration-white/40 hover:decoration-[#00d9ff] text-sm md:text-base font-medium transition-colors"
-            >
-              {language === 'en' ? 'Or take our quick questionnaire →' : 'O toma nuestro cuestionario rápido →'}
-            </button>
-          </div>
+      <Hero>
+        <HeroOverlay />
+        <HeroContent>
+          <HeroEyebrow>{t("accuSpinaTitle")}</HeroEyebrow>
+          <HeroTitle>{t("mainTitle")}</HeroTitle>
+          <HeroSub>{t("mainSubtitle")}</HeroSub>
+          <HeroActions>
+            <PrimaryCTA href="https://wa.me/17872618258" target="_blank" rel="noopener">
+              <FaCalendarAlt />
+              {isEn ? "Schedule an Appointment" : "Agendar una Cita"}
+            </PrimaryCTA>
+            <GhostCTA href="#services">
+              {isEn ? "Explore Services" : "Ver Servicios"}
+              <FaArrowRight />
+            </GhostCTA>
+          </HeroActions>
+          <TrustRow>
+            <TrustItem><strong>20-30</strong><span>{isEn ? "session protocols" : "sesiones tipicas"}</span></TrustItem>
+            <TrustItem><strong>{isEn ? "No" : "Sin"}</strong><span>{isEn ? "surgery or downtime" : "cirugia ni reposo"}</span></TrustItem>
+            <TrustItem><strong>IDD</strong><span>{isEn ? "Accu-SPINA therapy" : "terapia Accu-SPINA"}</span></TrustItem>
+          </TrustRow>
+        </HeroContent>
+      </Hero>
 
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 animate-bounce">
-            <div className="w-8 h-8 border-b-2 border-r-2 border-white rotate-45" />
-          </div>
-        </div>
+      <IntroBand>
+        <IntroText>
+          <Eyebrow>{isEn ? "Specialized spine care" : "Cuidado especializado"}</Eyebrow>
+          <SectionTitle>{isEn ? "Built around the source of your pain." : "Enfocado en la causa de tu dolor."}</SectionTitle>
+        </IntroText>
+        <IntroCards>
+          {[t("benefitItem1"), t("benefitItem2"), t("benefitItem3")].map((item) => (
+            <MiniCard key={item}>
+              <FaCheckCircle />
+              <span>{item}</span>
+            </MiniCard>
+          ))}
+        </IntroCards>
+      </IntroBand>
 
-        <div className="container mx-auto px-4 py-16 md:py-24">
-          {/* Testimonials Section */}
-          <h2 id="testimonials" className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-[#000033]">
-            {t('testimonialsSectionTitle')}
-          </h2>
+      <Section id="services" $light>
+        <Container>
+          <SectionHeader>
+            <Eyebrow>{t("services")}</Eyebrow>
+            <DarkTitle>{t("specializedServices")}</DarkTitle>
+          </SectionHeader>
+          <ServiceGrid>
+            {services.map((service, index) => (
+              <ServiceCard
+                key={service.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+              >
+                <ServiceImage>
+                  <img src={service.image} alt={service.title} loading={index > 1 ? "lazy" : "eager"} />
+                  <IconBadge>{service.icon}</IconBadge>
+                </ServiceImage>
+                <ServiceBody>
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                  <CardLink href={service.href}>
+                    {t("learnMore")} <FaArrowRight />
+                  </CardLink>
+                </ServiceBody>
+              </ServiceCard>
+            ))}
+          </ServiceGrid>
+        </Container>
+      </Section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
+      <FeatureSection>
+        <FeatureImage>
+          <img src="/images/accu-spina-spinal-decompression-system-desktop.png" alt="Accu-SPINA spinal decompression system" />
+        </FeatureImage>
+        <FeatureCopy>
+          <Eyebrow>{t("ourSpecialty")}</Eyebrow>
+          <SectionTitle>{t("accuSpinaTitle")}</SectionTitle>
+          <FeatureText>{t("accuSpinaIntro")}</FeatureText>
+          <FeatureList>
+            <li>{t("protocolStep1")}</li>
+            <li>{t("protocolStep3")}</li>
+            <li>{t("protocolStep4")}</li>
+          </FeatureList>
+          <PrimaryCTA href="/discos-herniados">
+            {isEn ? "Learn about decompression" : "Conoce la descompresion"}
+            <FaArrowRight />
+          </PrimaryCTA>
+        </FeatureCopy>
+      </FeatureSection>
+
+      <Section $light>
+        <Container>
+          <PainSectionHeader>
+            <Eyebrow>{t("clickWhere")}</Eyebrow>
+            <DarkTitle>{t("herniatedDiscTitle")}</DarkTitle>
+            <MutedLead>
+              {isEn
+                ? "Select the area that hurts and see how our care plan may approach it."
+                : "Selecciona el area que duele y mira como podriamos abordarlo."}
+            </MutedLead>
+          </PainSectionHeader>
+
+          <PainGrid>
+            <PainDiagramColumn>
+              <PainPrompt>{isEn ? "Click where you feel pain" : "Haz clic donde te duele"}</PainPrompt>
+              <PainDiagram>
+                <img src="/images/interactive-pain-diagram.jpeg" alt="Interactive pain diagram" />
+                {painPointIds.map((point) => (
+                  <PainPoint
+                    key={point.id}
+                    type="button"
+                    aria-label={t(point.id)}
+                    onClick={() => setSelectedPainPoint(point.id)}
+                    style={{ top: point.top, left: point.left }}
+                  />
+                ))}
+              </PainDiagram>
+            </PainDiagramColumn>
+            <PainPanel>
+              {selectedPainPoint ? (
+                <>
+                  <CloseButton type="button" onClick={() => setSelectedPainPoint(null)} aria-label={t("close")}>
+                    <FaTimes />
+                  </CloseButton>
+                  <PainTitle>{t(selectedPainPoint)}</PainTitle>
+                  <InfoBlock>
+                    <h4>{t("commonCauses")}</h4>
+                    <p>{getPainPointContent(t(selectedPainPoint)).causes}</p>
+                  </InfoBlock>
+                  <InfoBlock>
+                    <h4>{t("howWeCanHelp")}</h4>
+                    <p>{getPainPointContent(t(selectedPainPoint)).treatment}</p>
+                  </InfoBlock>
+                </>
+              ) : (
+                <EmptyPain>
+                  <FaMapMarkerAlt />
+                  <h3>{isEn ? "Choose a pain area" : "Elige un area"}</h3>
+                  <p>{isEn ? "Tap a glowing point on the diagram to view common causes and treatment options." : "Toca un punto en el diagrama para ver causas y opciones de tratamiento."}</p>
+                </EmptyPain>
+              )}
+            </PainPanel>
+          </PainGrid>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionHeader>
+            <Eyebrow>{t("testimonialsSectionTitle")}</Eyebrow>
+            <SectionTitle>{isEn ? "Real patients. Real relief stories." : "Pacientes reales. Historias reales."}</SectionTitle>
+          </SectionHeader>
+          <VideoGrid>
             {[
               {
                 src: "/videos/Testimonio Decompression.mp4",
-                caption: language === 'en' ? 'Results of Decompression Therapy' : 'Resultados de Terapia de Descompresión'
+                caption: isEn ? "Results of Decompression Therapy" : "Resultados de Terapia de Descompresion",
               },
               {
                 src: "/videos/Testimonio Soluciones Sin Cirugia Dolor De Espalda.mp4",
-                caption: language === 'en' ? 'Non-Surgical Solutions for Back and Neck Pain' : 'Soluciones Sin Cirugía para el Dolor de Espalda y Cuello'
-              }
-            ].map((video, index) => (
-              <Card key={index} className="bg-black border-none overflow-hidden shadow-xl">
-                <CardContent className="p-0">
-                  <video 
-                    controls 
-                    className="w-full aspect-video object-contain bg-black"
-                  >
-                    <source src={video.src} type="video/mp4" />
-                    {language === 'en' ? 'Your browser does not support the video tag.' : 'Su navegador no soporta la etiqueta de video.'}
-                  </video>
-                  <div className="p-4 text-center text-white font-medium text-lg">
-                    {video.caption}
-                  </div>
-                </CardContent>
-              </Card>
+                caption: isEn ? "Non-surgical solutions for back and neck pain" : "Soluciones sin cirugia para espalda y cuello",
+              },
+            ].map((video) => (
+              <VideoCard key={video.src}>
+                <video controls preload="metadata">
+                  <source src={video.src} type="video/mp4" />
+                </video>
+                <h3>{video.caption}</h3>
+              </VideoCard>
             ))}
-          </div>
+          </VideoGrid>
+        </Container>
+      </Section>
 
-          <p className="text-center text-white max-w-3xl mx-auto text-lg mb-12 leading-relaxed">
-            {language === 'en' 
-              ? 'Hear directly from our patients about their experience with our decompression therapy and non-surgical solutions for back and neck pain. In these testimonials you can also hear how the decompression machine has helped to improve their quality of life.'
-              : 'Escuche directamente de nuestros pacientes sobre su experiencia con nuestra terapia de descompresión y soluciones sin cirugía para el dolor de espalda y para el dolor de cuello. En estos testimonios también puedes escuchar cómo la máquina de descompresión ha ayudado a mejorar su calidad de vida.'}
-          </p>
-
-          <div className="flex justify-center mb-24">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-[#00f2fe] to-[#4facfe] text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <Link href="/discos-herniados">
-                {language === 'en' ? '🔍 Have a Herniated Disc? Click Here!' : '🔍 ¿Tienes Discos Herniados? ¡Haz Click Aquí!'}
-              </Link>
-            </Button>
-          </div>
-
-          {/* Services Section */}
-          <h2 id="services" className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-[#000033]">
-            {t('specializedServices')}
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8 max-w-6xl mx-auto mb-24 px-4">
-            {[
-              {
-                title: t('advancedChiropractic'),
-                img: "/images/chiropractic-treatment-toa-baja.jpeg",
-                alt: "Professional chiropractic treatment and adjustments in Toa Baja, Puerto Rico",
-                link: "/products#chiropractic",
-                btnText: t('learnMoreChiro')
-              },
-              {
-                title: t('spinalDecompressionTitle'),
-                img: "/images/spinal-decompression-therapy-pr.png",
-                alt: "Non-surgical spinal decompression therapy for herniated discs in Puerto Rico",
-                link: "/products#decompression",
-                btnText: t('discoverDecompression')
-              },
-              {
-                title: t('advancedLaserTitle'),
-                img: "/images/advanced-laser-therapy-treatment.png",
-                alt: "Advanced laser therapy for pain relief and healing in Puerto Rico",
-                link: "/products#laser",
-                btnText: t('exploreLaser')
-              },
-              {
-                title: t('matrix'),
-                img: "/images/matrix-rehabilitation-therapy.jpeg",
-                alt: "Matrix rehabilitation therapy for pain management in Puerto Rico",
-                link: "/products#matrix",
-                btnText: "Learn More About Matrix"
-              }
-            ].map((service, index) => (
-              <Card key={index} className="bg-black border-2 border-transparent relative overflow-hidden shadow-xl">
-                 <div className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-br from-[#009fff] to-[#ec2f4b] -z-10 opacity-0" />
-                <CardHeader className="p-6 pb-2">
-                  <div className="h-64 w-full overflow-hidden rounded-md bg-black/50 p-4">
-                    <img 
-                      src={service.img} 
-                      alt={service.alt}
-                      className="w-full h-full object-contain"
+      <Section $light>
+        <Container>
+          <SectionHeader>
+            <Eyebrow>{t("videoSectionTitle")}</Eyebrow>
+            <DarkTitle>{isEn ? "Understand your options before you decide." : "Entiende tus opciones antes de decidir."}</DarkTitle>
+          </SectionHeader>
+          <EducationGrid>
+            {videos.map((video) => (
+              <EducationCard key={video.title}>
+                <h3><FaPlay /> {video.title}</h3>
+                <MediaFrame>
+                  {video.type === "iframe" ? (
+                    <iframe
+                      src={video.src}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
                     />
-                  </div>
-                </CardHeader>
-                <CardContent className="flex flex-col items-center text-center p-6">
-                  <h3 className="text-2xl font-bold text-black mb-6 min-h-[4rem] flex items-center justify-center">
-                    {service.title}
-                  </h3>
-                  <Button 
-                    asChild
-                    className="bg-gradient-to-r from-[#009fff] to-[#ec2f4b] hover:from-[#ec2f4b] hover:to-[#009fff] text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300"
-                  >
-                    <Link href={service.link}>
-                      {service.btnText}
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                  ) : (
+                    <video controls preload="metadata">
+                      <source src={video.src} type="video/mp4" />
+                    </video>
+                  )}
+                </MediaFrame>
+              </EducationCard>
             ))}
-          </div>
+          </EducationGrid>
+        </Container>
+      </Section>
 
-          {/* Interactive Body Section */}
-          <div className="max-w-5xl mx-auto mb-24">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-12 text-[#000033]">
-              {t('herniatedDiscTitle')}
-            </h2>
-            
-            <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start justify-center">
-              <div className="relative w-full max-w-[500px]">
-                <div className="bg-white/90 backdrop-blur p-4 rounded-xl shadow-md text-center mb-6 font-bold text-xl text-[#333]">
-                  {language === 'en' ? 'Click where you feel pain!' : '¡Haga clic donde siente dolor!'}
-                </div>
-                <div className="relative">
-                  <img 
-                    src="/images/interactive-pain-diagram.jpeg" 
-                    alt="Interactive body diagram" 
-                    className="w-full h-auto rounded-lg shadow-lg"
-                  />
-                  
-                  {/* Pain Points */}
-                  {[
-                    { top: "23%", left: "48.7%", id: 'neckPain' },
-                    { top: "36%", left: "48.7%", id: 'midBackPain' },
-                    { top: "47.5%", left: "48.7%", id: 'lowerBackPain' },
-                    { top: "29%", left: "38%", id: 'leftShoulderPain' },
-                    { top: "29%", left: "59%", id: 'rightShoulderPain' },
-                    { top: "72%", left: "38.5%", id: 'leftKneePain' },
-                    { top: "72%", left: "60.5%", id: 'rightKneePain' },
-                  ].map((point) => (
-                    <button
-                      key={point.id}
-                      onClick={() => setSelectedPainPoint(point.id)}
-                      className="absolute w-5 h-5 md:w-6 md:h-6 bg-red-600 rounded-full hover:scale-125 transition-transform duration-200 shadow-md z-10"
-                      style={{ top: point.top, left: point.left }}
-                      aria-label={`Select ${point.id}`}
-                    >
-                      <span className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-75" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Popup / Info Panel */}
-              <div className={`
-                lg:w-[500px] lg:sticky lg:top-24 transition-all duration-300
-                ${selectedPainPoint 
-                  ? 'fixed inset-0 bg-black/95 z-50 lg:relative lg:bg-transparent lg:z-auto flex items-center justify-center lg:block p-4' 
-                  : 'hidden lg:block lg:opacity-0 lg:pointer-events-none'}
-              `}>
-                {selectedPainPoint && (
-                  <Card className="w-full max-w-md bg-white text-slate-900 border-none shadow-2xl animate-in fade-in zoom-in duration-300">
-                    <CardHeader className="relative border-b border-slate-100 pb-4">
-                      <CardTitle className="text-2xl font-bold text-[#000033]">
-                        {t(selectedPainPoint)}
-                      </CardTitle>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute right-4 top-4 lg:hidden"
-                        onClick={() => setSelectedPainPoint(null)}
-                      >
-                        <X className="h-5 w-5" />
-                      </Button>
-                    </CardHeader>
-                    <CardContent className="pt-6 space-y-4">
-                      <div>
-                        <h4 className="font-bold text-[#000033] mb-2">{t('commonCauses')}</h4>
-                        <p className="text-slate-600 leading-relaxed">
-                          {getPainPointContent(t(selectedPainPoint)).causes}
-                        </p>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-[#000033] mb-2">{t('howWeCanHelp')}</h4>
-                        <p className="text-slate-600 leading-relaxed">
-                          {getPainPointContent(t(selectedPainPoint)).treatment}
-                        </p>
-                      </div>
-                    </CardContent>
-                    <CardFooter className="lg:hidden">
-                      <Button className="w-full" onClick={() => setSelectedPainPoint(null)}>
-                        {t('close')}
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Videos Section */}
-          <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-[#000033]">
-            {t('videoSectionTitle')}
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {[
-              {
-                title: t('spinalDecompressionVideo'),
-                src: "https://www.youtube.com/embed/tJahlOwwuGM",
-                type: "iframe"
-              },
-              {
-                title: t('chiropracticVideo'),
-                src: "https://www.youtube.com/embed/iWwJeSb7Dh4",
-                type: "iframe"
-              },
-              {
-                title: t('clinicVideo'),
-                src: "/videos/Centro-Quiropractico-Dra.-Morales.mp4",
-                type: "video"
-              }
-            ].map((video, index) => (
-              <Card key={index} className="bg-black/90 border-slate-800 overflow-hidden shadow-lg">
-                <CardContent className="p-4 space-y-4">
-                  <h3 className="text-xl font-bold text-white text-center h-14 flex items-center justify-center">
-                    {video.title}
-                  </h3>
-                  <div className="aspect-video w-full bg-black rounded-lg overflow-hidden border border-slate-800">
-                    {video.type === 'iframe' ? (
-                      <iframe
-                        width="100%"
-                        height="100%"
-                        src={video.src}
-                        title={video.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                      />
-                    ) : (
-                      <video
-                        width="100%"
-                        height="100%"
-                        controls
-                        className="w-full h-full"
-                      >
-                        <source src={video.src} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+      <CTASection>
+        <Container>
+          <CTATitle>{t("readyForRelief")}</CTATitle>
+          <CTASub>{t("teamReady")}</CTASub>
+          <CTAButtons>
+            <PrimaryCTA href="https://wa.me/17872618258" target="_blank" rel="noopener">
+              <FaCalendarAlt />
+              {t("bookConsult")}
+            </PrimaryCTA>
+            <GhostCTA href="tel:7872618258">
+              <FaPhoneAlt />
+              787-261-8258
+            </GhostCTA>
+          </CTAButtons>
+        </Container>
+      </CTASection>
+    </Page>
   );
 };
 
 export default Index;
+
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+const Page = styled.div`
+  width: 100%;
+  background: #0b1220;
+  color: #ffffff;
+  overflow-x: hidden;
+`;
+
+const Hero = styled.section`
+  position: relative;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  background: url('/images/accu-spina-spinal-decompression-system-landscape.png') center/cover no-repeat, #0b1220;
+
+  @media (min-width: 900px) {
+    background-image: url('/images/accu-spina-spinal-decompression-system-desktop.png');
+  }
+`;
+
+const HeroOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7, 17, 31, 0.95) 0%, rgba(7, 17, 31, 0.78) 48%, rgba(7, 17, 31, 0.32) 100%),
+    radial-gradient(circle at 72% 44%, rgba(0, 242, 254, 0.18), transparent 32%);
+`;
+
+const HeroContent = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 86px 24px 72px;
+  animation: ${fadeUp} 0.65s ease both;
+`;
+
+const HeroEyebrow = styled.div`
+  display: inline-flex;
+  color: #00f2fe;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 242, 254, 0.08);
+  margin-bottom: 24px;
+`;
+
+const HeroTitle = styled.h1`
+  max-width: 840px;
+  margin: 0 0 20px;
+  font-size: clamp(44px, 7vw, 84px);
+  line-height: 0.98;
+  font-weight: 900;
+  letter-spacing: 0;
+`;
+
+const HeroSub = styled.p`
+  max-width: 670px;
+  margin: 0 0 32px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.55;
+`;
+
+const HeroActions = styled.div`
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 38px;
+`;
+
+const PrimaryCTA = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  color: #06101f;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 18px 44px rgba(0, 242, 254, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 54px rgba(0, 242, 254, 0.34);
+  }
+`;
+
+const GhostCTA = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+`;
+
+const TrustRow = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 760px;
+  gap: 12px;
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const TrustItem = styled.div`
+  padding: 16px 18px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  strong {
+    display: block;
+    color: #00f2fe;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  span {
+    display: block;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+`;
+
+const IntroBand = styled.section`
+  padding: 42px max(24px, calc((100vw - 1200px) / 2));
+  background: #0b1220;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const IntroText = styled.div``;
+
+const Eyebrow = styled.div`
+  color: #00c7d8;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+`;
+
+const SectionTitle = styled.h2`
+  max-width: 780px;
+  margin: 0 0 24px;
+  color: #ffffff;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1.08;
+  font-weight: 900;
+`;
+
+const DarkTitle = styled(SectionTitle)`
+  color: #0b1220;
+`;
+
+const IntroCards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const MiniCard = styled.div`
+  padding: 18px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.45;
+
+  svg {
+    color: #00c7d8;
+    margin-bottom: 12px;
+  }
+`;
+
+const Section = styled.section`
+  padding: 86px 0;
+  background: ${({ $light }) => ($light ? "#f5f8fb" : "#0b1220")};
+  color: ${({ $light }) => ($light ? "#0b1220" : "#ffffff")};
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+`;
+
+const SectionHeader = styled.div`
+  margin-bottom: 32px;
+`;
+
+const ServiceGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+
+  @media (max-width: 1080px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ServiceCard = styled(motion.article)`
+  overflow: hidden;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(11, 18, 32, 0.08);
+  box-shadow: 0 18px 50px rgba(11, 18, 32, 0.1);
+`;
+
+const ServiceImage = styled.div`
+  position: relative;
+  height: 220px;
+  padding: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #edf5fb 100%);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+`;
+
+const IconBadge = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #06101f;
+  background: #00f2fe;
+  box-shadow: 0 12px 28px rgba(0, 242, 254, 0.32);
+`;
+
+const ServiceBody = styled.div`
+  padding: 22px;
+
+  h3 {
+    min-height: 58px;
+    margin: 0 0 10px;
+    color: #0b1220;
+    font-size: 21px;
+    line-height: 1.18;
+    font-weight: 900;
+  }
+
+  p {
+    min-height: 96px;
+    margin: 0 0 18px;
+    color: #526174;
+    line-height: 1.6;
+  }
+`;
+
+const CardLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #006f91;
+  font-weight: 900;
+  text-decoration: none;
+`;
+
+const FeatureSection = styled.section`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: #07111f;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const FeatureImage = styled.div`
+  min-height: 560px;
+  background: #0b1220;
+
+  img {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    min-height: 320px;
+
+    img {
+      min-height: 320px;
+    }
+  }
+`;
+
+const FeatureCopy = styled.div`
+  padding: 78px clamp(24px, 6vw, 86px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const FeatureText = styled.p`
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0 0 22px;
+`;
+
+const FeatureList = styled.ul`
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0 0 28px;
+  list-style: none;
+
+  li {
+    color: rgba(255, 255, 255, 0.86);
+    padding-left: 28px;
+    position: relative;
+  }
+
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #00f2fe;
+  }
+`;
+
+const MutedLead = styled.p`
+  color: #526174;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 0 28px;
+`;
+
+const PainSectionHeader = styled.div`
+  text-align: center;
+  margin-bottom: 32px;
+
+  ${DarkTitle} {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  ${MutedLead} {
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
+const PainGrid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(320px, 500px) minmax(320px, 500px);
+  gap: 28px;
+  align-items: start;
+  justify-content: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const PainDiagramColumn = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+`;
+
+const PainPrompt = styled.div`
+  background: #ffffff;
+  border: 1px solid #dce8f2;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(11, 18, 32, 0.08);
+  color: #0b1220;
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+  padding: 16px;
+  margin-bottom: 16px;
+`;
+
+const PainDiagram = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #dce8f2;
+  box-shadow: 0 18px 50px rgba(11, 18, 32, 0.1);
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
+
+const PainPoint = styled.button`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 0;
+  border-radius: 999px;
+  background: #ff4d5d;
+  cursor: pointer;
+  box-shadow: 0 0 0 8px rgba(255, 77, 93, 0.18);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+const PainPanel = styled.div`
+  position: relative;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #dce8f2;
+  box-shadow: 0 18px 50px rgba(11, 18, 32, 0.1);
+  padding: 30px;
+  min-height: 420px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+`;
+
+const PainTitle = styled.h3`
+  margin: 0 0 22px;
+  color: #0b1220;
+  font-size: 30px;
+  font-weight: 900;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: #edf4fb;
+  color: #0b1220;
+  cursor: pointer;
+`;
+
+const InfoBlock = styled.div`
+  margin-bottom: 22px;
+
+  h4 {
+    margin: 0 0 8px;
+    color: #0f2138;
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  p {
+    margin: 0;
+    color: #526174;
+    line-height: 1.7;
+  }
+`;
+
+const EmptyPain = styled.div`
+  height: 100%;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #526174;
+
+  svg {
+    color: #00c7d8;
+    font-size: 34px;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    color: #0b1220;
+    font-size: 28px;
+    font-weight: 900;
+    margin: 0 0 10px;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.65;
+  }
+`;
+
+const VideoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const VideoCard = styled.article`
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    background: #000;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 18px 20px;
+    font-size: 18px;
+    color: #ffffff;
+  }
+`;
+
+const EducationGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const EducationCard = styled.article`
+  overflow: hidden;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #dce8f2;
+  box-shadow: 0 18px 50px rgba(11, 18, 32, 0.1);
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 76px;
+    margin: 0;
+    padding: 18px;
+    color: #0b1220;
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  svg {
+    color: #00c7d8;
+  }
+`;
+
+const MediaFrame = styled.div`
+  aspect-ratio: 16 / 9;
+  background: #000;
+
+  iframe,
+  video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+  }
+`;
+
+const CTASection = styled.section`
+  padding: 86px 0;
+  background:
+    linear-gradient(135deg, rgba(0, 242, 254, 0.14), rgba(79, 172, 254, 0.06)),
+    #07111f;
+  text-align: center;
+`;
+
+const CTATitle = styled.h2`
+  max-width: 780px;
+  margin: 0 auto 16px;
+  color: #ffffff;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.05;
+  font-weight: 900;
+`;
+
+const CTASub = styled.p`
+  max-width: 650px;
+  margin: 0 auto 28px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+  line-height: 1.65;
+`;
+
+const CTAButtons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+`;
