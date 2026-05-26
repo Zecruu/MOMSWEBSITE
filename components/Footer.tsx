@@ -19,8 +19,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-[#07111f] border-t border-[#00f2fe26] p-8 md:p-12 text-white relative overflow-hidden mt-0">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(0,242,254,0.12),transparent_34%),linear-gradient(135deg,rgba(0,242,254,0.06),rgba(79,172,254,0.02))] pointer-events-none" />
+    <footer className="w-full bg-[#0f2138] border-t border-[#00f2fe33] p-8 md:p-12 text-white relative overflow-hidden mt-0">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(0,242,254,0.18),transparent_32%),radial-gradient(circle_at_82%_8%,rgba(79,172,254,0.12),transparent_28%),linear-gradient(180deg,#102a45_0%,#0b1728_100%)] pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent opacity-70" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 justify-between">
         {/* Logo Section */}
