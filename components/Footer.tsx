@@ -19,11 +19,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full max-w-[1400px] mx-auto mb-8 bg-black/80 backdrop-blur-md border border-[#00d9ff33] shadow-[0_0_20px_rgba(0,217,255,0.2)] rounded-[30px] p-8 md:p-12 text-white relative overflow-hidden mt-12">
-      {/* Background Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#00d9ff1a] to-[#ff00ff1a] pointer-events-none rounded-[30px]" />
+    <footer className="w-full bg-[#07111f] border-t border-[#00f2fe26] p-8 md:p-12 text-white relative overflow-hidden mt-0">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(0,242,254,0.12),transparent_34%),linear-gradient(135deg,rgba(0,242,254,0.06),rgba(79,172,254,0.02))] pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col lg:flex-row gap-12 justify-between">
+      <div className="relative z-10 max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 justify-between">
         {/* Logo Section */}
         <div className="flex-shrink-0 flex justify-center lg:justify-start">
           <button onClick={() => router.push('/')} className="block hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(0,217,255,0.3)]">
@@ -40,15 +39,15 @@ const Footer = () => {
           
           {/* Contact Us */}
           <div className="flex flex-col gap-4 items-center md:items-start">
-            <h3 className="text-[#00d9ff] font-semibold uppercase tracking-wider text-sm shadow-[0_0_10px_rgba(0,217,255,0.5)] drop-shadow-md">
+            <h3 className="text-[#00f2fe] font-semibold uppercase tracking-wider text-sm">
               {safeT('contactUs')}
             </h3>
-            <a href="tel:7872618258" className="hover:text-[#00d9ff] hover:translate-x-1 transition-all duration-200 flex items-center gap-2">
+            <a href="tel:7872618258" className="hover:text-[#00f2fe] hover:translate-x-1 transition-all duration-200 flex items-center gap-2 text-white/80">
               <Phone className="h-4 w-4" /> 787-261-8258
             </a>
             <button 
               onClick={() => router.push('/locate')}
-              className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all duration-200 flex flex-col md:flex-row items-center md:items-start gap-2"
+              className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all duration-200 flex flex-col md:flex-row items-center md:items-start gap-2 text-white/80"
             >
               <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
               <div>
@@ -60,10 +59,10 @@ const Footer = () => {
 
           {/* Office Hours */}
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <h3 className="text-[#00d9ff] font-semibold uppercase tracking-wider text-sm shadow-[0_0_10px_rgba(0,217,255,0.5)] drop-shadow-md mb-2">
+            <h3 className="text-[#00f2fe] font-semibold uppercase tracking-wider text-sm mb-2">
               {safeT('officeHours')}
             </h3>
-            <div className="space-y-1 text-sm text-gray-200 w-full max-w-[250px]">
+            <div className="space-y-1 text-sm text-white/80 w-full max-w-[250px]">
               <div className="flex justify-between"><span className="font-medium">{safeT('monday')}:</span> <span>{safeT('hours1')}</span></div>
               <div className="flex justify-end text-xs text-gray-400 mb-1"><span>{safeT('hours2')}</span></div>
               
@@ -82,7 +81,7 @@ const Footer = () => {
             </div>
             <Button 
               variant="link" 
-              className="text-[#00d9ff] p-0 h-auto justify-center md:justify-start mt-2 hover:text-white"
+              className="text-[#00f2fe] p-0 h-auto justify-center md:justify-start mt-2 hover:text-white"
               onClick={() => router.push('/locate')}
             >
               {safeT('directions')} <ArrowRight className="ml-2 h-4 w-4" />
@@ -92,37 +91,37 @@ const Footer = () => {
           {/* Services & Links */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-4 w-full">
             <div className="flex flex-col gap-3 items-center md:items-start">
-              <h3 className="text-[#00d9ff] font-semibold uppercase tracking-wider text-sm shadow-[0_0_10px_rgba(0,217,255,0.5)] drop-shadow-md">
+              <h3 className="text-[#00f2fe] font-semibold uppercase tracking-wider text-sm">
                 {safeT('services')}
               </h3>
-              <button onClick={() => router.push('/products#chiropractic')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/products#chiropractic')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('chiropractic')}
               </button>
-              <button onClick={() => router.push('/products#decompression')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/products#decompression')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('decompression')}
               </button>
-              <button onClick={() => router.push('/discos-herniados')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/discos-herniados')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {language === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
               </button>
-              <button onClick={() => router.push('/products#laser')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/products#laser')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('laserTherapy')}
               </button>
             </div>
 
             <div className="flex flex-col gap-3 items-center md:items-start">
-              <h3 className="text-[#00d9ff] font-semibold uppercase tracking-wider text-sm shadow-[0_0_10px_rgba(0,217,255,0.5)] drop-shadow-md">
+              <h3 className="text-[#00f2fe] font-semibold uppercase tracking-wider text-sm">
                 {safeT('quickLinks')}
               </h3>
-              <button onClick={() => router.push('/discos-herniados')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/discos-herniados')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {language === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
               </button>
-              <button onClick={() => router.push('/reviews')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/reviews')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('reviews')}
               </button>
-              <button onClick={() => router.push('/insights')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/insights')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {language === 'en' ? 'Insights' : 'Artículos'}
               </button>
-              <button onClick={() => router.push('/locate')} className="text-left hover:text-[#00d9ff] hover:translate-x-1 transition-all text-sm">
+              <button onClick={() => router.push('/locate')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('locateUs')}
               </button>
             </div>
@@ -131,14 +130,15 @@ const Footer = () => {
         </div>
       </div>
 
-      <Separator className="my-8 bg-white/20" />
+      <Separator className="relative z-10 max-w-[1200px] mx-auto my-8 bg-white/10" />
 
-      <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
+      <div className="relative z-10 max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
         <p className="text-center md:text-left">&copy; {currentYear} PR Decompression Centers</p>
-        <div className="flex items-center gap-2">
-          <span>Powered by</span>
-          <a href="https://www.nuvanaweb.com/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
-            <img src="/images/Nuvana Logo.jpg" alt="Nuvana Web Development" className="h-6 rounded" />
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <span>{language === 'en' ? 'Powered by Nexulon LLC' : 'Desarrollado por Nexulon LLC'}</span>
+          <img src="/images/nexulon-logo-2.png" alt="Nexulon LLC" className="h-7 w-auto rounded-sm bg-white/90 px-1 py-0.5" />
+          <a href="https://www.nexulonllc.com/en" target="_blank" rel="noopener noreferrer" className="text-[#00f2fe] hover:text-white font-semibold transition-colors">
+            {language === 'en' ? 'More Info' : 'Mas informacion'}
           </a>
         </div>
       </div>
@@ -147,4 +147,3 @@ const Footer = () => {
 }
 
 export default Footer
-
