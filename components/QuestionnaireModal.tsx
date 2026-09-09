@@ -5,10 +5,6 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { useLanguage } from '../context/LanguageContext'
 import Questionnaire from './Questionnaire'
 
-const COMPLETED_KEY = 'questionnaire-completed'
-const DISMISSED_KEY = 'questionnaire-dismissed'
-const AUTO_OPEN_DELAY_MS = 1200
-
 const QuestionnaireModal: React.FC = () => {
   const { language } = useLanguage()
   const lang = language === 'es' ? 'es' : 'en'
@@ -17,12 +13,6 @@ const QuestionnaireModal: React.FC = () => {
 
   useEffect(() => {
     setMounted(true)
-    const completed = typeof window !== 'undefined' && localStorage.getItem(COMPLETED_KEY) === 'true'
-    const dismissed = typeof window !== 'undefined' && sessionStorage.getItem(DISMISSED_KEY) === 'true'
-    if (!completed && !dismissed) {
-      const t = setTimeout(() => setOpen(true), AUTO_OPEN_DELAY_MS)
-      return () => clearTimeout(t)
-    }
   }, [])
 
   useEffect(() => {
@@ -32,18 +22,10 @@ const QuestionnaireModal: React.FC = () => {
   }, [])
 
   const handleOpenChange = (next: boolean) => {
-    if (!next && open) {
-      try {
-        sessionStorage.setItem(DISMISSED_KEY, 'true')
-      } catch {}
-    }
     setOpen(next)
   }
 
   const handleComplete = () => {
-    try {
-      localStorage.setItem(COMPLETED_KEY, 'true')
-    } catch {}
     setOpen(false)
   }
 
@@ -53,7 +35,7 @@ const QuestionnaireModal: React.FC = () => {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="bg-black/95 border border-[#00d9ff33] text-white sm:max-w-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto">
         <DialogTitle className="sr-only">
-          {lang === 'es' ? 'Cuestionario rápido' : 'Quick questionnaire'}
+          {lang === 'es' ? 'Revision rapida de sintomas' : 'Quick symptom check'}
         </DialogTitle>
         <Questionnaire bare onComplete={handleComplete} />
       </DialogContent>

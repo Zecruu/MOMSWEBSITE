@@ -13,14 +13,14 @@ import type { Answers, Locale } from '@/lib/questionnaire/types'
 const COPY = {
   back: { en: 'Back', es: 'Atrás' },
   next: { en: 'Next', es: 'Siguiente' },
-  submit: { en: 'Send my info', es: 'Enviar mi información' },
+  submit: { en: 'Request guidance', es: 'Pedir orientacion' },
   sending: { en: 'Sending…', es: 'Enviando…' },
-  contactHeading: { en: 'How can we reach you?', es: '¿Cómo podemos contactarte?' },
+  contactHeading: { en: 'Want us to review this with you?', es: 'Quieres que revisemos esto contigo?' },
   contactSub: {
-    en: 'We respond within 24 hours, Monday through Friday.',
-    es: 'Respondemos dentro de 24 horas, de lunes a viernes.',
+    en: 'Share your contact details and our team can follow up during office hours. Individual recommendations depend on an exam.',
+    es: 'Comparte tus datos y el equipo puede contactarte en horario de oficina. Las recomendaciones dependen de una evaluacion.',
   },
-  successTitle: { en: 'Thanks — we got your info', es: 'Gracias — recibimos tu información' },
+  successTitle: { en: 'Thanks - we got your info', es: 'Gracias - recibimos tu informacion' },
   successBody: {
     en: "A team member will reach out within 24 hours. If you'd like to talk sooner, call 787-261-8258.",
     es: 'Un miembro del equipo te contactará en 24 horas. Si prefieres hablar antes, llama al 787-261-8258.',

@@ -80,16 +80,16 @@ const Index = () => {
           ? "Knee pain may come from arthritis, meniscus irritation, alignment issues, or overuse."
           : "El dolor de rodilla puede venir de artritis, irritacion de menisco, alineacion o sobreuso.",
         treatment: isEn
-          ? "Care focuses on inflammation control, movement quality, and the mechanics affecting the knee."
-          : "El cuidado se enfoca en controlar inflamacion, mejorar movimiento y corregir mecanica.",
+          ? "Care may include inflammation control, movement guidance, and a consultation to see whether knee decompression is appropriate."
+          : "El cuidado puede incluir control de inflamacion, guia de movimiento y una consulta para ver si la descompresion de rodilla aplica.",
       },
       [t("rightKneePain")]: {
         causes: isEn
           ? "Knee pain may come from arthritis, meniscus irritation, alignment issues, or overuse."
           : "El dolor de rodilla puede venir de artritis, irritacion de menisco, alineacion o sobreuso.",
         treatment: isEn
-          ? "Care focuses on inflammation control, movement quality, and the mechanics affecting the knee."
-          : "El cuidado se enfoca en controlar inflamacion, mejorar movimiento y corregir mecanica.",
+          ? "Care may include inflammation control, movement guidance, and a consultation to see whether knee decompression is appropriate."
+          : "El cuidado puede incluir control de inflamacion, guia de movimiento y una consulta para ver si la descompresion de rodilla aplica.",
       },
     };
 
@@ -126,6 +126,8 @@ const Index = () => {
     },
     medicalSpecialty: ["Chiropractic", "Physical Therapy", "Pain Management"],
   };
+
+  const selectedIsKneePain = selectedPainPoint === "leftKneePain" || selectedPainPoint === "rightKneePain";
 
   const services = useMemo(
     () => [
@@ -333,6 +335,12 @@ const Index = () => {
                     <h4>{t("howWeCanHelp")}</h4>
                     <p>{getPainPointContent(t(selectedPainPoint)).treatment}</p>
                   </InfoBlock>
+                  {selectedIsKneePain && (
+                    <PanelLink href="/knee-decompression">
+                      {isEn ? "Learn about knee decompression" : "Conoce la descompresion de rodilla"}
+                      <FaArrowRight />
+                    </PanelLink>
+                  )}
                 </>
               ) : (
                 <EmptyPain>
@@ -939,6 +947,23 @@ const InfoBlock = styled.div`
     margin: 0;
     color: #526174;
     line-height: 1.7;
+  }
+`;
+
+const PanelLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: #06101f;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  font-weight: 900;
+  text-decoration: none;
+
+  svg {
+    flex: 0 0 auto;
   }
 `;
 

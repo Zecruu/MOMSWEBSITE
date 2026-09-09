@@ -67,6 +67,13 @@ const Navbar = () => {
           ? 'Lower back herniated discs, sciatica, leg pain'
           : 'Hernias lumbares, ciática, dolor en la pierna',
       },
+      {
+        href: '/knee-decompression',
+        title: language === 'en' ? 'Knee Decompression' : 'Descompresion de Rodilla',
+        desc: language === 'en'
+          ? 'Knee pain, stiffness, arthritis-related pressure'
+          : 'Dolor de rodilla, rigidez, presion relacionada con artritis',
+      },
     ],
   };
 

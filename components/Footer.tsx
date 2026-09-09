@@ -104,6 +104,9 @@ const Footer = () => {
               <button onClick={() => router.push('/discos-herniados')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {language === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
               </button>
+              <button onClick={() => router.push('/knee-decompression')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
+                {language === 'en' ? 'Knee Decompression' : 'Descompresion de Rodilla'}
+              </button>
               <button onClick={() => router.push('/products#laser')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('laserTherapy')}
               </button>
