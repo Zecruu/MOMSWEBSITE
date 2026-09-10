@@ -47,6 +47,13 @@ const Navbar = () => {
     label: language === 'en' ? 'Decompression' : 'Descompresión',
     items: [
       {
+        href: '/idd-therapy',
+        title: language === 'en' ? 'IDD Therapy® & Accu-SPINA®' : 'Terapia IDD® y Accu-SPINA®',
+        desc: language === 'en'
+          ? 'Why IDD Therapy is not generic spinal decompression'
+          : 'Por qué la Terapia IDD no es descompresión genérica',
+      },
+      {
         href: '/discos-herniados',
         title: language === 'en' ? 'Herniated Discs' : 'Discos Herniados',
         desc: language === 'en'

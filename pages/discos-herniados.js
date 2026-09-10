@@ -23,8 +23,8 @@ const DiscosHerniados = () => {
     : 'Tratamiento Discos Herniados | Descompresión Accu-SPINA Puerto Rico | PR Decompression Centers';
 
   const pageDesc = isEn
-    ? 'Non-surgical herniated disc treatment in Puerto Rico using the Accu-SPINA IDD Therapy system. Lumbar and cervical decompression in Levittown & Toa Baja.'
-    : 'Tratamiento no quirúrgico para discos herniados en Puerto Rico con el sistema Accu-SPINA IDD. Descompresión lumbar y cervical en Levittown y Toa Baja.';
+    ? 'Non-surgical herniated disc treatment in Puerto Rico using IDD Therapy® on the Accu-SPINA® system. Lumbar and cervical decompression in Levittown & Toa Baja.'
+    : 'Tratamiento no quirúrgico para discos herniados en Puerto Rico con Terapia IDD® en el sistema Accu-SPINA®. Descompresión lumbar y cervical en Levittown y Toa Baja.';
 
   const schema = {
     '@context': 'https://schema.org',
@@ -151,6 +151,9 @@ const DiscosHerniados = () => {
               <Paragraph>{t('accuSpinaIntro')}</Paragraph>
               <Paragraph><strong>{t('accuSpinaOscillation')}</strong></Paragraph>
               <Paragraph>{t('accuSpinaProtocol')}</Paragraph>
+              <PrimaryCTA href="/idd-therapy" style={{ marginTop: 8 }}>
+                {isEn ? 'What is IDD Therapy®?' : '¿Qué es la Terapia IDD®?'} <FaArrowRight />
+              </PrimaryCTA>
             </SplitText>
             <SplitImage>
               <img

@@ -11,6 +11,7 @@ import {
   FaShieldAlt,
   FaStethoscope,
 } from "react-icons/fa";
+import Link from "next/link";
 import SEOHead from "../components/SEOHead";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -24,12 +25,12 @@ const Products = () => {
   };
 
   const pageTitle = isEn
-    ? "Decompression Therapy & Chiropractic Services | Levittown & Toa Baja PR | PR Decompression Centers"
-    : "Terapia de Descompresion y Servicios Quiropracticos | Levittown y Toa Baja PR | PR Decompression Centers";
+    ? "IDD Therapy®, Accu-SPINA® & Chiropractic Services | Levittown & Toa Baja PR"
+    : "Terapia IDD®, Accu-SPINA® y Servicios Quiropracticos | Levittown y Toa Baja PR";
 
   const pageDescription = isEn
-    ? "Spinal decompression therapy, chiropractic adjustments, laser therapy & matrix rehabilitation in Levittown and Toa Baja, Puerto Rico. Non-surgical treatment for herniated discs, back pain, sciatica. Call 787-261-8258."
-    : "Terapia de descompresion espinal, ajustes quiropracticos, terapia laser y rehabilitacion matrix en Levittown y Toa Baja, Puerto Rico. Tratamiento sin cirugia para hernias discales, dolor de espalda, ciatica. Llame 787-261-8258.";
+    ? "IDD Therapy® on Accu-SPINA®, chiropractic adjustments, laser therapy and matrix rehabilitation in Levittown and Toa Baja, Puerto Rico. Non-surgical treatment for herniated discs, back pain, and sciatica. Call 787-261-8258."
+    : "Terapia IDD® en Accu-SPINA®, ajustes quiropracticos, terapia laser y rehabilitacion matrix en Levittown y Toa Baja, Puerto Rico. Tratamiento sin cirugia para hernias discales, dolor de espalda y ciatica. Llame 787-261-8258.";
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -93,8 +94,8 @@ const Products = () => {
         icon: <FaHeartbeat />,
         accent: "#00f2fe",
         summary: isEn
-          ? "Targeted non-surgical decompression for herniated discs, sciatica, neck pain, and nerve pressure."
-          : "Descompresion no quirurgica dirigida para hernias discales, ciatica, dolor de cuello y presion nerviosa.",
+          ? "IDD Therapy® on Accu-SPINA® — targeted, computer-controlled disc treatment, not generic traction."
+          : "Terapia IDD® en Accu-SPINA® — tratamiento discal dirigido por computadora, no traccion generica.",
         detail: t("decompressionDesc"),
         insurance: t("insuranceNotCovered"),
         tags: isEn ? ["Herniated discs", "Sciatica", "Neck & back"] : ["Hernias discales", "Ciatica", "Cuello y espalda"],
@@ -162,7 +163,7 @@ const Products = () => {
       <SEOHead
         title={pageTitle}
         description={pageDescription}
-        keywords="chiropractic services Levittown, chiropractor services Levittown PR, spinal decompression Levittown, laser therapy Levittown Puerto Rico, chiropractic treatment Levittown, servicios quiropracticos Levittown, herniated disc treatment Levittown, back pain treatment Levittown PR, sciatica treatment Levittown, matrix therapy Levittown"
+        keywords="IDD Therapy Puerto Rico, Accu-SPINA Levittown, chiropractic services Levittown, chiropractor services Levittown PR, spinal decompression Levittown, laser therapy Levittown Puerto Rico, chiropractic treatment Levittown, servicios quiropracticos Levittown, herniated disc treatment Levittown, back pain treatment Levittown PR, sciatica treatment Levittown, matrix therapy Levittown"
         ogTitle={pageTitle}
         ogDescription={pageDescription}
         canonicalUrl="https://prdecompressioncenters.com/products"
@@ -242,6 +243,12 @@ const Products = () => {
                   <InfoSection>
                     <InfoTitle>{t("whatIsThis")}</InfoTitle>
                     <InfoText>{service.detail}</InfoText>
+                    {service.id === "decompression" && (
+                      <CardLink href="/idd-therapy">
+                        {isEn ? "Read the full IDD Therapy® / Accu-SPINA® explainer" : "Leer la explicacion completa de Terapia IDD® / Accu-SPINA®"}
+                        <FaArrowRight />
+                      </CardLink>
+                    )}
                   </InfoSection>
                   <InfoSection>
                     <InfoTitle>{t("insuranceCover")}</InfoTitle>
@@ -607,6 +614,21 @@ const InfoText = styled.p`
   font-size: 15px;
   line-height: 1.65;
   margin: 0;
+`;
+
+const CardLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: #006f91;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+
+  &:hover {
+    color: #0f2138;
+  }
 `;
 
 const PhoneLink = styled.a`

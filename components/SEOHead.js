@@ -17,9 +17,9 @@ const SEOHead = ({
   const { language } = useLanguage();
 
   // Bilingual default keywords targeting all requested search terms
-  const defaultKeywordsEN = "chiropractor near me, chiropractor Levittown, chiropractor Toa Baja, chiropractor Levittown PR, chiropractor Levittown Puerto Rico, chiropractor in Toa Baja, chiropractor in Levittown, best chiropractor Levittown, spinal decompression, spinal decompression therapy, decompression therapy, decompression therapy near me, spinal decompression Levittown, spinal decompression Puerto Rico, herniated disc treatment, sciatica treatment, back pain treatment, neck pain chiropractor, chiropractic care Puerto Rico, non-surgical back pain relief";
+  const defaultKeywordsEN = "chiropractor near me, chiropractor Levittown, chiropractor Toa Baja, chiropractor Levittown PR, chiropractor Levittown Puerto Rico, chiropractor in Toa Baja, chiropractor in Levittown, best chiropractor Levittown, spinal decompression, spinal decompression therapy, decompression therapy, decompression therapy near me, spinal decompression Levittown, spinal decompression Puerto Rico, IDD Therapy, IDD Therapy Puerto Rico, Accu-SPINA, Accu-SPINA Puerto Rico, Intervertebral Differential Dynamics, herniated disc treatment, sciatica treatment, back pain treatment, neck pain chiropractor, chiropractic care Puerto Rico, non-surgical back pain relief";
 
-  const defaultKeywordsES = "quiropráctico cerca de mí, quiropráctico Levittown, quiropráctico Toa Baja, quiropráctico en Toa Baja, quiropráctico en Levittown, mejor quiropráctico Levittown, descompresión espinal, terapia de descompresión, descompresión espinal Levittown, descompresión espinal Puerto Rico, tratamiento hernia discal, tratamiento ciática, dolor de espalda tratamiento, dolor de cuello quiropráctico, cuidado quiropráctico Puerto Rico, alivio dolor de espalda sin cirugía, quiropráctico Bayamón, descompresión Toa Baja";
+  const defaultKeywordsES = "quiropráctico cerca de mí, quiropráctico Levittown, quiropráctico Toa Baja, quiropráctico en Toa Baja, quiropráctico en Levittown, mejor quiropráctico Levittown, descompresión espinal, terapia de descompresión, descompresión espinal Levittown, descompresión espinal Puerto Rico, Terapia IDD, IDD Therapy Puerto Rico, Accu-SPINA Puerto Rico, Intervertebral Differential Dynamics, tratamiento hernia discal, tratamiento ciática, dolor de espalda tratamiento, dolor de cuello quiropráctico, cuidado quiropráctico Puerto Rico, alivio dolor de espalda sin cirugía, quiropráctico Bayamón, descompresión Toa Baja";
 
   const defaultKeywords = `${defaultKeywordsEN}, ${defaultKeywordsES}`;
   const combinedKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
@@ -35,7 +35,9 @@ const SEOHead = ({
       "Centro Quiropráctico Levittown",
       "Chiropractor Levittown PR",
       "Quiropráctico Toa Baja",
-      "Centro de Descompresión Espinal PR"
+      "Centro de Descompresión Espinal PR",
+      "IDD Therapy Puerto Rico",
+      "Accu-SPINA Puerto Rico"
     ],
     "url": SITE_URL,
     "logo": `${SITE_URL}/images/pr-decompression-centers-logo.png`,
@@ -45,8 +47,8 @@ const SEOHead = ({
       `${SITE_URL}/images/spinal-decompression-therapy-pr.png`
     ],
     "description": language === 'es'
-      ? "El mejor quiropráctico en Levittown y Toa Baja, Puerto Rico. Especialistas en descompresión espinal, tratamiento de hernias discales y alivio del dolor de espalda. Sirviendo Levittown, Toa Baja, Bayamón y áreas cercanas."
-      : "Best chiropractor in Levittown and Toa Baja, Puerto Rico. Specialists in spinal decompression, herniated disc treatment, and back pain relief. Serving Levittown, Toa Baja, Bayamón and surrounding areas.",
+      ? "El mejor quiropráctico en Levittown y Toa Baja, Puerto Rico. Proveedores de Terapia IDD® en el sistema Accu-SPINA® para hernias discales y descompresión espinal no quirúrgica. Sirviendo Levittown, Toa Baja, Bayamón y áreas cercanas."
+      : "Best chiropractor in Levittown and Toa Baja, Puerto Rico. IDD Therapy® providers using the Accu-SPINA® system for herniated discs and non-surgical spinal decompression. Serving Levittown, Toa Baja, Bayamón and surrounding areas.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "RH-16 Ave. Building, Los Dominicos",
@@ -106,8 +108,17 @@ const SEOHead = ({
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
+            "name": "IDD Therapy® on Accu-SPINA®",
+            "description": "Intervertebral Differential Dynamics (IDD Therapy) delivered on the Accu-SPINA system for targeted, non-surgical disc treatment. Not generic spinal decompression or traction.",
+            "url": `${SITE_URL}/idd-therapy`
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
             "name": "Spinal Decompression Therapy",
-            "description": "Non-surgical spinal decompression treatment for herniated discs and back pain"
+            "description": "Non-surgical spinal decompression treatment for herniated discs and back pain using Accu-SPINA IDD Therapy"
           }
         },
         {

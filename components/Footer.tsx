@@ -98,6 +98,9 @@ const Footer = () => {
               <button onClick={() => router.push('/products#chiropractic')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('chiropractic')}
               </button>
+              <button onClick={() => router.push('/idd-therapy')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
+                {language === 'en' ? 'IDD Therapy® / Accu-SPINA®' : 'Terapia IDD® / Accu-SPINA®'}
+              </button>
               <button onClick={() => router.push('/products#decompression')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {safeT('decompression')}
               </button>
@@ -116,6 +119,9 @@ const Footer = () => {
               <h3 className="text-[#00f2fe] font-semibold uppercase tracking-wider text-sm">
                 {safeT('quickLinks')}
               </h3>
+              <button onClick={() => router.push('/idd-therapy')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
+                {language === 'en' ? 'IDD Therapy®' : 'Terapia IDD®'}
+              </button>
               <button onClick={() => router.push('/discos-herniados')} className="text-left hover:text-[#00f2fe] hover:translate-x-1 transition-all text-sm text-white/80">
                 {language === 'en' ? 'Herniated Discs' : 'Discos Herniados'}
               </button>

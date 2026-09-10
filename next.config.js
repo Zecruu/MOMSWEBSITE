@@ -151,12 +151,42 @@ const nextConfig = {
       },
       {
         source: '/spinal-decompression',
-        destination: '/discos-herniados',
+        destination: '/idd-therapy',
         permanent: true,
       },
       {
         source: '/descompresion-espinal',
-        destination: '/discos-herniados',
+        destination: '/idd-therapy',
+        permanent: true,
+      },
+      {
+        source: '/idd',
+        destination: '/idd-therapy',
+        permanent: true,
+      },
+      {
+        source: '/idd-therapy-puerto-rico',
+        destination: '/idd-therapy',
+        permanent: true,
+      },
+      {
+        source: '/accu-spina',
+        destination: '/idd-therapy',
+        permanent: true,
+      },
+      {
+        source: '/accuspina',
+        destination: '/idd-therapy',
+        permanent: true,
+      },
+      {
+        source: '/terapia-idd',
+        destination: '/idd-therapy',
+        permanent: true,
+      },
+      {
+        source: '/intervertebral-differential-dynamics',
+        destination: '/idd-therapy',
         permanent: true,
       },
       {

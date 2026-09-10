@@ -27,6 +27,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/products" />
   </url>
 
+  <!-- IDD Therapy / Accu-SPINA Page -->
+  <url>
+    <loc>https://prdecompressioncenters.com/idd-therapy</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://prdecompressioncenters.com/idd-therapy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://prdecompressioncenters.com/en/idd-therapy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prdecompressioncenters.com/idd-therapy" />
+  </url>
+
   <!-- Herniated Disc Treatment Page -->
   <url>
     <loc>https://prdecompressioncenters.com/discos-herniados</loc>

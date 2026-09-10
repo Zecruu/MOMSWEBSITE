@@ -9,6 +9,7 @@
 
 ## Cursor learned
 
+- IDD Therapy® is Intervertebral Differential Dynamics on Accu-SPINA® (North American Medical) — spinal disc decompression, not mental-health depression. In this clinic, "depression" in a treatment request usually means decompression.
 - For search results, ensure proper handling of different character encodings (UTF-8) for international queries
 - Add debug information to stderr while keeping the main output clean in stdout for better pipeline integration
 - When using seaborn styles in matplotlib, use 'seaborn-v0_8' instead of 'seaborn' as the style name due to recent seaborn version changes
@@ -21,30 +22,36 @@
 
 # Scratchpad
 
-## Current Task: Fixing mobile access to the Next.js development server
+## Current Task: Research IDD Therapy + Accu-SPINA and make the clinic AI-discoverable
 
-[X] Clone the repository from GitHub
-[X] Examine the repository structure
-[X] Install dependencies
-[X] Start the development server
-[X] Identify the issue with mobile access
-[X] Create a firewall rule to allow incoming connections to port 3051
-[X] Create a test page to verify the connection
-[X] Test mobile access (port 3051 not working, port 8080 working)
-[X] Change Next.js server port from 3051 to 3090
-[X] Create firewall rule for port 3090
-[X] Restart the server with the new port
-[X] Create a test page for port 3090
-[X] Verify mobile access is working with port 3090 (page is blank)
-[X] Create simplified test pages to isolate the issue
-[X] Create a simple HTTP server on port 8090 as an alternative test
-[X] Create batch files for easier server management
-[X] Add Google Analytics tracking to the website
-[X] Create a simple HTTP server on port 8080
-[X] Test the simple HTTP server on mobile (SUCCESS with port 8080)
-[X] Change Next.js port to 8080 based on successful test
-[X] Test the Next.js application on port 8080 from mobile
-[X] Fix Reseñas button in navbar (was pointing to /testimonials instead of /reviews)
+User asked to research IDD Therapy and the Accu-SPINA machine "for depression." Context:
+- They are PR Decompression Centers, Accu-SPINA / IDD Therapy providers in Levittown & Toa Baja.
+- Attached email is from North American Medical about helping AI find IDD Therapy® clinics (not generic "spinal decompression").
+- "Depression" is treated as decompression (voice-to-text). IDD Therapy is NOT a mental-health treatment.
+
+Plan:
+[X] Review existing site pages (home, discos-herniados, lumbar/cervical)
+[X] Research official IDD Therapy / Accu-SPINA sources and clinical literature
+[X] Add dedicated /idd-therapy page: protocol, machine, vs traction, patient selection, literature, FAQ, schema
+[X] Wire nav, footer, SEO, homepage, products
+[ ] Commit, PR, verify in browser
+
+Key facts to publish (original wording, no copyrighted dumps):
+- IDD Therapy® = Intervertebral Differential Dynamics, only on Accu-SPINA® (NAM, Marietta GA)
+- FDA-cleared Class II device; lumbar + cervical; computer-targeted segment (e.g. L5-S1, C5-C6)
+- Patented Oscillating Logarithmic Curve / sinusoidal + secondary oscillation
+- Typical 20–30 sessions; not generic traction
+- Literature mixed: manufacturer cites high success rates; 2010 RCT (Schimmel) no vs-sham difference; 2025 retrospective VAS/ODI gains; videofluoroscopy ~1 mm L5-S1 separation
+- Contraindications: AAA, infection/neoplasm, osteoporosis, pacemaker, pregnancy, hardware, fusion, grade 2+ spondylolisthesis, etc.
+- Do not overclaim 91% as a guarantee; results vary
+
+### Project Structure
+- Next.js project with pages directory structure
+- Main pages: index.js, reviews.js, locate.js, products.js
+- New page: pages/idd-therapy.js
+- Components: Navbar.js, Footer.js, FloatingButtons.js, Map.js
+- Using TailwindCSS for styling
+- Google Analytics tracking ID: AW-16853281502
 
 ### Project Structure
 - Next.js project with pages directory structure

@@ -106,8 +106,8 @@ const Index = () => {
     : "Quiropractico en Levittown y Toa Baja PR | Descompresion Espinal Puerto Rico | PR Decompression Centers";
 
   const pageDescription = isEn
-    ? "Top-rated chiropractor in Levittown and Toa Baja, Puerto Rico. Spinal decompression therapy, herniated disc treatment, sciatica relief, back and neck pain care. Call 787-261-8258."
-    : "Quiropractico en Levittown y Toa Baja, Puerto Rico. Terapia de descompresion espinal, tratamiento de hernias discales, ciatica, dolor de espalda y cuello. Llame 787-261-8258.";
+    ? "IDD Therapy® provider in Levittown and Toa Baja, Puerto Rico. Accu-SPINA® spinal decompression for herniated discs, sciatica, and neck or back pain. Call 787-261-8258."
+    : "Proveedor de Terapia IDD® en Levittown y Toa Baja, Puerto Rico. Descompresion Accu-SPINA® para hernias discales, ciatica y dolor de cuello o espalda. Llame 787-261-8258.";
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -125,6 +125,13 @@ const Index = () => {
       addressCountry: "US",
     },
     medicalSpecialty: ["Chiropractic", "Physical Therapy", "Pain Management"],
+    knowsAbout: [
+      "IDD Therapy",
+      "Intervertebral Differential Dynamics",
+      "Accu-SPINA",
+      "Spinal decompression",
+      "Herniated disc treatment",
+    ],
   };
 
   const selectedIsKneePain = selectedPainPoint === "leftKneePain" || selectedPainPoint === "rightKneePain";
@@ -143,10 +150,10 @@ const Index = () => {
       {
         title: t("spinalDecompressionTitle"),
         text: isEn
-          ? "Accu-SPINA decompression for herniated discs, sciatica, and neck or back pain."
-          : "Descompresion Accu-SPINA para hernias discales, ciatica y dolor de cuello o espalda.",
+          ? "IDD Therapy® on Accu-SPINA® for herniated discs, sciatica, and neck or back pain."
+          : "Terapia IDD® en Accu-SPINA® para hernias discales, ciatica y dolor de cuello o espalda.",
         image: "/images/accu-spina-spinal-decompression-system-landscape.png",
-        href: "/discos-herniados",
+        href: "/idd-therapy",
         icon: <FaHeartbeat />,
       },
       {
@@ -194,7 +201,7 @@ const Index = () => {
       <SEOHead
         title={pageTitle}
         description={pageDescription}
-        keywords="chiropractor Levittown, chiropractor Toa Baja, spinal decompression Puerto Rico, decompression therapy, herniated disc treatment, sciatica treatment, dolor de espalda, discos herniados"
+        keywords="IDD Therapy Puerto Rico, Accu-SPINA Levittown, chiropractor Levittown, chiropractor Toa Baja, spinal decompression Puerto Rico, decompression therapy, herniated disc treatment, sciatica treatment, dolor de espalda, discos herniados"
         ogTitle={pageTitle}
         ogDescription={pageDescription}
         canonicalUrl="https://prdecompressioncenters.com/"
@@ -285,8 +292,8 @@ const Index = () => {
             <li>{t("protocolStep3")}</li>
             <li>{t("protocolStep4")}</li>
           </FeatureList>
-          <PrimaryCTA href="/discos-herniados">
-            {isEn ? "Learn about decompression" : "Conoce la descompresion"}
+          <PrimaryCTA href="/idd-therapy">
+            {isEn ? "Learn about IDD Therapy" : "Conoce la Terapia IDD"}
             <FaArrowRight />
           </PrimaryCTA>
         </FeatureCopy>
