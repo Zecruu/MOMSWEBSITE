@@ -34,7 +34,7 @@ Plan:
 [X] Research official IDD Therapy / Accu-SPINA sources and clinical literature
 [X] Add dedicated /idd-therapy page: protocol, machine, vs traction, patient selection, literature, FAQ, schema
 [X] Wire nav, footer, SEO, homepage, products
-[ ] Commit, PR, verify in browser
+[X] Commit, PR, verify routes (ES/EN 200, redirects to /idd-therapy)
 
 Key facts to publish (original wording, no copyrighted dumps):
 - IDD Therapy® = Intervertebral Differential Dynamics, only on Accu-SPINA® (NAM, Marietta GA)
